@@ -53,6 +53,18 @@ Additional parent evidence:
 
 Actual200% browser zoom was unavailable through the current browser APIs;320px reflow was tested, which does not substitute for browser zoom. No physical phone/tablet was tested. [responsive-confirmation.json](responsive-confirmation.json) records the final corrected six-width and landscape matrix; all have equal scroll/client widths. The corresponding homepage screenshots were replaced with settled captures. A fresh visual reviewer validated the captures and scored all three requested fixes resolved: lettering cuts, short landscape composition and durable product/design documentation. That verdict covers those fixes only.
 
+## Sampled text contrast
+
+Parent-collected CUA computed colors were checked using the standard WCAG relative-luminance formula: `(Llighter + 0.05) / (Ldarker + 0.05)`, after sRGB linearization.
+
+| Sample | Text RGB | Solid background RGB | Contrast ratio |
+| --- | --- | --- | ---: |
+| Main text and outlined action | 234, 243, 250 | 6, 18, 31 | 16.78:1 |
+| Muted footer text | 175, 189, 203 | 6, 18, 31 | 9.84:1 |
+| Primary action (`::before`) and contact band | 234, 243, 250 | 19, 87, 245 | 5.04:1 |
+
+These sampled solid-background combinations exceed 4.5:1. Coverage is limited to these samples; it does not cover every artwork pixel or interaction state and is not full WCAG certification.
+
 ## Performance diagnostics limitation
 
 Official Lighthouse13.6.0 was installed separately under the ignored task QA-tools directory; Chrome156.0.8078.74 was available. A bounded audit was attempted against the gzip static preview using a fresh temporary Chrome profile, mobile defaults, simulated throttling and CPU slowdown4. The requested command was:

@@ -17,7 +17,7 @@ pnpm measure:assets
 pnpm preview
 ```
 
-`pnpm build` writes the static site to `out/`. Build before running tests: the HTML tests intentionally read the actual export. `pnpm preview` serves only `out/` at http://127.0.0.1:4173/, with gzip for text and the exported custom 404 for unknown paths. Pass a different port with `pnpm preview 4175`; optional `--block-images` adds an image-blocking CSP for local failure-layout QA. The preview is a development utility, not a shipping backend. Publishing is a separate step. No backend, account registration or runtime GitHub request is required.
+`pnpm build` writes the static site to `out/`. Build before running tests: the HTML tests intentionally read the actual export. `pnpm preview` serves only `out/` at http://127.0.0.1:4173/, with gzip for text and the exported custom 404 for unknown paths. Pass a different port with `pnpm preview 4175`. For image failure-layout QA, use `pnpm preview 4173 --block-images`; the port must precede the optional flag, which adds an image-blocking CSP. The preview is a development utility, not a shipping backend. Publishing is a separate step. No backend, account registration or runtime GitHub request is required.
 
 ## Content and assets
 
