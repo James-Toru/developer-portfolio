@@ -134,5 +134,5 @@
 
 ## Execution choice
 
-The owner approved the design brief and requested RAXOS as an implementation reference. No execution method has yet been selected. Recommend native execution in this chat because the five tasks share one content schema, one visual system and one animation lifecycle; it avoids repeated context handoffs while retaining a fresh whole-build review. Wait for plan review and the owner's execution-method choice before product implementation.
+The owner approved this plan on 2026-11-02 and selected subagents to implement and review each task. Implementation proceeds in the selected local workspace on `codex/midnight-network`. Publishing and remote integration remain separate decisions.
 
