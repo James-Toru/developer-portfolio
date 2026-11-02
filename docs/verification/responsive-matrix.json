@@ -1,0 +1,62 @@
+[
+  {
+    "clientWidth": 305,
+    "headingRight": 267.64752197265625,
+    "heroImage": "http://127.0.0.1:4173/art/city-mobile.avif",
+    "scrollWidth": 305,
+    "scrollY": 0,
+    "smallTargets": [],
+    "width": 320,
+    "screenshot": "docs/verification/screenshots/final-home-320.jpg"
+  },
+  {
+    "clientWidth": 375,
+    "headingRight": 308.6856384277344,
+    "heroImage": "http://127.0.0.1:4173/art/city-mobile.avif",
+    "scrollWidth": 375,
+    "scrollY": 0,
+    "smallTargets": [],
+    "width": 390,
+    "screenshot": "docs/verification/screenshots/final-home-390.jpg"
+  },
+  {
+    "clientWidth": 753,
+    "headingRight": 470.0137634277344,
+    "heroImage": "http://127.0.0.1:4173/art/city-desktop.avif",
+    "scrollWidth": 753,
+    "scrollY": 0,
+    "smallTargets": [],
+    "width": 768,
+    "screenshot": "docs/verification/screenshots/final-home-768.jpg"
+  },
+  {
+    "clientWidth": 1009,
+    "headingRight": 547.7371826171875,
+    "heroImage": "http://127.0.0.1:4173/art/city-desktop.avif",
+    "scrollWidth": 1009,
+    "scrollY": 0,
+    "smallTargets": [],
+    "width": 1024,
+    "screenshot": "docs/verification/screenshots/final-home-1024.jpg"
+  },
+  {
+    "clientWidth": 1425,
+    "headingRight": 733.6984252929688,
+    "heroImage": "http://127.0.0.1:4173/art/city-desktop.avif",
+    "scrollWidth": 1425,
+    "scrollY": 0,
+    "smallTargets": [],
+    "width": 1440,
+    "screenshot": "docs/verification/screenshots/final-home-1440.jpg"
+  },
+  {
+    "clientWidth": 1905,
+    "headingRight": 961.7496948242188,
+    "heroImage": "http://127.0.0.1:4173/art/city-desktop.avif",
+    "scrollWidth": 1905,
+    "scrollY": 0,
+    "smallTargets": [],
+    "width": 1920,
+    "screenshot": "docs/verification/screenshots/final-home-1920.jpg"
+  }
+]

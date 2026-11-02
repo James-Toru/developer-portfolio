@@ -1,0 +1,49 @@
+[
+  {
+    "clientWidth": 305,
+    "scrollWidth": 305,
+    "scrollY": 0,
+    "smallTargets": [],
+    "width": 320
+  },
+  {
+    "clientWidth": 375,
+    "scrollWidth": 375,
+    "scrollY": 0,
+    "width": 390
+  },
+  {
+    "clientWidth": 753,
+    "scrollWidth": 753,
+    "scrollY": 0,
+    "width": 768
+  },
+  {
+    "clientWidth": 1009,
+    "scrollWidth": 1009,
+    "scrollY": 0,
+    "width": 1024
+  },
+  {
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "scrollY": 0,
+    "width": 1440
+  },
+  {
+    "clientWidth": 1905,
+    "scrollWidth": 1905,
+    "scrollY": 0,
+    "width": 1920
+  },
+  {
+    "clientWidth": 829,
+    "height": 390,
+    "nameBottom": 219.8125,
+    "primaryBottom": 356.484375,
+    "roleBottom": 257.8125,
+    "scrollWidth": 829,
+    "scrollY": 0,
+    "width": 844
+  }
+]
