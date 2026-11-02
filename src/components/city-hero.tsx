@@ -1,16 +1,81 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/lib/projects";
+import { resolveEffectsPolicy, type EffectsPreference } from "@/lib/effects-policy";
+import type { HeroEffectsController } from "@/lib/hero-effects";
 import { projectArt } from "@/content/project-art";
 import { Arrow } from "./arrow";
+import { EffectsControl } from "./effects-control";
 import "@/styles/hero.css";
 
 export function CityHero({ featured }: { featured: readonly Project[] }) {
-  return <section className="hero" aria-labelledby="hero-title">
+  const rootRef = useRef<HTMLElement>(null);
+  const artRef = useRef<HTMLImageElement>(null);
+  const [preference, setPreference] = useState<EffectsPreference | null>(null);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    const art = artRef.current;
+    if (!root || !art || preference === null || !window.matchMedia) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const fine = window.matchMedia("(pointer: fine)");
+    const hover = window.matchMedia("(hover: hover)");
+    let visible = !window.IntersectionObserver;
+    let disposed = false;
+    let loading = false;
+    let controller: HeroEffectsController | undefined;
+
+    function policy() {
+      return resolveEffectsPolicy({
+        preference: preference!, reducedMotion: reduced.matches,
+        finePointer: fine.matches, hover: hover.matches,
+        visible, documentVisible: !document.hidden,
+      });
+    }
+
+    function sync() {
+      if (disposed) return;
+      const next = policy();
+      controller?.updatePolicy(next);
+      // Touch retains the baked-in rain. Load the enhancement only when useful.
+      if (controller || loading || !next.pointer) return;
+      loading = true;
+      void import("@/lib/hero-effects").then(({ mountHeroEffects }) => {
+        if (!disposed) controller = mountHeroEffects(root!, [art!], policy());
+      }).catch(() => {
+        // A failed decorative chunk must leave the complete static hero usable.
+        loading = false;
+      });
+    }
+
+    const observer = window.IntersectionObserver ? new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      sync();
+    }) : undefined;
+    observer?.observe(root);
+    [reduced, fine, hover].forEach((query) => query.addEventListener("change", sync));
+    document.addEventListener("visibilitychange", sync);
+    sync();
+
+    return () => {
+      disposed = true;
+      observer?.disconnect();
+      [reduced, fine, hover].forEach((query) => query.removeEventListener("change", sync));
+      document.removeEventListener("visibilitychange", sync);
+      controller?.destroy();
+    };
+  }, [preference]);
+
+  return <section ref={rootRef} className="hero" aria-labelledby="hero-title">
     <picture className="hero-art" aria-hidden="true">
       <source media="(max-width: 767px)" srcSet="/art/city-mobile.avif" type="image/avif" />
       <source media="(max-width: 767px)" srcSet="/art/city-mobile.webp" type="image/webp" />
       <source srcSet="/art/city-desktop.avif" type="image/avif" />
-      <img src="/art/city-desktop.webp" width="1536" height="1024" alt="" fetchPriority="high" />
+      <img ref={artRef} src="/art/city-desktop.webp" width="1536" height="1024" alt="" fetchPriority="high" />
     </picture>
+    <div className="hero-atmosphere" aria-hidden="true"><span className="hero-rain" /></div>
     <div className="hero-layout content-width">
       <div className="hero-intro">
         <h1 id="hero-title"><span>James</span><span>Gatoru</span></h1>
@@ -20,7 +85,7 @@ export function CityHero({ featured }: { featured: readonly Project[] }) {
           <a className="button button-primary" href="#work">Explore my work <Arrow /></a>
           <a className="button button-outline" href="#contact">Let’s talk <Arrow /></a>
         </div>
-        <div className="hero-effects-slot" />
+        <div className="hero-effects-slot"><EffectsControl onChange={setPreference} /></div>
       </div>
       <nav className="hero-index" aria-label="Featured work">
         <p className="illustration-note">Illustrative project visuals</p>

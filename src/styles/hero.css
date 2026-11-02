@@ -10,3 +10,28 @@
   .hero .hero-intro h1 { font-size: clamp(8.5rem, 12.6vw, 12.5rem); line-height: .84; }
   .hero .hero-intro h1 > span { transform: scaleX(1.46); }
 }
+
+/* The complete city is visible before hydration. Only its art responds; all
+   headings, navigation and actions remain in their normal static flow. */
+.hero-effects-slot { min-height: 44px; margin-top: 14px; }
+.effects-control { display: flex; align-items: center; gap: 4px; width: max-content; max-width: 100%; font-size: .875rem; }
+.effects-label { color: var(--muted); margin-right: 10px; }
+.effects-control button { min-width: 48px; min-height: 44px; padding: 8px 12px; border: 1px solid #afbdcb60; background: var(--background); color: var(--muted); cursor: pointer; transition: color 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out; }
+.effects-control button[aria-pressed="true"] { background: #123344; color: var(--text); border-color: var(--cyan); }
+.effects-control button:hover { color: var(--text); border-color: var(--cyan); }
+.effects-control button:active { background: #1b4658; }
+.effects-control button:disabled { cursor: default; }
+.hero-atmosphere { position: absolute; inset: 0 0 auto; height: min(440px, 55%); z-index: -2; overflow: hidden; pointer-events: none; contain: paint; }
+.hero-rain { display: none; }
+.hero .button, .hero .index-link { transition: color 180ms ease-out; }
+.hero .button::before, .hero .button::after { transition: background-color 180ms ease-out; }
+.hero .button:active { color: var(--cyan); }
+.hero .index-link:active { color: var(--cyan); }
+@media (prefers-reduced-motion: no-preference) and (pointer: fine) and (hover: hover) {
+  .hero[data-effects-pointer="true"] .hero-art img { transform: translate3d(var(--hero-x, 0px), var(--hero-y, 0px), 0) scale(1.035); transition: transform 200ms cubic-bezier(.16, 1, .3, 1); }
+  .hero[data-effects-ambient="true"] .hero-rain { display: block; position: absolute; inset: -120px 0 0; opacity: .18; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='330' height='120' viewBox='0 0 330 120'%3E%3Cpath d='M30 12l-3 13M112 63l-4 18M208 26l-3 14M296 89l-3 13' fill='none' stroke='%23b6d9eb' stroke-width='1'/%3E%3C/svg%3E"); animation: city-rain 3500ms linear infinite; }
+}
+@keyframes city-rain { to { transform: translate3d(0, 120px, 0); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-art img, .hero-rain { transform: none; animation: none; transition: none; }
+}
