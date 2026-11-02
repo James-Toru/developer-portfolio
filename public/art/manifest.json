@@ -1,0 +1,135 @@
+{
+  "provenance": "Original OpenAI imagegen artwork; exact prompts retained under docs/art-source. No mockup pixels are shipped.",
+  "assets": [
+    {
+      "file": "city-desktop.avif",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 103325,
+      "source": "city-master.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "crop": null,
+      "sha256": "507208c21d492fa646bae3086b68db355f59b4c57ddfcb7943c4870ccb623bdb"
+    },
+    {
+      "file": "city-desktop.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 140000,
+      "source": "city-master.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "crop": null,
+      "sha256": "11669765343cd5a01ae99fa14a9997d8a8fc411c3115027a4c2584be361fa0d9"
+    },
+    {
+      "file": "city-mobile.avif",
+      "width": 720,
+      "height": 960,
+      "bytes": 51232,
+      "source": "city-master.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "crop": [
+        430,
+        0,
+        1198,
+        1024
+      ],
+      "sha256": "5d4f5216f7ffd8c92b01ccecb8cf83de7bc9cc68a1d9027f0fb2f28d7eedf551"
+    },
+    {
+      "file": "city-mobile.webp",
+      "width": 720,
+      "height": 960,
+      "bytes": 70448,
+      "source": "city-master.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "crop": [
+        430,
+        0,
+        1198,
+        1024
+      ],
+      "sha256": "ccdaea10ad9e479ff5c319fd90f4916faef1e6bea9678ff93391e332a0abbac3"
+    },
+    {
+      "file": "workflow.avif",
+      "width": 1080,
+      "height": 360,
+      "bytes": 12925,
+      "source": "workflow-master.png",
+      "sourceWidth": 2172,
+      "sourceHeight": 724,
+      "crop": null,
+      "sha256": "3eabcb1f8b6a712468565698911b9960ee364a3d3fc53b14c183b1ab0e1343a6"
+    },
+    {
+      "file": "workflow.webp",
+      "width": 1080,
+      "height": 360,
+      "bytes": 17290,
+      "source": "workflow-master.png",
+      "sourceWidth": 2172,
+      "sourceHeight": 724,
+      "crop": null,
+      "sha256": "c2d09314e299afe875f52b3dd0546288646c0212a0288a42176936df13cc6e60"
+    },
+    {
+      "file": "portal.avif",
+      "width": 1080,
+      "height": 360,
+      "bytes": 12528,
+      "source": "portal-master.png",
+      "sourceWidth": 2172,
+      "sourceHeight": 724,
+      "crop": null,
+      "sha256": "08af56283efaa2b8ed5a43ac1054a8a226334159b2dacb940f526723bec05f60"
+    },
+    {
+      "file": "portal.webp",
+      "width": 1080,
+      "height": 360,
+      "bytes": 17898,
+      "source": "portal-master.png",
+      "sourceWidth": 2172,
+      "sourceHeight": 724,
+      "crop": null,
+      "sha256": "feed18fe832fedc0e4999d1add9dff833b15cbbff2fbcb2800c546f880d404f2"
+    },
+    {
+      "file": "lugawa.avif",
+      "width": 1080,
+      "height": 360,
+      "bytes": 46081,
+      "source": "city-master.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "crop": [
+        0,
+        160,
+        1536,
+        672
+      ],
+      "sha256": "1d17f60a2bcae1ac572fc899911c12b97821965e6edb19273d632fdbca14d642"
+    },
+    {
+      "file": "lugawa.webp",
+      "width": 1080,
+      "height": 360,
+      "bytes": 66518,
+      "source": "city-master.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "crop": [
+        0,
+        160,
+        1536,
+        672
+      ],
+      "sha256": "85cb31deee715f34638396dcd089d01f4120229dc5148675bd3cb0df7c8355a8"
+    }
+  ]
+}

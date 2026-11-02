@@ -1,0 +1,20 @@
+.site-header { position: relative; z-index: 10; background: var(--background); border-bottom: 1px solid #29dce840; }
+.header-inner { max-width: 1600px; min-height: 76px; margin: auto; padding: 0 var(--gutter); display: flex; align-items: center; gap: 32px; }
+.wordmark { display: inline-flex; align-items: center; gap: .3em; min-height: 44px; font: italic 800 clamp(1.6rem, 2.2vw, 2rem)/1 var(--font-display); letter-spacing: .055em; text-decoration: none; white-space: nowrap; }
+.wordmark span { color: var(--cyan); }
+.header-rule { flex: 1; height: 1px; background: var(--cyan); align-self: end; margin-bottom: 12px; opacity: .75; }
+.desktop-nav { display: flex; gap: clamp(12px, 2.5vw, 36px); }
+.desktop-nav a, .mobile-menu nav a { min-height: 44px; display: flex; align-items: center; text-decoration: none; font-size: 1.125rem; }
+.desktop-nav a:hover, .mobile-menu nav a:hover { color: var(--cyan); }
+.mobile-menu { display: none; }
+@media (max-width: 767px) {
+  .header-inner { min-height: 72px; gap: 14px; justify-content: space-between; }
+  .desktop-nav, .header-rule { display: none; }
+  .mobile-menu { display: block; }
+  .mobile-menu summary { min-height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 12px; border: 1px solid var(--cyan); list-style: none; cursor: pointer; font-weight: 600; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary svg { fill: none; stroke: currentColor; stroke-width: 1.8; }
+  .mobile-menu[open] summary { background: var(--cyan); color: var(--background); }
+  .mobile-menu nav { position: absolute; inset: 100% 0 auto; padding: 12px var(--gutter) 20px; background: var(--surface); border-bottom: 1px solid var(--cyan); box-shadow: 0 16px 24px #0005; }
+  .mobile-menu nav a { padding: 4px 12px; }
+}
