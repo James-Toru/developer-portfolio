@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-11-02",
+  "method": "Public HTTPS GET; HTTP status and HTML title checked against repository identity. A reachable homepage is not evidence of project outcomes or production service guarantees.",
+  "homepages": [
+    { "repository": "agent-pipeline-foundry", "url": "https://agent-pipeline-foundry.vercel.app", "status": 200, "title": "Agent Foundry" },
+    { "repository": "njoroge-kiriro-advocates", "url": "https://njoroge-kiriro-advocates.vercel.app", "status": 200, "title": "Njoroge Kiriro Advocates — IP Counsel, Nairobi" },
+    { "repository": "raxos-website", "url": "https://raxos-website.vercel.app", "status": 200, "title": "Raxos" },
+    { "repository": "testassessment", "url": "https://testassessment.vercel.app", "status": 200, "title": "AnyPost" }
+  ],
+  "additionalSourceInspection": [
+    { "url": "https://api.github.com/repos/James-Toru/github-agent-workflow/contents", "observed": ["src", "tests", "package.json", "tsconfig.json"] },
+    { "url": "https://api.github.com/repos/James-Toru/github-agent-workflow-test/contents", "observed": ["src", "tests", "package.json", "tsconfig.json"] },
+    { "url": "https://api.github.com/repos/James-Toru/IcecreamShop/contents", "observed": ["AboutUs.html", "Gallery.html", "Products.html", "index.html", "css", "js"] },
+    { "url": "https://api.github.com/repos/James-Toru/Login_/contents", "observed": ["package.json", "passportconfig.js", "server.js", "views"] },
+    { "url": "https://api.github.com/repos/James-Toru/Lugawa/contents", "observed": ["business.html", "customer.html", "index.html", "landing.html", "login.html", "register.html"] },
+    { "url": "https://api.github.com/repos/James-Toru/test/contents", "observed": ["app.js", "index.html"] },
+    { "url": "https://api.github.com/repos/James-Toru/texplore/contents", "result": "GET timed out; retained neutral CV and repository-metadata summary." },
+    { "url": "https://api.github.com/repos/James-Toru/uml-diagrams/contents", "result": "404; retained repository reference and neutral supporting-record label." }
+  ],
+  "authorship": {
+    "raxos-website": "Owner confirmed authorship in the approved conversation; implementation reviewed in raxos-reference.md."
+  },
+  "profileExperience": {
+    "source": "James Mbugua CV Full.pdf, extracted and verified by controller",
+    "entries": [
+      { "organization": "TYTOS GmbH", "role": "AI Agentic Engineer", "period": "April 2026–present" },
+      { "organization": "Info Gain Consulting", "role": "Technical Consultant", "period": "February 2024–April 2026" },
+      { "organization": "Angaza Elimu", "role": "Front-end Developer", "period": "January 2024–March 2024" },
+      { "organization": "Elixar Technologies", "role": "Software Developer", "period": "January 2023–August 2023" },
+      { "organization": "Freelance", "role": "Software Developer", "period": "June 2020–January 2023" }
+    ],
+    "note": "Overlapping periods preserved as supplied. Elixar spelling follows neutral inventory convention."
+  },
+  "dependencySelection": {
+    "runtime": "Bundled Node 24.22.1; pnpm 11.25.0",
+    "next": { "version": "16.4.3", "source": "https://registry.npmjs.org/next/16.4.3", "rationale": "Current stable static-export framework; accepts React 19." },
+    "react": { "version": "19.3.1", "source": "https://registry.npmjs.org/react/19.3.1", "rationale": "Stable React 19 release with matching react-dom." },
+    "typescript": { "version": "5.9.3", "source": "https://registry.npmjs.org/typescript/5.9.3", "rationale": "Conservative TypeScript 5 baseline instead of migrating to TypeScript 7 for this foundation." },
+    "vitest": { "version": "5.0.5", "source": "https://registry.npmjs.org/vitest/5.0.5", "rationale": "Supports Node 24 and the compatible Vite peer selected in the lockfile." },
+    "jsdom": { "version": "30.1.3", "source": "https://registry.npmjs.org/jsdom/30.1.3", "rationale": "Supports Node >=24.15; ready for upcoming DOM tests." },
+    "types": "@types/node 24.19.2 matches runtime major; @types/react and @types/react-dom 19.3.0 match React major and minor."
+  }
+}
