@@ -4,6 +4,7 @@
 .wordmark span { color: var(--cyan); }
 .header-rule { flex: 1; height: 1px; background: var(--cyan); align-self: end; margin-bottom: 12px; opacity: .75; }
 .desktop-nav { display: flex; gap: clamp(12px, 2.5vw, 36px); }
+.desktop-nav a { min-width: 44px; justify-content: center; }
 .desktop-nav a, .mobile-menu nav a { min-height: 44px; display: flex; align-items: center; text-decoration: none; font-size: 1.125rem; }
 .desktop-nav a:hover, .mobile-menu nav a:hover { color: var(--cyan); }
 .mobile-menu { display: none; }
