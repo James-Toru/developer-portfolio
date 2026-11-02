@@ -4,7 +4,7 @@ import { useRef } from "react";
 import "@/styles/header.css";
 
 const links = [
-  { href: "/#work", label: "Work" },
+  { href: "/work/", label: "Work" },
   { href: "/#about", label: "About" },
   { href: "/#experience", label: "Experience" },
   { href: "/#contact", label: "Contact" },

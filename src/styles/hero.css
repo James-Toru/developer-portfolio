@@ -1,0 +1,12 @@
+/* Reserve the width of the extended lettering in normal flow. The glyph transform
+   only uses the space already assigned to the heading, including at 320px. */
+.hero .hero-intro h1 { width: 100%; padding-right: 24%; font-size: clamp(4.6rem, 22vw, 10rem); }
+.hero .hero-intro h1 > span { display: block; width: max-content; transform: scaleX(1.32); transform-origin: left center; }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero .hero-intro h1 { font-size: clamp(8rem, 17vw, 11rem); }
+}
+@media (min-width: 1024px) {
+  .hero .hero-layout { grid-template-columns: minmax(0, 1.85fr) minmax(280px, 1fr); gap: clamp(40px, 5vw, 80px); padding-top: clamp(230px, 19vw, 310px); }
+  .hero .hero-intro h1 { font-size: clamp(8.5rem, 12.6vw, 12.5rem); line-height: .84; }
+  .hero .hero-intro h1 > span { transform: scaleX(1.46); }
+}

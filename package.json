@@ -9,6 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "test": "vitest run",
+    "test:content": "vitest run src/lib/projects.test.ts",
+    "test:static": "vitest run src/lib/static-output.test.ts",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
