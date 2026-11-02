@@ -1,0 +1,59 @@
+BUILT-IN IMAGE GENERATION — PORTFOLIO CONCEPTS
+
+Two static visual explorations, not implemented websites. All project visuals are illustrative.
+
+CONCEPT 1 — CYBERPUNK 2077 INSPIRED
+
+Use case: ui-mockup
+Asset type: high-fidelity desktop developer portfolio homepage concept, one single separate image.
+Primary request: Design an extraordinary, polished website for James Gatoru, a software developer and AI agentic engineer in Kenya. This is the CYBERPUNK 2077 inspired concept. Translate the game's recognizable acid-yellow/black industrial typography, angular red HUD, crowded megacity atmosphere and cyan machine interfaces into an original personal portfolio. This must look like a real usable art-directed website, not a game poster, generic dashboard, or collage. Do not include the game's title, logos, characters or branding.
+Format: landscape 1536 by 1024. Flat straight-on webpage, edge-to-edge, no laptop, no browser chrome, no presentation board. Show a strong first viewport and the beginning of selected work below, carefully legible hierarchy.
+Composition: asymmetric editorial typographic layout with acid yellow as an architectural dominant field at the left, near-black lower work area, large original rain-lit futuristic city visual at upper right with a restrained red architectural scanning overlay integrated into it. City imagery should be dramatic and detailed, not vague neon gradient. Wide functional top navigation. Name is enormous and condensed, in two strong lines, with deliberate cuts in the typography. Red structural rules, a few tiny cyan technical annotations and crisp precise metadata. Plenty of breathing room around crucial copy. Industrial textures only in illustration, keep text sharp. The city and graphic structure should feel native to this portfolio, not a rectangle placed inside a dashboard. No rounded cards.
+Content, spell exactly:
+Brand: "JAMES / TORU"
+Navigation: "Work" "About" "Experience" "Contact"
+Main name: "JAMES" "GATORU"
+Role: "SOFTWARE DEVELOPER / AI AGENTIC ENGINEER"
+Description: "Full-stack platforms. Agentic workflows. Thoughtful design."
+Primary action: "EXPLORE MY WORK" with arrow
+Secondary action: "LET'S TALK"
+Small location: "BASED IN KENYA"
+Lower section: "SELECTED WORK" and "VIEW ALL PROJECTS"
+Three refined project entries with conceptual visual thumbnails and concise tags:
+"01 / Agentic Workflows" — "AI SYSTEMS"
+"02 / IGC Portal" — "FULL-STACK"
+"03 / Lugawa" — "WEB DEVELOPMENT"
+A small unobtrusive note near thumbnails: "Illustrative project visuals"
+Use entries as wide horizontal artwork-led modules in an open three-column editorial work strip. Thumbnails should suggest a node flow diagram, a document/workflow portal and a web page respectively, without fabricated metrics or customer claims. Footer edge can have plain "GitHub" and "Get in touch".
+Mood: technologically intense, sophisticated, fast, confident, instantly memorable; client-ready and readable. Red and cyan are disciplined accents, yellow and charcoal carry identity.
+Avoid: purple, glassmorphism, a fake terminal code wall, skill percentage bars, invented achievements, portraits, icon grids, giant sci-fi spaceship, centered generic SaaS hero, unnecessary tiny unreadable gibberish. Render all main text accurately. This is a static visual concept, not the finished website.
+
+CONCEPT 2 — THE SUMMER HIKARU DIED INSPIRED
+
+Use case: ui-mockup
+Asset type: one high-fidelity desktop homepage visual concept for a developer portfolio.
+Primary request: Create the separate THE SUMMER HIKARU DIED inspired design for James Gatoru, software developer and AI agentic engineer in Kenya. Capture the specific tension of luminous rural summer, blue skies, leafy green shadows, expressive manga ink, nostalgic quiet and a faint uncanny undertow. Entirely independent of cyberpunk; this direction is a mature illustrated anime and literary editorial website, art-directed and client-ready. Original scenery, no existing characters, show title, logos or promotional poster elements.
+Format: landscape 1536 x 1024. Flat straight-on real webpage design edge to edge, no browser chrome, laptop frame, moodboard collage or explanatory swatches.
+Visual world: warm ivory paper, midnight ink typography, luminous cerulean sky, saturated dense forest green, a tiny hand-drawn coral-red accent. Fine manga hatching and organic paper grain, elegant high-contrast editorial serif for the name, clean readable modern sans for essential copy. Spacious layout with exceptionally composed margins and delicate little handwritten annotations. Not cute chibi, not pastel template, not fantasy video-game UI.
+Composition: a thin warm-paper masthead. A cinematic upper section around 560px high where the left third remains quiet ivory for strong text and the original anime scenery envelops the right two thirds, with an irregular hand-painted ink boundary. Scene: an empty sunlit path beside a still irrigation canal, enormous summer clouds, tangled rural foliage and power lines, painted with film-quality anime background craft and precise inkwork; the calm water holds a subtly impossible deep-ink reflection, suggesting mystery without gore or monsters. A leafy shadow spills over the paper edge and the illustration blends into the page. Scene must have compelling composition, lush color and specific crafted details.
+Main visible text, verbatim:
+Masthead brand: "James / Toru"
+Navigation: "Work" "About" "Experience" "Contact"
+Small role: "SOFTWARE DEVELOPER / AI AGENTIC ENGINEER"
+Main name, oversized, refined editorial serif on two lines: "James" "Gatoru."
+Description: "Full-stack platforms. Agentic workflows. Thoughtful design."
+Primary link with an ink underline and arrow: "Explore my work"
+Secondary link: "Let's talk"
+Small caption: "BASED IN KENYA"
+Below hero, warm paper selected-work section with a generous heading, serif typography: "Selected work"
+Subheading: "A few chapters from my work."
+Right-aligned text link: "View all projects"
+Three open editorial project columns, no box borders or rounded card containers:
+"01 / Agentic Workflows", small category "AI SYSTEMS"
+"02 / IGC Portal", small category "FULL-STACK"
+"03 / Lugawa", small category "WEB DEVELOPMENT"
+Use compact visual thumbnails for these that feel like pinned ink-and-blueprint field notes integrated into the paper: a flow diagram, an application workflow, and a web page concept. They must be clear illustrative representations, not claims to be actual product screenshots. Small note "Illustrative project visuals".
+Bottom quiet signoff "Have something in mind?" with "Get in touch" and "GitHub".
+Hierarchy: site owner and developer role must be immediate and readable; project names crisp; clear real website navigation and contact. This is a portfolio, not a website about the anime. No fake Japanese glyphs or random unreadable labels. No invented outcomes, metrics, employment dates, client testimonials or availability claims.
+Mood: evocative, contemplative, unforgettable, beautifully drawn, with emotional restraint and a subtle uncanny detail. No neon, glitches, HUD, circuitry framing, acid-yellow block, sci-fi city, purple gradients, dark dashboard, heavy cards, character portrait or horror violence. Maintain beautiful contrast and text accuracy.
+
