@@ -33,6 +33,8 @@ The initial content comes from the two supplied CVs and the public James-Toru Gi
 
 ## Brand Commitments
 
+The owner selected Exo 2 for body text on 2026-11-03 while retaining Barlow Condensed for display headings. Serve both families locally.
+
 James Gatoru is the portfolio identity; James / Toru is the implemented wordmark. The owner selected the Midnight Network direction and approved its desktop and mobile concepts. Preserve its immersive blue, cyan and cobalt city identity and the explicit rejection of acid yellow. The RAXOS repository is an implementation reference, while the selected Midnight Network concepts remain the visual authority. Detailed visual rules belong in DESIGN.md.
 
 ## Evidence on Hand

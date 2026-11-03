@@ -23,17 +23,17 @@ typography:
     lineHeight: 1
     letterSpacing: "0.025em"
   title:
-    fontFamily: "Barlow, sans-serif"
+    fontFamily: "'Exo 2', sans-serif"
     fontSize: "clamp(1.35rem, 2vw, 1.8rem)"
     fontWeight: 600
     lineHeight: 1.1
   body:
-    fontFamily: "Barlow, sans-serif"
+    fontFamily: "'Exo 2', sans-serif"
     fontSize: "1.125rem"
     fontWeight: 400
     lineHeight: 1.55
   label:
-    fontFamily: "Barlow, sans-serif"
+    fontFamily: "'Exo 2', sans-serif"
     fontSize: "clamp(0.85rem, 1.25vw, 1.125rem)"
     fontWeight: 600
     lineHeight: 1.5
@@ -91,7 +91,7 @@ components:
 
 Midnight Network presents James Gatoru’s work inside a rain-lit, layered city. Blue atmosphere, ice-white lettering and cyan interface edges create an immersive setting; generous live typography and direct links keep the work legible and reachable.
 
-The visual rhythm moves between expressive artwork and calm reading surfaces. Condensed italic display type supplies energy, while ordinary Barlow supports project narratives and controls. Atmosphere is a progressive enhancement: the complete composition and content exist before optional movement.
+The visual rhythm moves between expressive artwork and calm reading surfaces. Condensed italic display type supplies energy, while ordinary Exo 2 supports project narratives and controls. Atmosphere is a progressive enhancement: the complete composition and content exist before optional movement.
 
 **Key Characteristics:**
 
@@ -130,17 +130,17 @@ A dark blue foundation supports bright, purposeful interface signals; exact prim
 ## Typography
 
 **Display Font:** Barlow Condensed, with sans-serif fallback, italic and weight 800.
-**Body Font:** Barlow, with sans-serif fallback, weights 400 and 600.
+**Body Font:** Exo 2, with sans-serif fallback, weights 400 and 600.
 
-Both families are locally served WOFF2 subsets. There is no separate monospace face and no body-font custom property; the existing display property is `--font-display`.
+Both families are locally served WOFF2 subsets. There is no separate monospace face. `--font-body` selects Exo 2 for reading text, and `--font-display` selects Barlow Condensed for display headings.
 
 ### Hierarchy
 
 - **Display:** the frontmatter records the desktop hero. The base hero uses `clamp(4.6rem, 22vw, 10rem)`, tablet uses `clamp(8rem, 17vw, 11rem)`, and short landscape uses `clamp(3.5rem, 8vw, 4.25rem)`. Name lines are uppercase live spans, horizontally extended within reserved layout width.
 - **Headline:** italic, uppercase section headings. Archive and project headings use a larger contextual clamp; this does not change the family pairing.
-- **Title:** semibold Barlow for project, experience and capability titles. Selected project titles increase to `clamp(1.7rem, 3vw, 2.6rem)`.
-- **Body:** regular Barlow, with paragraphs limited to 70 characters where the global rule applies. Larger introduction copy uses fluid sizing and shorter line lengths.
-- **Label:** the frontmatter records the uppercase technical role. Small controls and image captions use regular Barlow at `.875rem`; labels are not a new display family.
+- **Title:** semibold Exo 2 for project, experience and capability titles. Selected project titles increase to `clamp(1.7rem, 3vw, 2.6rem)`.
+- **Body:** regular Exo 2, with paragraphs limited to 70 characters where the global rule applies. Larger introduction copy uses fluid sizing and shorter line lengths.
+- **Label:** the frontmatter records the uppercase technical role. Small controls and image captions use regular Exo 2 at `.875rem`; labels are not a new display family.
 
 **The Live Type Rule.** Keep identity, headings, labels and controls as real HTML; artwork never replaces readable content.
 
