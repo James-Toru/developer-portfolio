@@ -1,13 +1,39 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, writeFile, rm, readFile, access } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, rm, readFile, access, copyFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, delimiter } from 'node:path';
+import { exec } from 'node:child_process';
+import { promisify } from 'node:util';
 import { gunzipSync } from 'node:zlib';
 import { checkStaticOutput } from './check-static-output.mjs';
 import { measureAssets } from './measure-assets.mjs';
 import { staticResponse } from './preview-static.mjs';
 import { prepareVerificationOutput } from './prepare-verification-output.mjs';
+
+test('deployment build succeeds without requiring the local verification snapshot layout', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'portfolio-deploy-'));
+  try {
+    // Stand in for a successful framework build after a host adapter has
+    // processed its homepage/404 outputs. The local QA helper must not run.
+    await mkdir(join(root, '.next/server/app'), { recursive: true });
+    await mkdir(join(root, 'scripts'));
+    await writeFile(join(root, '.next/server/app/work.html'), 'adapter output');
+    for (const name of ['prepare-verification-output.mjs', 'output-utils.mjs']) {
+      await copyFile(new URL(name, import.meta.url), join(root, 'scripts', name));
+    }
+    const windows = process.platform === 'win32';
+    await writeFile(join(root, windows ? 'next.cmd' : 'next'), windows ? '@echo off\r\nexit /b 0\r\n' : '#!/bin/sh\nexit 0\n', { mode: 0o755 });
+    const { scripts } = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+    const pathKey = Object.keys(process.env).find(key => key.toLowerCase() === 'path') || 'PATH';
+    await promisify(exec)(scripts.build, {
+      cwd: root,
+      env: { ...process.env, [pathKey]: `${root}${delimiter}${process.env[pathKey] || ''}` },
+      timeout: 15000,
+    });
+    await assert.rejects(access(join(root, 'out')));
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
 
 test('server snapshot replaces stale output, maps prerendered routes and excludes server code', async () => {
   const root = await mkdtemp(join(tmpdir(), 'portfolio-build-'));

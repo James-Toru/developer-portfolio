@@ -10,16 +10,26 @@ Use Node 24.15 or later within major 24 and pnpm 11.25.0:
 pnpm install
 pnpm dev
 pnpm typecheck
-pnpm build
+pnpm build:verify
 pnpm test
 pnpm check:static
 pnpm measure:assets
 pnpm preview
 ```
 
-`pnpm build` creates the Next.js server build in `.next/`, then generates a fresh, ignored `out/` snapshot from its pre-rendered HTML and current assets for verification. Build before running the HTML tests, static checker or asset measurements. This snapshot cannot run the contact endpoint and is not a deployment artifact.
+`pnpm build` runs the standard Next.js production build for deployment. It does not run the local verification snapshot helper: hosting adapters may process or relocate the raw prerendered HTML before the framework build returns.
+
+For local checks, `pnpm build:verify` first runs that production build, then generates a fresh, ignored `out/` snapshot from its pre-rendered HTML and current assets. Run this command before the HTML tests, static checker or asset measurements. The snapshot helper remains strict about missing files; it is a local QA tool, cannot run the contact endpoint and is not a deployment artifact.
 
 `pnpm preview` runs the actual Next.js server at http://127.0.0.1:4173/. For another port, use `pnpm exec next start --hostname 127.0.0.1 --port 4175`. The old static preview's positional port and `--block-images` flag do not apply. Production requires a host that supports the Next.js Node.js server or its server functions; static-file-only hosting cannot run this application. Hosting, account creation and publishing remain separate decisions.
+
+## Vercel deployment
+
+Use the Next.js framework preset, repository root, Node.js 24 and the default `pnpm run build` command. Leave Output Directory at the framework default (disable any override); do not select `out/`. The contact endpoint needs the Next.js server function, so do not enable static export. Deploy the latest GitHub main commit rather than redeploying the old failed commit.
+
+Add `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` and `CONTACT_ORIGIN` in the Vercel project's environment variables for the appropriate environment. Local `.env.local` is ignored by Git and is not uploaded. Use the exact deployed origin for `CONTACT_ORIGIN`, for example `https://your-project.vercel.app`, without a path or trailing slash; update it when changing the public domain and redeploy. Keep API keys server-only. Missing contact configuration does not prevent the portfolio build; the form will report unavailable until configured. Further sender/recipient details are below.
+
+The earlier deployment error “Build is missing prerendered homepage or 404 HTML” came from the local QA helper after a successful Next.js build. Separating the build commands removes that dependency from Vercel while retaining local checks. A successful local build does not itself verify a hosted deployment or email delivery.
 
 ## Contact setup
 

@@ -7,7 +7,8 @@
   "engines": { "node": ">=24.15.0 <25" },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/prepare-verification-output.mjs",
+    "build": "next build",
+    "build:verify": "pnpm run build && node scripts/prepare-verification-output.mjs",
     "start": "next start",
     "test": "vitest run && node --test scripts/verification.test.mjs",
     "test:content": "vitest run src/lib/projects.test.ts",
