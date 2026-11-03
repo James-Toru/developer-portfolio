@@ -2,6 +2,8 @@
 
 The owner approved Resend delivery to `gatorumbugua@gmail.com`, a Name/Email/Message form and a Next.js backend. The portfolio now uses a Next.js server; the content pages remain pre-rendered. `out/` is a freshly generated verification snapshot, not the application deployment output.
 
+This record describes implementation QA. A later owner-authorized [live onboarding-sender test](2026-11-03-resend-live-test.md) confirmed real Resend acceptance; Gmail inbox arrival remains awaiting owner confirmation.
+
 ## Backend evidence
 
 Task 1 at `deb8150`: 39 focused backend tests, the full 87-test Vitest suite and five Node utility fixtures passed. The production build and TypeScript checks passed. Static verification found 17 HTML mappings, 13 project pages, 71 files and no errors. A temporary production server returned homepage HTTP 200 and unconfigured contact HTTP 503 with `Cache-Control: no-store`.
@@ -31,7 +33,7 @@ The [final feature code review](reviews/2026-11-03-resend-contact-code.md) found
 
 ## Delivery and scope limits
 
-No real email has been sent. Provider tests use mocked HTTP responses, and local browser QA must use an unconfigured/disabled sender. Actual Resend acceptance and inbox delivery require the owner's server-only API key, verified sending address and configured origin, then an explicitly requested or owner-performed real submission.
+No real email was sent during implementation QA. Provider tests used mocked HTTP responses, and that local browser QA used an unconfigured/disabled sender. The subsequent live test is recorded separately above. A domain-verified production sender remains future setup; local testing now uses Resend's restricted onboarding sender.
 
 The basic throttle is bounded and process-local: three attempts per normalized email and 60 globally per ten minutes. It resets on restart and is separate across instances; public deployment needs shared/edge rate controls. No hosting, account registration, secret transmission or deployment is included.
 
