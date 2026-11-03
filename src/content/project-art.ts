@@ -10,7 +10,7 @@ export type ProjectArtwork = {
 
 export const projectArt: Readonly<Record<string, ProjectArtwork>> = {
   "lawpro360": { src: "/projects/lawpro360", width: 1080, height: 608, label: "LawPro360 public website preview", kind: "screenshot", caption: "Public website preview" },
-  "ecms": { src: "/projects/dolmis", width: 1080, height: 536, label: "DOLMIS Ministry of Labour service selection page preview", kind: "screenshot", caption: "Website preview · supplied screenshot" },
+  "ecms": { src: "/projects/dolmis", width: 1080, height: 536, label: "DOLMIS Ministry of Labour service selection page preview", kind: "screenshot", caption: "Website preview" },
   "consignment-management": { src: "/projects/cargoforward360", width: 1080, height: 608, label: "CargoForward360 public landing page preview", kind: "screenshot", caption: "Public landing page preview" },
   "nashami-limited": { src: "/projects/nashami-limited", width: 1080, height: 608, label: "Nashami Limited company website preview", kind: "screenshot", caption: "Public website preview" },
   "agentic-workflows": { src: "/art/workflow", width: 1080, height: 360, label: "Illustration of a supervised workflow", kind: "illustration", caption: "Illustrative visual" },
