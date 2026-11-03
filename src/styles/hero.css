@@ -22,17 +22,10 @@
   .hero-actions { display: flex; margin-top: 14px; gap: 12px; }
 }
 
-/* The complete city is visible before hydration. Only its art responds; all
+/* The complete city is visible before hydration. Optional rain alone moves; all
    headings, navigation and actions remain in their normal static flow. */
 .hero-effects-slot { min-height: 44px; margin-top: 14px; }
 .index-art picture { display: block; width: 100%; min-width: 0; }
-.effects-control { display: flex; align-items: center; gap: 4px; width: max-content; max-width: 100%; font-size: .875rem; }
-.effects-label { color: var(--muted); margin-right: 10px; }
-.effects-control button { min-width: 48px; min-height: 44px; padding: 8px 12px; border: 1px solid #afbdcb60; background: var(--background); color: var(--muted); cursor: pointer; transition: color 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out; }
-.effects-control button[aria-pressed="true"] { background: #123344; color: var(--text); border-color: var(--cyan); }
-.effects-control button:hover { color: var(--text); border-color: var(--cyan); }
-.effects-control button:active { background: #1b4658; }
-.effects-control button:disabled { cursor: default; }
 .hero-atmosphere { position: absolute; inset: 0 0 auto; height: min(440px, 55%); z-index: -2; overflow: hidden; pointer-events: none; contain: paint; }
 .hero-rain { display: none; }
 .hero .button, .hero .index-link { transition: color 180ms ease-out; }

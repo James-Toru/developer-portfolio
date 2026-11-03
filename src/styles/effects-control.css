@@ -1,0 +1,8 @@
+.effects-control { display: flex; align-items: center; gap: 4px; width: max-content; max-width: 100%; font-size: .875rem; }
+.effects-label { color: var(--muted); margin-right: 10px; }
+.effects-control button { min-width: 48px; min-height: 44px; padding: 8px 12px; border: 1px solid #afbdcb60; background: var(--background); color: var(--muted); cursor: pointer; transition: color 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out; }
+.effects-control button[aria-pressed="true"] { background: #123344; color: var(--text); border-color: var(--cyan); }
+.effects-control button:hover { color: var(--text); border-color: var(--cyan); }
+.effects-control button:active { background: #1b4658; }
+.effects-control button:disabled { cursor: default; }
+.site-footer .effects-control { flex-shrink: 0; }

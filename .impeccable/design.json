@@ -193,6 +193,11 @@
         "name": "mobile-menu-arrival",
         "value": "180ms cubic-bezier(.16, 1, .3, 1)",
         "purpose": "Finite disclosure-nav arrival; disabled under reduced motion."
+      },
+      {
+        "name": "floating-network",
+        "value": "desktop 48 nodes / 30 drawn fps / DPR≤1.5; compact 20 / 15 / DPR1",
+        "purpose": "Sparse cyan 2D network behind open reading areas. Fine-pointer displacement≤18px; no artwork/content movement. Hidden tabs suspend; reduced motion draws static; shared Effects Off hides and destroys. Backing store≤4M pixels, no animation library."
       }
     ],
     "breakpoints": [
@@ -264,7 +269,7 @@
     {
       "name": "Effects control",
       "kind": "custom",
-      "description": "Visible Auto/Off preference; the preview exposes pressed, hover, active and focus styling.",
+      "description": "Visible Auto/Off preference; the preview exposes pressed, hover, active and focus styling. Shared by hero/footer across routes; Auto/Off also governs the floating network, with denied-storage fallback and cross-tab updates.",
       "html": "<div class=\"ds-effects\" role=\"group\" aria-label=\"Effects: Auto respects reduced motion\"><span>Effects</span><button type=\"button\" aria-pressed=\"true\">Auto</button><button type=\"button\" aria-pressed=\"false\">Off</button></div>",
       "css": ".ds-effects{display:flex;align-items:center;gap:4px;width:max-content;max-width:100%;font:400 .875rem/1.55 'Exo 2',sans-serif}.ds-effects span{color:var(--muted,#afbdcb);margin-right:10px}.ds-effects button{min-width:48px;min-height:44px;padding:8px 12px;border:1px solid #afbdcb60;background:var(--background,#06121f);color:var(--muted,#afbdcb);cursor:pointer;font:inherit;transition:color 180ms ease-out,background-color 180ms ease-out,border-color 180ms ease-out}.ds-effects button[aria-pressed=\"true\"]{background:#123344;color:var(--text,#eaf3fa);border-color:var(--cyan,#29dce8)}.ds-effects button:hover{color:var(--text,#eaf3fa);border-color:var(--cyan,#29dce8)}.ds-effects button:active{background:#1b4658}.ds-effects button:disabled{cursor:default}.ds-effects button:focus-visible{outline:2px solid var(--cyan,#29dce8);outline-offset:5px}"
     },
@@ -308,7 +313,7 @@
       },
       {
         "name": "The Bounded Feedback Rule",
-        "body": "Remove link underlines; preserve readable hover/focus colors, directional arrow feedback and visible focus outlines. Keep section/project entrances finite and visible by default, unobserve completed targets and respect initial/live reduced motion. City artwork stays stationary and no continuous page-wide motion is added.",
+        "body": "Remove link underlines; preserve readable hover/focus colors, directional arrow feedback and visible focus outlines. Keep section/project entrances finite and visible by default, unobserve completed targets and respect initial/live reduced motion. City artwork stays stationary. The separately controlled floating network follows its documented frame, particle and pixel bounds.",
         "section": "components"
       }
     ],
@@ -323,7 +328,7 @@
       "Don't introduce acid yellow into the selected Midnight Network identity.",
       "Don't turn the city composition into a full-page screenshot containing baked-in text.",
       "Don't make information depend on hover, parallax, a forced intro or looping text distortion.",
-      "Don't extend hero atmosphere into constant animation across reading sections.",
+      "Don't move city artwork or let decoration obscure text; retain particle limits and Off/reduced-motion controls.",
       "Don't turn every paragraph or archive record into a floating, shadowed card."
     ]
   }

@@ -207,6 +207,10 @@ Desktop navigation sits beside the condensed wordmark and a thin cyan rule. Mobi
 
 ### Effects Control
 
+The owner’s later floating-network request extends Auto/Off to all ambient decoration. A shared preference synchronizes the hero and footer controls, including an in-memory fallback when storage is denied and updates from other tabs. The footer control is present on the archive and individual project pages as well. Off hides the network and releases its controller; it does not disable useful link or confirmation feedback.
+
+The body’s open navy areas carry a sparse cyan 2D particle network, inspired by the drifting linked points at saidk.io. A transparent, pointer-transparent fixed canvas sits behind the content; opaque city, contact and reading surfaces keep their established grounds. Fine-pointer proximity gently displaces nodes by at most 18px, without moving artwork or content. Desktop has 48 nodes, at most 30 drawn frames per second and pixel ratio capped at 1.5. Mobile/coarse pointers have 20 nodes, at most 15 drawn frames per second and ratio 1; the backing store never exceeds 4 million pixels. Hidden documents cancel the animation loop. Reduced motion gets one static constellation with no continuous frames or pointer response. There are no libraries, WebGL, glows, touch listeners or external requests for the enhancement. Content remains usable without canvas or scripts.
+
 Auto and Off are adjacent square buttons with a visible Effects label. The pressed state combines a darker blue surface, brighter text and cyan border. Auto respects reduced motion and input capabilities. Off is stored locally where possible. Enhancements stop offscreen and in hidden documents; touch and reduced-motion visitors retain the complete static city.
 
 ### Contact Band
@@ -221,9 +225,11 @@ At 767px and below, a full-viewport `rgb(2 8 16 / 28%)` overlay sits at z-index 
 
 ### Section Introductions
 
-`SiteMotion` progressively enhances section titles, archive/project headings and selected-project copy with a finite 360ms entrance from .7 opacity and 8px below. The content is visible before enhancement. One IntersectionObserver unobserves each completed target and disconnects when finished; listeners, classes and observation are cleaned up on unmount. Initial or live reduced motion removes these entrances. Unsupported observation or media-query APIs leave the complete reading surface available. Reduced motion also removes shared spatial hover/press effects and makes other control transitions effectively immediate, retaining color and focus feedback. No continuous page-wide loop is added.
+`SiteMotion` progressively enhances section titles, archive/project headings and selected-project copy with a finite 360ms entrance from .7 opacity and 8px below. The content is visible before enhancement. One IntersectionObserver unobserves each completed target and disconnects when finished; listeners, classes and observation are cleaned up on unmount. Initial or live reduced motion removes these entrances. Unsupported observation or media-query APIs leave the complete reading surface available. Reduced motion also removes shared spatial hover/press effects and makes other control transitions effectively immediate, retaining color and focus feedback. These introductions add no continuous loop; the separately controlled background network follows the bounds above.
 
 ## Do's and Don'ts
+
+The footer uses “© [current build year] James Gatoru. All rights reserved.” alongside the existing wordmark, Effects control and CV link. The former tagline is removed. Keep the wrapping footer legible and its controls touch-sized.
 
 ### Do:
 
@@ -238,6 +244,6 @@ At 767px and below, a full-viewport `rgb(2 8 16 / 28%)` overlay sits at z-index 
 - **Don't** introduce acid yellow into the selected Midnight Network identity.
 - **Don't** turn the city composition into a full-page screenshot containing baked-in text.
 - **Don't** make information depend on hover, parallax, a forced intro or looping text distortion.
-- **Don't** extend hero atmosphere into constant animation across reading sections.
+- **Don't** move city artwork or let background decoration obscure text; retain particle limits and Off/reduced-motion controls.
 - **Don't** turn every paragraph or archive record into a floating, shadowed card.
 
