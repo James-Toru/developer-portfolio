@@ -25,6 +25,7 @@
 .contact-status a, .contact-noscript a { font-weight: 600; }
 .contact-noscript { margin-top: 16px; font-size: 1rem; }
 .contact-honeypot, .contact-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.contact-confirmation-backdrop { display: none; }
 .contact-confirmation { position: fixed; z-index: 80; right: clamp(16px, 3vw, 48px); bottom: calc(24px + env(safe-area-inset-bottom)); width: min(430px, calc(100% - 32px)); max-height: calc(100dvh - 64px - env(safe-area-inset-bottom)); overflow: auto; isolation: isolate; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 18px; padding: 28px 24px; color: var(--text); animation: confirmation-arrive 220ms cubic-bezier(.16, 1, .3, 1); }
 .contact-confirmation::before, .contact-confirmation::after { content: ''; position: absolute; pointer-events: none; }
 .contact-confirmation::before { inset: 0; z-index: -2; background: var(--cyan); clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px)); }
@@ -47,6 +48,7 @@
 }
 @media (max-width: 1023px) { .contact-identity-fields { grid-template-columns: 1fr; gap: 0; } }
 @media (max-width: 767px) {
+  .contact-confirmation-backdrop { display: block; position: fixed; inset: 0; z-index: 79; background: rgb(2 8 16 / 28%); pointer-events: none; }
   .contact-confirmation { --confirmation-x: -50%; --confirmation-y: -50%; top: 50%; left: 50%; right: auto; bottom: auto; transform: translate(-50%, -50%); }
   .contact-layout { grid-template-columns: 1fr; gap: 32px; }
   .contact-form { border-top: 1px solid #eaf3fa80; padding-top: 28px; }
