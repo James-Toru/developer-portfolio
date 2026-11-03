@@ -2,6 +2,7 @@ import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SiteMotion } from "./site-motion";
+import { setEffectsPreference } from "@/lib/effects-preference";
 
 class MotionPreference extends EventTarget {
   matches = false;
@@ -30,6 +31,7 @@ function enter(targets: HTMLElement[]) {
 beforeEach(() => {
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
   vi.clearAllMocks();
+  window.localStorage.clear();
   preference = new MotionPreference();
   vi.stubGlobal("matchMedia", () => preference);
   vi.stubGlobal("IntersectionObserver", class {
@@ -51,6 +53,53 @@ afterEach(async () => {
 });
 
 describe("bounded site motion", () => {
+  it("runs line signals only while visible, enabled and in an active tab", async () => {
+    fixture.innerHTML = '<article class="skills-group">Skills</article><li class="career-stop-current">Current role</li>';
+    let hidden = false;
+    vi.spyOn(document, "hidden", "get").mockImplementation(() => hidden);
+    await render();
+    const targets = [...fixture.querySelectorAll<HTMLElement>(".skills-group, .career-stop-current")];
+    expect(targets.every(target => !target.classList.contains("signal-active"))).toBe(true);
+    enter(targets);
+    expect(targets.every(target => target.classList.contains("signal-active"))).toBe(true);
+    callback([{ ...intersection(targets[0]), isIntersecting: false }], observer);
+    expect(targets[0].classList.contains("signal-active")).toBe(false);
+    hidden = true;
+    document.dispatchEvent(new Event("visibilitychange"));
+    expect(targets.every(target => !target.classList.contains("signal-active"))).toBe(true);
+    hidden = false;
+    document.dispatchEvent(new Event("visibilitychange"));
+    expect(targets[1].classList.contains("signal-active")).toBe(true);
+    setEffectsPreference("off");
+    expect(targets[1].classList.contains("signal-active")).toBe(false);
+    setEffectsPreference("auto");
+    expect(targets[1].classList.contains("signal-active")).toBe(true);
+    preference.set(true);
+    expect(targets[1].classList.contains("signal-active")).toBe(false);
+    preference.set(false);
+    expect(targets[1].classList.contains("signal-active")).toBe(true);
+  });
+
+  it("leaves signals static for reduced motion and releases their lifecycle on unmount", async () => {
+    fixture.innerHTML = '<article class="skills-group">Skills</article>';
+    preference.matches = true;
+    await render();
+    const target = fixture.firstElementChild as HTMLElement;
+    enter([target]);
+    expect(target.classList.contains("signal-active")).toBe(false);
+    preference.set(false);
+    enter([target]);
+    expect(target.classList.contains("signal-active")).toBe(true);
+    const stale = callback;
+    await act(async () => { app.unmount(); });
+    app = createRoot(host);
+    stale([intersection(target)], observer);
+    setEffectsPreference("off");
+    setEffectsPreference("auto");
+    expect(target.classList.contains("signal-active")).toBe(false);
+    expect(disconnect).toHaveBeenCalled();
+  });
+
   it("keeps content visible before intersection and releases completed targets", async () => {
     await render();
     expect(observe).toHaveBeenCalledTimes(3);

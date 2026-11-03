@@ -323,7 +323,7 @@
       },
       {
         "name": "The Connected Skills and Career Rule",
-        "body": "Skills uses an open asymmetric toolchain: Agentic AI anchors the desktop grid, with four supporting disciplines; tablet uses two columns and mobile one. Tools are factual, always visible and carry no proficiency scores. Experience uses a most-recent-first semantic roadmap with dated angular milestones and a textual current-role marker. Preserve profile facts, natural reflow and server-rendered content without an added client runtime.",
+        "body": "Skills uses an open asymmetric toolchain: Agentic AI anchors the desktop grid, with four supporting disciplines; tablet uses two columns and mobile one. Tools are factual, always visible and carry no proficiency scores. Experience uses a most-recent-first semantic roadmap with dated angular milestones and a textual current-role marker. Preserve profile facts, natural reflow and server-rendered content with the existing SiteMotion controller enabling gentle CSS square travel and current-diamond pulsing only for visible targets in active tabs, Effects Auto and no reduced motion. Keep static markers as the fallback; add no animation library or per-frame JavaScript.",
         "section": "components"
       }
     ],

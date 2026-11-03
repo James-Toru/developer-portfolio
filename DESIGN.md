@@ -181,7 +181,9 @@ The name’s two live spans use a static 174-degree mask with a narrow transpare
 
 Skills uses an open, connected toolchain rather than uniform cards: Agentic AI anchors a two-row desktop grid, with Interfaces, Backend & data, Delivery & integration and Design beside it. Thin cyan route geometry connects the disciplines, while the AI heading carries the display face. At tablet widths AI spans two columns; mobile restores a single-column reading order. Tool names remain visible without scripting, with no invented ratings or proficiency bars.
 
-Experience is a most-recent-first semantic roadmap. A continuous thin cyan route and angular milestones connect dated roles; a solid current milestone and textual “Current role” label distinguish the present position. Dates sit beside role details on desktop and above them on mobile. Keep the existing factual periods and summaries, open reading surfaces, and natural scrolling. Neither section adds a client runtime or continuous animation.
+Experience is a most-recent-first semantic roadmap. A continuous thin cyan route and angular milestones connect dated roles; a solid current milestone and textual “Current role” label distinguish the present position. Dates sit beside role details on desktop and above them on mobile. Keep the existing factual periods and summaries, open reading surfaces, and natural scrolling.
+
+At the owner's request, skills squares travel gently along their horizontal rules in staggered seven-second alternating sweeps (64–160px depending on viewport). The current-role diamond has a soft 3.6-second pulse, retaining its 45-degree rotation while scaling to 1.3 and fading to .55 opacity. Only the pseudo-elements move. The shared SiteMotion controller enables each loop while its containing milestone or skill group intersects the viewport; Effects Off, reduced motion, hidden tabs and unmount remove the animation. Unsupported scripting/observation leaves static markers and complete server-rendered content. No animation library or per-frame JavaScript is added.
 
 ### Project Previews
 

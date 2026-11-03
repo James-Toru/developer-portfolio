@@ -5,6 +5,13 @@
 .skills-section .skills-toolchain { --skills-gap: clamp(32px, 4vw, 64px); position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); grid-template-areas: "ai interfaces data" "ai delivery design"; gap: 42px var(--skills-gap); }
 .skills-section .skills-group { position: relative; min-width: 0; border-top: 1px solid #29dce860; padding-top: 26px; }
 .skills-section .skills-group::before { content: ""; position: absolute; width: 7px; height: 7px; top: -4px; left: 0; background: var(--background); border: 1px solid var(--cyan); }
+.skills-section .skills-group.signal-active::before { animation: toolchain-signal 7s ease-in-out infinite alternate; }
+.skills-section .skills-group--interfaces.signal-active::before { animation-delay: -2s; }
+.skills-section .skills-group--data.signal-active::before { animation-delay: -4s; }
+.skills-section .skills-group--delivery.signal-active::before { animation-delay: -1s; }
+.skills-section .skills-group--design.signal-active::before { animation-delay: -3s; }
+@keyframes toolchain-signal { from { transform: translateX(0); } to { transform: translateX(clamp(64px, 12vw, 160px)); } }
+@media (prefers-reduced-motion: reduce) { .skills-section .skills-group.signal-active::before { animation: none; } }
 .skills-section .skills-group h3 { font-size: clamp(1.35rem, 1.8vw, 1.8rem); line-height: 1.15; }
 .skills-section .skills-group-description { color: var(--muted); font-size: 1rem; margin-top: 12px; max-width: 32ch; }
 .skills-section .skills-tools { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; margin: 24px 0 0; padding: 0; font-size: 1rem; line-height: 1.5; }

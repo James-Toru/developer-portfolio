@@ -45,6 +45,19 @@
   background: var(--cyan);
 }
 
+.career-stop-current.signal-active::after {
+  animation: career-signal 3.6s ease-in-out infinite;
+}
+
+@keyframes career-signal {
+  0%, 100% { transform: rotate(45deg) scale(1); opacity: 1; }
+  50% { transform: rotate(45deg) scale(1.3); opacity: .55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .career-stop-current.signal-active::after { animation: none; }
+}
+
 .career-stop:last-child {
   padding-bottom: 0;
 }
