@@ -52,7 +52,7 @@ describe("source-backed archive", () => {
       "https://testassessment.vercel.app",
     ].sort());
     expect(projectArt["lawpro360"]).toMatchObject({ kind: "screenshot" });
-    expect(projectArt["ecms"]).toMatchObject({ kind: "illustration" });
+    expect(projectArt["ecms"]).toMatchObject({ kind: "screenshot", src: "/projects/dolmis" });
     expect(getProject("raxos-website")?.contribution).toBe("Built the RAXOS website.");
     expect(getProject("testassessment")?.context).toContain("does not persist");
   });

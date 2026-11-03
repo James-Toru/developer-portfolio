@@ -17,6 +17,7 @@ URLS = {
     "testassessment": "https://testassessment.vercel.app/",
     "igc-portal": "https://igc-portal.vercel.app/",
     "kalamu": "https://kalamu.net/",
+    "dolmis": "https://dolmis.go.ke/",
 }
 
 def digest(path):
@@ -25,7 +26,7 @@ def digest(path):
 OUTPUT.mkdir(parents=True, exist_ok=True)
 records = []
 for slug, url in URLS.items():
-    source = SOURCES / f"{slug}.jpg"
+    source = SOURCES / f"{slug}.{'png' if slug == 'dolmis' else 'jpg'}"
     with Image.open(source) as original:
         image = original.convert("RGB")
         image.thumbnail((1080, 1080), Image.Resampling.LANCZOS)
@@ -39,11 +40,14 @@ for slug, url in URLS.items():
                         "kind": "public-sign-in" if slug == "agent-pipeline-foundry" else "public-website",
                         "source": source.relative_to(ROOT).as_posix(), "sourceSha256": digest(source),
                         "width": image.width, "height": image.height, "variants": variants})
+        if slug == "dolmis":
+            records[-1].pop("capturedOn")
+            records[-1].update({"projectSlug": "ecms", "providedOn": "2026-11-03",
+                               "sourceMethod": "Owner-supplied screenshot; capture date unspecified."})
 
-manifest = {"method": "Screenshots from supported browser controls; resize and format optimization only; no login or private application data.",
+manifest = {"method": "Public-page screenshots from browser controls or owner-supplied sources; resize and format optimization only; no private application data.",
             "previews": records,
-            "unavailable": [{"slug": "ecms", "url": "https://dolmis.go.ke/", "observedOn": "2026-11-03",
-                             "reason": "Browser certificate-date error (ERR_CERT_DATE_INVALID). Security warning was not bypassed. Existing portal illustration remains explicitly illustrative."}]}
+            "unavailable": []}
 (OUTPUT / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
 print(json.dumps([{"slug": r["slug"], "width": r["width"], "height": r["height"],
                    "avifBytes": r["variants"][0]["bytes"]} for r in records], indent=2))

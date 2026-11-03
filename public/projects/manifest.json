@@ -1,5 +1,5 @@
 {
-  "method": "Screenshots from supported browser controls; resize and format optimization only; no login or private application data.",
+  "method": "Public-page screenshots from browser controls or owner-supplied sources; resize and format optimization only; no private application data.",
   "previews": [
     {
       "slug": "lawpro360",
@@ -198,14 +198,31 @@
           "sha256": "a3f0a8fa8863dd3071781b5a34fc740a6ea90d6443e5e1cd9304fe2fb50df3f4"
         }
       ]
+    },
+    {
+      "slug": "dolmis",
+      "url": "https://dolmis.go.ke/",
+      "kind": "public-website",
+      "source": "docs/project-previews/2026-11-03/dolmis.png",
+      "sourceSha256": "537512b11bf7c4de7e96663c635c9b5abf4278a6ce9d166764b141af14ba36ab",
+      "width": 1080,
+      "height": 536,
+      "variants": [
+        {
+          "path": "/projects/dolmis.avif",
+          "bytes": 9792,
+          "sha256": "7cca56b66900c7df695b248571d8af317ac0d09c6eecb39810e394bd0fc9ff5f"
+        },
+        {
+          "path": "/projects/dolmis.webp",
+          "bytes": 17654,
+          "sha256": "1c0493b540f123f0891c576678865269d9daa68100ef6cd1531a620140c8b9af"
+        }
+      ],
+      "projectSlug": "ecms",
+      "providedOn": "2026-11-03",
+      "sourceMethod": "Owner-supplied screenshot; capture date unspecified."
     }
   ],
-  "unavailable": [
-    {
-      "slug": "ecms",
-      "url": "https://dolmis.go.ke/",
-      "observedOn": "2026-11-03",
-      "reason": "Browser certificate-date error (ERR_CERT_DATE_INVALID). Security warning was not bypassed. Existing portal illustration remains explicitly illustrative."
-    }
-  ]
+  "unavailable": []
 }
