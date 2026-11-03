@@ -29,3 +29,5 @@ The browser's read-only automation surface does not expose document.getAnimation
 ## GitHub publication preparation
 
 Owner requested https://github.com/James-Toru/developer-portfolio.git. Initial ls-remote succeeded with no refs. Read-only credential-pattern checks across 23 historical commits found no candidate key files; only the blank .env.example is tracked in environment-file history, and .env.local remains ignored. This scoped check is not a general security audit. Repository visibility and hosting are unchanged.
+
+Publication completed after the owner signed in through Git Credential Manager. The initial push created `main` at `a5ffaee25ade5e99c273de4b1a3c36e9eac8061f`, independently confirmed through ls-remote; the repository's HEAD resolves to main. Local branch `codex/midnight-network` tracks origin/main. No force push, repository visibility change or site deployment was performed. This publication record is a subsequent documentation-only commit.

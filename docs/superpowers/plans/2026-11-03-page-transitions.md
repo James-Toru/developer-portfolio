@@ -13,7 +13,7 @@ The existing success popup remains the focal authored moment. Navigation uses a 
 - [x] Add shared CSS opt-in and finite root snapshot fades in `src/styles/motion.css`. Read installed Next navigation guidance and primary browser documentation before implementation. No implementation-mirroring CSS tests; verify actual compiled CSS and browser navigation.
 - [x] Merge current rules into DESIGN.md and its sidecar, with README support/fallback guidance. Preserve identity and unrelated content.
 - [x] Build, run the complete suite/static checker and compressed-asset budgets. Verify desktop/mobile home → archive → project → back/home, fragments and no overflow in one batched browser pass. No form submissions or email sends.
-- [ ] Independent scoped review; record screenshots and measured limits. Commit, add the explicit GitHub origin and push to the empty repository's `main` without force. Verify the remote ref equals the local commit. Keep the local preview available.
+- [x] Independent scoped review; record screenshots and measured limits. Commit, add the explicit GitHub origin and push to the empty repository's `main` without force. Verify the remote ref equals the local commit. Keep the local preview available.
 
 ## Publication boundary
 
