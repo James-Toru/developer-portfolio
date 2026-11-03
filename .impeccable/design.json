@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-03T08:45:47.679Z",
+  "generatedAt": "2026-11-03T08:59:17.524Z",
   "title": "Design System: Midnight Network",
   "extensions": {
     "colorMeta": {
@@ -274,7 +274,7 @@
       },
       {
         "name": "The Accepted Success Rule",
-        "body": "Show the popup only after an accepted successful response; its copy does not certify inbox delivery. Keep the existing polite live status as the single announcement, visually hiding its success copy while the popup is open and restoring it inline afterward. Do not force focus or trap it. Provide a labeled close button (44px square) with cyan keyboard focus, and Escape dismissal without an automatic timeout. Restore submit focus only when dismissal removes focus from inside the popup. Focusing a form input or textarea dismisses without moving focus or clearing the draft; starting another valid submission removes stale success.",
+        "body": "Show the popup only after an accepted successful response; its copy does not certify inbox delivery. Keep the existing polite live status as the single announcement, visually hiding its success copy while the popup is open and restoring it inline afterward. Do not force focus or trap it. Provide a labeled close button (44px square) with cyan keyboard focus, and Escape dismissal, plus automatic dismissal after 5,000ms at every viewport width. Restore submit focus only when dismissal removes focus from inside the popup. Focusing a form input or textarea dismisses without moving focus or clearing the draft; starting another valid submission removes stale success.",
         "section": "components"
       }
     ],

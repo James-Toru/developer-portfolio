@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { profile } from "@/content/profile";
 import { CONTACT_FIELD_LIMITS, type ContactField, type ContactResponse } from "@/lib/contact-contract";
 import { Arrow } from "./arrow";
@@ -97,11 +97,11 @@ export function ContactForm() {
     return { "aria-invalid": errors[field] ? true as const : undefined, "aria-describedby": errors[field] ? `${id}-${field}-error` : undefined };
   }
 
-  function dismissConfirmation() {
+  const dismissConfirmation = useCallback(() => {
     const focusWasInPopup = document.activeElement?.closest(".contact-confirmation");
     setShowConfirmation(false);
     if (focusWasInPopup) formRef.current?.querySelector<HTMLButtonElement>('button[type="submit"]')?.focus();
-  }
+  }, []);
 
   return <><form className="contact-form" ref={formRef} onSubmit={send} aria-label="Send an enquiry" onFocusCapture={(event) => {
     if (showConfirmation && (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) setShowConfirmation(false);

@@ -37,16 +37,17 @@
 .contact-confirmation-close { position: absolute; top: 8px; right: 8px; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
 .contact-confirmation-close:hover { color: var(--text); background: var(--surface); }
 .contact-confirmation-close:focus-visible { color: var(--text); outline: 2px solid var(--cyan); outline-offset: -4px; }
-@keyframes confirmation-arrive { from { opacity: .6; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes confirmation-arrive { from { opacity: .6; transform: translate(var(--confirmation-x, 0px), calc(var(--confirmation-y, 0px) + 14px)); } to { opacity: 1; transform: translate(var(--confirmation-x, 0px), var(--confirmation-y, 0px)); } }
 @keyframes confirmation-check { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
 @media (prefers-reduced-motion: reduce) { .contact-confirmation, .confirmation-check { animation: none; } }
 @media (max-width: 480px) {
-  .contact-confirmation { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; padding: 24px 20px; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); }
+  .contact-confirmation { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; padding: 24px 20px; }
   .contact-confirmation-icon { width: 36px; height: 36px; }
   .contact-confirmation h3 { font-size: 1.9rem; }
 }
 @media (max-width: 1023px) { .contact-identity-fields { grid-template-columns: 1fr; gap: 0; } }
 @media (max-width: 767px) {
+  .contact-confirmation { --confirmation-x: -50%; --confirmation-y: -50%; top: 50%; left: 50%; right: auto; bottom: auto; transform: translate(-50%, -50%); }
   .contact-layout { grid-template-columns: 1fr; gap: 32px; }
   .contact-form { border-top: 1px solid #eaf3fa80; padding-top: 28px; }
   .contact-layout .contact-email { font-size: clamp(1rem, 3.8vw, 1.5rem); }

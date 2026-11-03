@@ -156,6 +156,34 @@ describe("contact form", () => {
     expect(status().textContent).toContain("unavailable");
   });
 
+  it("closes after five seconds, retaining confirmation and restoring popup keyboard focus", async () => {
+    vi.useFakeTimers();
+    request.mockResolvedValue(response({ ok: true }));
+    await render(); fill(); await send();
+    container.querySelector<HTMLButtonElement>(".contact-confirmation button")!.focus();
+    await act(async () => { await vi.advanceTimersByTimeAsync(4_999); });
+    expect(container.querySelector(".contact-confirmation")).not.toBeNull();
+    await act(async () => { await vi.advanceTimersByTimeAsync(1); });
+    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    expect(status().textContent).toContain("accepted for delivery");
+    expect(document.activeElement).toBe(submit());
+    expect(request).toHaveBeenCalledTimes(1);
+  });
+
+  it("gives a new popup its own five seconds after an earlier popup was dismissed", async () => {
+    vi.useFakeTimers();
+    request.mockImplementation(async () => response({ ok: true }));
+    await render(); fill(); await send();
+    await act(async () => { await vi.advanceTimersByTimeAsync(2_500); });
+    await act(async () => { container.querySelector<HTMLButtonElement>(".contact-confirmation button")!.click(); });
+    fill(); await send();
+    await act(async () => { await vi.advanceTimersByTimeAsync(2_500); });
+    expect(container.querySelector(".contact-confirmation")).not.toBeNull();
+    await act(async () => { await vi.advanceTimersByTimeAsync(2_500); });
+    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    expect(request).toHaveBeenCalledTimes(2);
+  });
+
   it("preserves an unavailable draft and permits an explicit successful retry", async () => {
     request.mockResolvedValueOnce(response({ ok: false, error: "Message sending is unavailable. Please use the email link." }, 503));
     request.mockResolvedValueOnce(response({ ok: true }));

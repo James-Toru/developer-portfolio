@@ -8,7 +8,11 @@ export function ContactConfirmation({ onDismiss }: { onDismiss: () => void }) {
       if (event.key === "Escape" && !event.defaultPrevented) onDismiss();
     }
     document.addEventListener("keydown", dismissOnEscape);
-    return () => document.removeEventListener("keydown", dismissOnEscape);
+    const autoDismiss = setTimeout(onDismiss, 5_000);
+    return () => {
+      document.removeEventListener("keydown", dismissOnEscape);
+      clearTimeout(autoDismiss);
+    };
   }, [onDismiss]);
 
   return <aside className="contact-confirmation" aria-labelledby={titleId}>
