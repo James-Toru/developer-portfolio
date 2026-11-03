@@ -15,6 +15,8 @@ URLS = {
     "njoroge-kiriro-advocates": "https://njoroge-kiriro-advocates.vercel.app/",
     "agent-pipeline-foundry": "https://agent-pipeline-foundry.vercel.app/login?redirectTo=%2F",
     "testassessment": "https://testassessment.vercel.app/",
+    "igc-portal": "https://igc-portal.vercel.app/",
+    "kalamu": "https://kalamu.net/",
 }
 
 def digest(path):

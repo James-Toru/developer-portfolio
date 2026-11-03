@@ -24,7 +24,7 @@ The initial content comes from the two supplied CVs and the public James-Toru Gi
 
 ## Capabilities and Constraints
 
-- The current collection contains 18 curated records assembled from CV work, public repositories and the owner's 2026-11-03 additions. LawPro360, DOLMIS, CargoForward360 and Nashami Limited are featured. The owner removed the specified repositories, forks and supporting section; the original research inventory remains historical evidence rather than a publishing requirement.
+- The current collection contains 13 curated records assembled from CV work, public repositories and the owner's 2026-11-03 additions and follow-up removals. LawPro360, DOLMIS, CargoForward360 and Nashami Limited are featured. IGC Portal and Kalamu have supplied public website links and real previews. The owner removed the specified projects, repositories, forks and supporting section; the original research inventory remains historical evidence rather than a publishing requirement.
 - Search by project or technology and category filters enhance the archive. All records and direct project links remain available in the initial HTML.
 - Contact uses the confirmed email, gatorumbugua@gmail.com, and verified profile links. There is no message-sending backend, account system, database or CMS.
 - The owner approved original layered city artwork and lightweight, optional effects. A real-time 3D renderer, video background, forced intro, scroll interception and audio are outside the first release.

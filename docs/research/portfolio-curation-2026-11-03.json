@@ -1,14 +1,16 @@
 {
   "date": "2026-11-03",
   "authority": "Owner's explicit portfolio update request in this chat",
-  "publishedEntries": 18,
+  "publishedEntries": 13,
   "newProjects": ["lawpro360", "nashami-limited"],
   "updatedProjects": {
     "ecms": {"title": "DOLMIS", "website": "https://dolmis.go.ke/"},
-    "consignment-management": {"title": "CargoForward360", "website": "https://consignment.igc.co.ke/"}
+    "consignment-management": {"title": "CargoForward360", "website": "https://consignment.igc.co.ke/"},
+    "igc-portal": {"title": "IGC Portal", "website": "https://igc-portal.vercel.app/"},
+    "kalamu": {"title": "Kalamu", "website": "https://kalamu.net/"}
   },
   "retainedSlugs": "Existing ECMS and consignment slugs are retained for direct shared links.",
-  "removedSlugs": ["github-agent-workflow", "github-agent-workflow-test", "lugawa", "icecreamshop", "ics2409-neural-networks-assignment", "jgatoruportfolio", "lovable", "test", "login", "james-toru", "uml-diagrams", "chatgpt-vscode"],
+  "removedSlugs": ["github-agent-workflow", "github-agent-workflow-test", "lugawa", "icecreamshop", "ics2409-neural-networks-assignment", "jgatoruportfolio", "lovable", "test", "login", "james-toru", "uml-diagrams", "chatgpt-vscode", "iot-school", "texplore", "aslice", "church-management", "mechwangu"],
   "supportingSection": "Removed, including its fork record",
   "remainingTestProject": "AnyPost / testassessment is distinct from the explicitly removed test repository.",
   "previewProvenance": "public/projects/manifest.json",

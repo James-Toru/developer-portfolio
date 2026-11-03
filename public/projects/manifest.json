@@ -154,6 +154,50 @@
           "sha256": "0a021e43e649f84298a4abbf46efb62ae1ac075bdef147eb41b91ca11493be2d"
         }
       ]
+    },
+    {
+      "slug": "igc-portal",
+      "url": "https://igc-portal.vercel.app/",
+      "capturedOn": "2026-11-03",
+      "kind": "public-website",
+      "source": "docs/project-previews/2026-11-03/igc-portal.jpg",
+      "sourceSha256": "0b8a857ff427e9089c2d24e4912671c31f8679dab5d79a4f08c3e4e461f0c199",
+      "width": 1080,
+      "height": 608,
+      "variants": [
+        {
+          "path": "/projects/igc-portal.avif",
+          "bytes": 22492,
+          "sha256": "155ba78014331638948f10ed98665a21c0c21223f6cbf573b6645de56efc49e7"
+        },
+        {
+          "path": "/projects/igc-portal.webp",
+          "bytes": 38314,
+          "sha256": "a3abba8ec5c5d22201e2f58de633cf1713cc868ab8efd27cc255d5621db5af19"
+        }
+      ]
+    },
+    {
+      "slug": "kalamu",
+      "url": "https://kalamu.net/",
+      "capturedOn": "2026-11-03",
+      "kind": "public-website",
+      "source": "docs/project-previews/2026-11-03/kalamu.jpg",
+      "sourceSha256": "ea3e788546f8082dcf8f57944e14f900b94239a19cdc360f98552684109bda77",
+      "width": 1080,
+      "height": 608,
+      "variants": [
+        {
+          "path": "/projects/kalamu.avif",
+          "bytes": 19505,
+          "sha256": "123e45e4f48876627c8035f17f05fc2b7e8d6e50fafeadf5903f5d1431a1cdac"
+        },
+        {
+          "path": "/projects/kalamu.webp",
+          "bytes": 31378,
+          "sha256": "a3f0a8fa8863dd3071781b5a34fc740a6ea90d6443e5e1cd9304fe2fb50df3f4"
+        }
+      ]
     }
   ],
   "unavailable": [

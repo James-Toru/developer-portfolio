@@ -40,19 +40,19 @@ export const profile: Profile = {
       organization: "Angaza Elimu",
       role: "Front-end Developer",
       period: "January 2024–March 2024",
-      summary: "Front-end contributions to e-learning platforms, including Kalamu and IoT School.",
+      summary: "Front-end contributions to the Kalamu e-learning platform.",
     },
     {
       organization: "Elixar Technologies",
       role: "Software Developer",
       period: "January 2023–August 2023",
-      summary: "Responsive React interfaces, RESTful API integration and church-management application development.",
+      summary: "Responsive React interfaces and RESTful API integration.",
     },
     {
       organization: "Freelance",
       role: "Software Developer",
       period: "June 2020–January 2023",
-      summary: "Web application development, including Texplore and Aslice.",
+      summary: "Web application development using open-source frameworks.",
     },
   ],
 };

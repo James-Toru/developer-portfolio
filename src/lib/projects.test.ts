@@ -7,21 +7,22 @@ import { projectArt } from "../content/project-art";
 describe("source-backed archive", () => {
   it("curates the source archive without publishing the removed repositories", () => {
     const projects = getProjects();
-    expect(projects).toHaveLength(18);
-    expect(new Set(projects.map(({ slug }) => slug)).size).toBe(18);
-    for (const source of inventory.cvProjects.filter(({ id }) => id !== "lugawa")) {
+    expect(projects).toHaveLength(13);
+    expect(new Set(projects.map(({ slug }) => slug)).size).toBe(13);
+    for (const source of inventory.cvProjects.filter(({ id }) => !["lugawa", "iot-school", "texplore", "aslice", "church-management", "mechwangu"].includes(id))) {
       expect(projects.find(({ slug }) => slug === source.id), source.id).toBeDefined();
     }
-    for (const slug of ["github-agent-workflow", "github-agent-workflow-test", "lugawa", "icecreamshop", "ics2409-neural-networks-assignment", "jgatoruportfolio", "lovable", "test", "login", "james-toru", "uml-diagrams", "chatgpt-vscode"]) {
+    for (const slug of ["github-agent-workflow", "github-agent-workflow-test", "lugawa", "icecreamshop", "ics2409-neural-networks-assignment", "jgatoruportfolio", "lovable", "test", "login", "james-toru", "uml-diagrams", "chatgpt-vscode", "iot-school", "texplore", "aslice", "church-management", "mechwangu"]) {
       expect(getProject(slug), slug).toBeUndefined();
     }
     expect(projects.some(({ kind }) => kind === "supporting" || kind === "fork")).toBe(false);
   });
 
-  it("retains the Texplore source merge while keeping public AI work separate from TYTOS", () => {
+  it("keeps public repositories separate from professional CV work", () => {
     const withRepository = inventory.cvProjects.filter(({ id }) => getProject(id)?.repository);
-    expect(withRepository.map(({ id }) => id).sort()).toEqual(["texplore"]);
-    expect(getProject("texplore")).toMatchObject({ organization: "Freelance", repository: "https://github.com/James-Toru/texplore" });
+    expect(withRepository).toEqual([]);
+    expect(getProject("igc-portal")?.demo).toBe("https://igc-portal.vercel.app/");
+    expect(getProject("kalamu")?.demo).toBe("https://kalamu.net/");
     expect(getProject("agentic-workflows")).toMatchObject({ organization: "TYTOS GmbH", kind: "professional" });
     expect(getProject("agentic-workflows")?.repository).toBeUndefined();
     expect(getProject("agent-pipeline-foundry")?.organization).toBeUndefined();
@@ -42,6 +43,8 @@ describe("source-backed archive", () => {
       "https://agent-pipeline-foundry.vercel.app",
       "https://consignment.igc.co.ke/",
       "https://dolmis.go.ke/",
+      "https://igc-portal.vercel.app/",
+      "https://kalamu.net/",
       "https://legal.igc.co.ke/",
       "https://nashamiltd.org/",
       "https://njoroge-kiriro-advocates.vercel.app",
@@ -85,10 +88,10 @@ describe("project filtering", () => {
   it("combines category and query while retaining the original archive order", () => {
     const projects = getProjects();
     const result = filterProjects(projects, "React", "web applications");
-    expect(result.map(({ slug }) => slug)).toEqual(["kalamu", "iot-school", "mechwangu", "church-management"]);
+    expect(result.map(({ slug }) => slug)).toEqual(["kalamu"]);
     expect(filterProjects(projects, "NestJS", "AI & automation")).toEqual([]);
     expect(filterProjects(projects, "", "unknown-category")).toEqual([]);
-    expect(projects).toHaveLength(18);
+    expect(projects).toHaveLength(13);
   });
 
   it("returns all records for an empty query and all category, and handles empty inputs", () => {
