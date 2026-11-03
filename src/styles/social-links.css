@@ -1,0 +1,5 @@
+.social-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.social-links a { display: inline-flex; align-items: center; justify-content: center; width: 44px; min-height: 44px; border: 1px solid #afbdcb60; color: var(--text); }
+.social-links svg { display: block; }
+.social-links a:is(:hover, :focus-visible) { border-color: var(--cyan); color: var(--cyan); }
+.site-footer .social-links { margin: 0; gap: 8px; }
