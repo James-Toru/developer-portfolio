@@ -2,6 +2,8 @@
 
 Status: approved by the owner on 2026-11-03, including the Resend backend, required form fields and implementation. Live delivery still requires owner configuration.
 
+Implemented and reviewed locally on 2026-11-03. See [verification](../../verification/2026-11-03-resend-contact.md) for build, tests, browser captures, review scope and delivery limits.
+
 ## Intent and scope
 
 Let prospective clients and employers send an enquiry from the portfolio to the confirmed inbox, **gatorumbugua@gmail.com**. The owner chose Resend with a backend after considering Formspree. Preserve Midnight Network, Exo 2 reading text, Barlow Condensed display headings, the stationary city and the existing project collection.

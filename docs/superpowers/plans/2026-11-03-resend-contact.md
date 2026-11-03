@@ -39,11 +39,11 @@
 - Bound body to 64 KiB while reading the stream, checking declared size too. Trim and validate required fields/lengths/email, disallow control characters in single-line fields; plain-text message. Honeypot nonempty returns a no-send response. Limit per-instance accepted attempts to 3 per 10 minutes by validated email plus a bounded global ceiling; bounded expiring map, no untrusted proxy-header dependency. Document this is basic protection and public hosting needs shared/edge limits.
 - `pnpm build` creates the normal Next.js server build then a fresh ignored `out/` verification snapshot from `.next/server/app` prerendered HTML, `.next/static` and `public`. Snapshot includes proper index/404 mappings and excludes server-only code. Existing static checker/size tool operate on this generated snapshot; preview uses `next start --hostname 127.0.0.1 --port 4173`.
 
-- [ ] Write failing backend tests for success, fixed addresses/Reply-To, invalid fields/types, size including streamed bodies, origin/content type, honeypot, throttle expiry/cap, configuration and upstream errors/timeout; test snapshot mapping with fixtures.
-- [ ] Run focused tests and observe failures before implementation.
-- [ ] Implement the contract/handler/route, runtime/config changes, placeholder example and fresh snapshot preparation; preserve old utility functions where fixture tests depend on them.
-- [ ] Run focused tests, production build and existing snapshot/static checks. Confirm the server route is dynamic while portfolio pages remain pre-rendered. Report commands/results; do not send email.
-- [ ] Commit the task, then obtain task-scoped spec/quality review before Task 2.
+- [x] Write failing backend tests for success, fixed addresses/Reply-To, invalid fields/types, size including streamed bodies, origin/content type, honeypot, throttle expiry/cap, configuration and upstream errors/timeout; test snapshot mapping with fixtures.
+- [x] Run focused tests and observe failures before implementation.
+- [x] Implement the contract/handler/route, runtime/config changes, placeholder example and fresh snapshot preparation; preserve old utility functions where fixture tests depend on them.
+- [x] Run focused tests, production build and existing snapshot/static checks. Confirm the server route is dynamic while portfolio pages remain pre-rendered. Report commands/results; do not send email.
+- [x] Commit the task, then obtain task-scoped spec/quality review before Task 2.
 
 ## Task 2: Responsive form, documentation and local review
 
@@ -51,12 +51,12 @@
 
 **Interfaces:** Consume Task 1's field limits and `ContactResponse`. Submit JSON to `/api/contact/` with same-origin fetch. No delivery credentials or server imports in client code.
 
-- [ ] Write failing component tests for labels/limits, pending duplicate prevention, success reset, failed draft preservation/retry, malformed/network responses and validation errors. Use existing React act/createRoot conventions.
-- [ ] Run focused tests, then build the form and responsive shared contact composition. Native required/email validation plus authoritative backend errors, hidden honeypot, keyboard-visible focus, live status, clear recovery and email fallback. Disable submission before client readiness; noscript points to the direct email link.
-- [ ] Keep form fields stable during pending submission so success cannot erase newly edited content. Announce provider acceptance as sent, not guaranteed inbox delivery. No success state for an unconfigured server.
-- [ ] Update setup/runtime documentation with ignored local secrets, verified sender, origin, Next.js hosting and host-level abuse controls. Mark spec approved/implemented only as evidence supports.
-- [ ] Run build, full existing/new tests, static checker and asset measures once. Controller starts the real server preview and verifies mobile/desktop and actual user width, keyboard states and unavailable delivery without a real send. Save screenshots; record live delivery unverified.
-- [ ] Commit and obtain task-scoped spec/quality review; then final integration review, Impeccable finish reviewer/documenter and a clean local commit. Keep the updated preview open; no push or deployment.
+- [x] Write failing component tests for labels/limits, pending duplicate prevention, success reset, failed draft preservation/retry, malformed/network responses and validation errors. Use existing React act/createRoot conventions.
+- [x] Run focused tests, then build the form and responsive shared contact composition. Native required/email validation plus authoritative backend errors, hidden honeypot, keyboard-visible focus, live status, clear recovery and email fallback. Disable submission before client readiness; noscript points to the direct email link.
+- [x] Keep form fields stable during pending submission so success cannot erase newly edited content. Announce provider acceptance as sent, not guaranteed inbox delivery. No success state for an unconfigured server.
+- [x] Update setup/runtime documentation with ignored local secrets, verified sender, origin, Next.js hosting and host-level abuse controls. Mark spec approved/implemented only as evidence supports.
+- [x] Run build, full existing/new tests, static checker and asset measures once. Controller starts the real server preview and verifies mobile/desktop and actual user width, keyboard states and unavailable delivery without a real send. Save screenshots; record live delivery unverified.
+- [x] Commit and obtain task-scoped spec/quality review; then final integration review, Impeccable finish reviewer/documenter and a clean local commit. Keep the updated preview open; no push or deployment.
 
 ## Execution notes
 
