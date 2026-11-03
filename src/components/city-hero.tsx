@@ -79,7 +79,7 @@ export function CityHero({ featured }: { featured: readonly Project[] }) {
     <div className="hero-atmosphere" aria-hidden="true"><span className="hero-rain" /></div>
     <div className="hero-layout content-width">
       <div className="hero-intro">
-        <h1 id="hero-title"><span>James<span className="name-glitch" aria-hidden="true" data-text="James" /></span><span>Gatoru<span className="name-glitch" aria-hidden="true" data-text="Gatoru" /></span></h1>
+        <h1 id="hero-title"><span><span className="name-live">James</span><span className="name-glitch" aria-hidden="true" data-text="James" /></span><span><span className="name-live">Gatoru</span><span className="name-glitch" aria-hidden="true" data-text="Gatoru" /></span></h1>
         <p className="hero-role"><span aria-hidden="true">//</span> Software Developer <span className="role-divider" aria-hidden="true">/</span> <span>AI Agentic Engineer</span></p>
         <p className="hero-description">Full-stack platforms. Agentic workflows. Thoughtful design.</p>
         <div className="hero-actions">

@@ -328,7 +328,7 @@
       },
       {
         "name": "The Intermittent Name Glitch Rule",
-        "body": "Preserve the solid selectable hero name and static diagonal cut. Accessibility-hidden thin cyan/coral overlays briefly offset by at most four pixels for .34 seconds per 8.5-second cycle, with .14-second word stagger. Reuse the existing SiteMotion observer and visibility, Effects Off and reduced-motion gates. Add no library, timer or frame loop.",
+        "body": "Preserve the solid selectable hero name and static diagonal cut. Accessibility-hidden thin cyan/deep-navy overlays briefly offset by at most four pixels for .34 seconds per 8.5-second cycle, with .18-second word stagger and tiny 3px / -2px / 1px live-word stutter inspired by the owner’s RAXOS reference. Reuse the existing SiteMotion observer and visibility, Effects Off and reduced-motion gates. Add no library, timer or frame loop.",
         "section": "shapes"
       }
     ],
@@ -348,4 +348,3 @@
     ]
   }
 }
-

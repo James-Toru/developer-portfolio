@@ -2,14 +2,22 @@
    only uses the space already assigned to the heading, including at 320px. */
 .hero .hero-intro h1 { width: 100%; padding-right: 24%; font-size: clamp(4.6rem, 22vw, 10rem); }
 .hero .hero-intro h1 > span { position: relative; display: block; width: max-content; transform: scaleX(1.32); transform-origin: left center; mask-image: linear-gradient(174deg, #000 calc(50% - clamp(1px, .1vw, 1.5px)), transparent calc(50% - clamp(1px, .1vw, 1.5px)), transparent calc(50% + clamp(1px, .1vw, 1.5px)), #000 calc(50% + clamp(1px, .1vw, 1.5px))); }
-/* Decorative slices leave the selectable, accessible name and its layout intact. */
+/* Short word stutters and decorative slices preserve the name's normal flow. */
+.name-live { display: block; }
+#hero-title.signal-active .name-live { animation: name-stutter 8.5s steps(1, end) infinite; }
 .name-glitch, .name-glitch::before, .name-glitch::after { position: absolute; inset: 0; pointer-events: none; }
 .name-glitch::before, .name-glitch::after { content: attr(data-text); opacity: 0; text-shadow: none; }
 .name-glitch::before { color: var(--cyan); clip-path: inset(24% 0 55%); }
-.name-glitch::after { color: var(--coral); clip-path: inset(62% 0 22%); }
+.name-glitch::after { color: var(--navy); clip-path: inset(62% 0 22%); }
 #hero-title.signal-active .name-glitch::before { animation: name-glitch-upper 8.5s steps(1, end) infinite; }
 #hero-title.signal-active .name-glitch::after { animation: name-glitch-lower 8.5s steps(1, end) infinite; }
-#hero-title > span:last-child .name-glitch::before, #hero-title > span:last-child .name-glitch::after { animation-delay: .14s; }
+#hero-title > span:last-child .name-live, #hero-title > span:last-child .name-glitch::before, #hero-title > span:last-child .name-glitch::after { animation-delay: .18s; }
+@keyframes name-stutter {
+  0%, 4%, 100% { transform: translateX(0); }
+  1% { transform: translateX(3px); }
+  2% { transform: translateX(-2px); }
+  3% { transform: translateX(1px); }
+}
 @keyframes name-glitch-upper {
   0%, 4%, 100% { opacity: 0; transform: translate(0); }
   1% { opacity: .85; transform: translate(-3px, 0); }
@@ -23,7 +31,7 @@
   3% { opacity: .5; transform: translate(2px, -1px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  #hero-title.signal-active .name-glitch::before, #hero-title.signal-active .name-glitch::after { animation: none; }
+  #hero-title.signal-active .name-live, #hero-title.signal-active .name-glitch::before, #hero-title.signal-active .name-glitch::after { animation: none; }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero .hero-intro h1 { font-size: clamp(8rem, 17vw, 11rem); }
