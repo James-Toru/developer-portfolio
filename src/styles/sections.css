@@ -8,12 +8,9 @@
 .capability-list > div:last-child { padding-bottom: 0; border: 0; }
 .capability-list dt { font-size: clamp(1.35rem, 2vw, 1.8rem); font-weight: 600; }
 .capability-list dd { margin: 8px 0 0; color: var(--muted); max-width: 60ch; }
-.experience-layout { display: grid; grid-template-columns: .65fr 1.6fr; gap: 32px 64px; }
-.experience-layout .experience-row { grid-template-columns: minmax(150px, .65fr) minmax(0, 1.5fr); gap: 16px 32px; }
 .about-note { margin-top: 20px; color: var(--muted); }
 .recovery-page { padding-block: clamp(64px, 12vw, 180px); }
 .recovery-page h1 { font: italic 800 clamp(3rem, 8vw, 7rem)/1 var(--font-display); text-transform: uppercase; }
 .recovery-page p { margin-block: 24px; }
 .recovery-links { display: flex; flex-wrap: wrap; gap: 20px; }
-@media (max-width: 1023px) { .experience-layout { grid-template-columns: 1fr; gap: 0; } }
-@media (max-width: 767px) { .capability-layout { grid-template-columns: 1fr; gap: 8px; } .experience-layout .experience-row { grid-template-columns: 1fr; } }
+@media (max-width: 767px) { .capability-layout { grid-template-columns: 1fr; gap: 8px; } }

@@ -25,7 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a className="skip-link" href="#main-content">Skip to content</a>
         <SiteHeader />
         {children}
-        <footer className="site-footer"><a href="/">James / Toru</a><span>© {new Date().getFullYear()} James Gatoru. All rights reserved.</span><EffectsControl /><a href="/james-gatoru-cv.pdf">Download CV <span className="file-label">(PDF)</span></a></footer>
+        <footer className="site-footer"><a href="/">James / Toru</a><span>© {new Date().getFullYear()} James Gatoru. All rights reserved.</span><EffectsControl /><a href="/james-gatoru-cv.pdf" download="James Gatoru Curriculum Vitae.pdf">Download CV <span className="file-label">(PDF)</span></a></footer>
         <SiteMotion />
         <BackToTop />
       </body>

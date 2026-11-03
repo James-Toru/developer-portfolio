@@ -42,20 +42,23 @@ The endpoint checks origin, JSON content, a hidden honeypot and a streamed 64 Ki
 ## Content and assets
 
 - `src/content/profile.ts`: contact details and experience.
+- `src/content/skills.ts`: CV-backed tools grouped by discipline, rendered without client scripting.
 - `src/content/projects.ts`: public project records.
 - `src/content/project-art.ts`: labeled website previews and illustrative cover assignments.
 - `public/projects/manifest.json`: public preview sources, capture date, dimensions, optimized sizes and hashes.
 - `public/art/manifest.json`: original source dimensions, derivative dimensions, crop coordinates, byte sizes and hashes.
 - `public/fonts/`: two local OFL-licensed families, Exo 2 for body text and Barlow Condensed for display headings; licenses and source URLs included.
-- `public/james-gatoru-cv.pdf`: one-page public derivative, with confirmed email and no referee contacts or telephone. Original supplied CVs remain unchanged.
+- `public/james-gatoru-cv.pdf`: the exact, owner-supplied James Gatoru Curriculum Vitae PDF, copied unchanged at the owner's request. Both download links serve this document. The original outside the repository remains untouched.
 
 City, workflow and portal artwork was generated specifically for this portfolio. Exact prompts and original source images are retained in `docs/art-source/`. Illustrative covers remain explicitly labeled. Ten real public website/sign-in captures are stored in `docs/project-previews/2026-11-03/`; `scripts/prepare-project-previews.py` creates local AVIF/WebP previews without changing their content. No authenticated product data is included. DOLMIS uses the owner-supplied service-selection screenshot; its original is retained as dolmis.png. The earlier certificate-date error remains historical capture evidence; no browser warning was bypassed. The approved concept images are design references and are never shipped as page backgrounds.
 
-`scripts/prepare-art.py` regenerates optimized AVIF and WebP derivatives with Pillow. `scripts/prepare-public-cv.py` builds the public CV using ReportLab and the licensed TTF equivalents in `scripts/assets/fonts/`. Changes to the CV require rendering and inspecting the actual PDF, not just checking extracted text.
+`scripts/prepare-art.py` regenerates optimized AVIF and WebP derivatives with Pillow. To replace the CV, run `python scripts/prepare-public-cv.py "path/to/approved-original.pdf"`; this copies the source byte-for-byte, without regenerating or editing its contents. Render and inspect the supplied PDF, then compare source, public and served SHA-256 hashes. Never modify the source document.
 
 ## Navigation and access
 
 The shell uses semantic HTML, a skip link, visible focus states and native scrolling. The mobile menu is a native disclosure that works without JavaScript; its enhancement closes on navigation and restores focus on Escape. Local artwork is decorative, while the name, role and contact routes remain real HTML. The diagonal name cuts are static CSS masks on selectable HTML text.
+
+The homepage's Skills section uses an asymmetric connected toolchain, with Agentic AI as its anchor and four supporting disciplines. All tools are visible in server-rendered HTML, without fabricated proficiency scores. Experience follows a most-recent-first roadmap with dated angular milestones and a current-role marker; both sections reflow to one column on mobile and add no client-side runtime.
 
 `/work/` renders all 13 curated records before hydration. Search matches title or technology; category and search combine, and Reset filters restores the archive. Filters stay disabled without JavaScript. Every project has a pre-rendered `/work/[slug]/` page with back/next navigation. Native email, repository, website and CV links remain usable without the app scripts. LawPro360, DOLMIS, CargoForward360 and Nashami Limited lead the homepage. Existing case-management and consignment URL slugs are retained for shared links.
 

@@ -1,0 +1,138 @@
+.career-layout {
+  display: grid;
+  grid-template-columns: .65fr 1.6fr;
+  gap: 32px 64px;
+}
+
+.career-layout > .section-title {
+  margin-bottom: 0;
+}
+
+.career-route {
+  margin: 0;
+  padding: 5px 0 0 6px;
+  list-style: none;
+}
+
+.career-stop {
+  position: relative;
+  padding: 0 0 44px 34px;
+}
+
+.career-stop::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: -10px;
+  width: 1px;
+  background: #29dce861;
+}
+
+.career-stop::after {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 5px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--cyan);
+  background: var(--background);
+  transform: rotate(45deg);
+}
+
+.career-stop-current::after {
+  background: var(--cyan);
+}
+
+.career-stop:last-child {
+  padding-bottom: 0;
+}
+
+.career-stop:last-child::before {
+  display: none;
+}
+
+.career-entry {
+  display: grid;
+  grid-template-columns: minmax(130px, .65fr) minmax(0, 1.5fr);
+  gap: 16px 32px;
+}
+
+.career-period {
+  color: var(--muted);
+  font-size: .9375rem;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+
+.career-copy {
+  min-width: 0;
+}
+
+.career-role {
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  line-height: 1.2;
+}
+
+.career-organization-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-block: 9px 12px;
+}
+
+.career-organization {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.career-current-label {
+  padding: 3px 9px;
+  border: 1px solid #29dce870;
+  background: var(--navy);
+  color: var(--text);
+  font-size: .75rem;
+  line-height: 1.5;
+}
+
+.career-summary {
+  max-width: 65ch;
+  color: var(--muted);
+}
+
+@media (max-width: 1023px) {
+  .career-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .career-entry {
+    grid-template-columns: minmax(150px, .65fr) minmax(0, 1.5fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .career-route {
+    padding-top: 0;
+  }
+
+  .career-stop {
+    padding: 0 0 36px 26px;
+  }
+
+  .career-entry {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .career-period {
+    font-size: .875rem;
+  }
+
+  .career-organization-line {
+    gap: 8px 12px;
+    margin-block: 8px 12px;
+  }
+}

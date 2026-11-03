@@ -13,12 +13,34 @@ describe("fresh server-build verification HTML without JavaScript", () => {
   it("contains the complete homepage and confirmed contact", () => {
     const page = readPage("index.html");
     expect(page.querySelector("h1")?.textContent).toContain("James");
-    for (const id of ["work", "capabilities", "experience", "about", "contact"]) {
+    for (const id of ["work", "capabilities", "skills", "experience", "about", "contact"]) {
       expect(page.querySelector(`#${id} h2`), id).not.toBeNull();
     }
     expect(page.querySelector(`a[href="mailto:${profile.email}"]`)).not.toBeNull();
     expect(page.querySelector('a[href="/work/"]')).not.toBeNull();
     expect(page.querySelector('a[href="/james-gatoru-cv.pdf"]')).not.toBeNull();
+  });
+
+  it("makes skills, the career history and original CV downloads available before hydration", () => {
+    const page = readPage("index.html");
+    const skills = page.querySelector("#skills");
+    for (const discipline of ["Agentic AI", "Interfaces", "Backend & data", "Delivery & integration", "Design"]) {
+      expect(skills?.textContent).toContain(discipline);
+    }
+    for (const tool of ["LoRA fine-tuning", "TypeScript", "PostgreSQL", "GitHub Actions", "Figma"]) {
+      expect(skills?.textContent).toContain(tool);
+    }
+    const milestones = page.querySelectorAll("#experience ol > li");
+    expect(milestones).toHaveLength(profile.experience.length);
+    profile.experience.forEach((role, index) => {
+      for (const fact of [role.organization, role.role, role.period, role.summary]) {
+        expect(milestones[index]?.textContent).toContain(fact);
+      }
+    });
+    const downloads = page.querySelectorAll('a[href="/james-gatoru-cv.pdf"]');
+    expect(downloads).toHaveLength(2);
+    for (const link of downloads) expect(link.getAttribute("download")).toBe("James Gatoru Curriculum Vitae.pdf");
+    expect(page.querySelector('nav a[href="/#skills"]')).not.toBeNull();
   });
 
   it("lists the curated projects without the removed supporting section before hydration", () => {

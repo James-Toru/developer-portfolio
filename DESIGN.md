@@ -177,6 +177,12 @@ The name’s two live spans use a static 174-degree mask with a narrow transpare
 
 ## Components
 
+### Skills & Career Roadmap
+
+Skills uses an open, connected toolchain rather than uniform cards: Agentic AI anchors a two-row desktop grid, with Interfaces, Backend & data, Delivery & integration and Design beside it. Thin cyan route geometry connects the disciplines, while the AI heading carries the display face. At tablet widths AI spans two columns; mobile restores a single-column reading order. Tool names remain visible without scripting, with no invented ratings or proficiency bars.
+
+Experience is a most-recent-first semantic roadmap. A continuous thin cyan route and angular milestones connect dated roles; a solid current milestone and textual “Current role” label distinguish the present position. Dates sit beside role details on desktop and above them on mobile. Keep the existing factual periods and summaries, open reading surfaces, and natural scrolling. Neither section adds a client runtime or continuous animation.
+
 ### Project Previews
 
 Use unaltered public website or sign-in captures in their original aspect ratio, optimized locally as AVIF/WebP with intrinsic dimensions. Captions distinguish public website previews, public sign-in previews and illustrative covers. Preserve each project's actual visual identity inside the navy portfolio; do not fabricate dashboard interfaces or recolor screenshots. Archive previews are capped at 320px and flow above the project title on small screens.

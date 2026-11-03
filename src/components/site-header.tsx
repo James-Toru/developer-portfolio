@@ -6,6 +6,7 @@ import "@/styles/header.css";
 const links = [
   { href: "/work/", label: "Work" },
   { href: "/#about", label: "About" },
+  { href: "/#skills", label: "Skills" },
   { href: "/#experience", label: "Experience" },
   { href: "/#contact", label: "Contact" },
 ];

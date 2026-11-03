@@ -3,10 +3,12 @@ import { getProjects } from "@/lib/projects";
 import { CityHero } from "@/components/city-hero";
 import { ProjectIndex } from "@/components/project-index";
 import { Experience } from "@/components/experience";
+import { Skills } from "@/components/skills";
 import { Contact } from "@/components/contact";
 import { Arrow } from "@/components/arrow";
 import "@/styles/projects.css";
 import "@/styles/sections.css";
+import "@/styles/skills.css";
 
 export default function HomePage() {
   const featured = getProjects().filter((project) => project.featured);
@@ -23,10 +25,11 @@ export default function HomePage() {
         </dl>
       </div>
     </section>
+    <Skills />
     <Experience />
     <section id="about" className="content-section content-width about-section" aria-labelledby="about-title">
       <h2 id="about-title" className="section-title">Built with intention.</h2>
-      <div><p className="large-copy">{profile.summary}</p><p className="about-note">My work spans freelance web applications, consulting platforms and supervised AI systems.</p><a className="text-link" href="/james-gatoru-cv.pdf">Download my CV <span className="file-label">(PDF)</span> <Arrow /></a></div>
+      <div><p className="large-copy">{profile.summary}</p><p className="about-note">My work spans freelance web applications, consulting platforms and supervised AI systems.</p><a className="text-link" href="/james-gatoru-cv.pdf" download="James Gatoru Curriculum Vitae.pdf">Download my CV <span className="file-label">(PDF)</span> <Arrow /></a></div>
     </section>
     <Contact />
   </main>;
