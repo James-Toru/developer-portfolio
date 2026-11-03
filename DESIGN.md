@@ -14,7 +14,7 @@ colors:
 typography:
   display:
     fontFamily: "'Barlow Condensed', sans-serif"
-    fontSize: "clamp(8.5rem, 12.6vw, 12.5rem)"
+    fontSize: "clamp(6rem, min(12.6vw, 20svh), 12.5rem)"
     fontWeight: 800
     lineHeight: 0.84
     letterSpacing: "-0.025em"
@@ -138,7 +138,7 @@ Both families are locally served WOFF2 subsets. There is no separate monospace f
 
 ### Hierarchy
 
-- **Display:** the frontmatter records the desktop hero. The base hero uses `clamp(4.6rem, 22vw, 10rem)`, tablet uses `clamp(8rem, 17vw, 11rem)`, and short landscape uses `clamp(3.5rem, 8vw, 4.25rem)`. Name lines are uppercase live spans, horizontally extended within reserved layout width.
+- **Display:** the frontmatter records the desktop hero. The base hero uses `clamp(4.6rem, min(22vw, 18svh), 10rem)`, tablet uses `clamp(6rem, min(17vw, 20svh), 11rem)`, and short landscape uses `clamp(3.5rem, 8vw, 4.25rem)`. Height caps keep the identity and primary actions visible on shorter screens. Name lines are uppercase live spans, horizontally extended within reserved layout width.
 - **Headline:** italic, uppercase section headings. Archive and project headings use a larger contextual clamp; this does not change the family pairing.
 - **Title:** semibold Exo 2 for project, experience and capability titles. Selected project titles increase to `clamp(1.7rem, 3vw, 2.6rem)`.
 - **Body:** regular Exo 2, with paragraphs limited to 70 characters where the global rule applies. Larger introduction copy uses fluid sizing and shorter line lengths.
@@ -151,6 +151,8 @@ Both families are locally served WOFF2 subsets. There is no separate monospace f
 The shared content width is capped at 1600px with the fluid gutter token. Common sections use a two-column relationship around 1:1.3, broad gaps and vertical spacing that grows with the viewport. Thin dividers separate rows without boxing every paragraph.
 
 At 1024px and above, the hero uses an asymmetric `1.85fr` text column and a `minmax(280px, 1fr)` project index. The name’s horizontal extension is accounted for by reserved heading width. At 1023px and below the hero becomes a single column with the index in normal flow; its three-column tablet index becomes stacked rows at 767px and below. Project, archive, capability and narrative layouts also collapse at that mobile boundary. Filters wrap.
+
+The hero layout has a viewport minimum of `100svh` minus the measured header (77px desktop/tablet, 73px mobile, including its border). Responsive 32–64px top spacing replaces the former large empty top gap; desktop centres its natural grid row in the available height. This is a minimum, never a fixed height or clipping boundary. Mobile keeps the identity and primary actions high while letting featured work continue below. Long index labels wrap within their own grid cell rather than overlapping a thumbnail.
 
 Short landscape screens from 600–1023px wide, at no more than 500px high, use a compact hero: 24px top padding, a smaller name and reduced spacing keep identity and primary action accessible while the index follows in normal flow. This is a composition adaptation, not a fixed-height viewport lock.
 
@@ -185,7 +187,7 @@ Skills uses an open, connected toolchain rather than uniform cards: Agentic AI a
 
 Experience is a most-recent-first semantic roadmap. A continuous thin cyan route and angular milestones connect dated roles; a solid current milestone and textual “Current role” label distinguish the present position. Dates sit beside role details on desktop and above them on mobile. Keep the existing factual periods and summaries, open reading surfaces, and natural scrolling.
 
-At the owner's request, skills squares travel gently along their horizontal rules in staggered seven-second alternating sweeps (64–160px depending on viewport). The current-role diamond has a soft 3.6-second pulse, retaining its 45-degree rotation while scaling to 1.3 and fading to .55 opacity. Only the pseudo-elements move. The shared SiteMotion controller enables each loop while its containing milestone or skill group intersects the viewport; Effects Off, reduced motion, hidden tabs and unmount remove the animation. Unsupported scripting/observation leaves static markers and complete server-rendered content. No animation library or per-frame JavaScript is added.
+At the owner's request, skills squares travel gently along their horizontal rules in staggered seven-second alternating sweeps (64–160px depending on viewport). The current-role diamond has a soft 3.6-second pulse, retaining its 45-degree rotation while scaling to 1.3 and fading to .55 opacity. Only the pseudo-elements move. The shared SiteMotion controller enables each loop while its containing milestone or skill group intersects the viewport; Effects Off, reduced motion, hidden tabs and unmount remove the animation. Unsupported scripting/observation leaves static markers and complete server-rendered content. These ambient signals stay in CSS without per-frame JavaScript.
 
 ### Project Previews
 
@@ -239,7 +241,9 @@ At 767px and below, a full-viewport `rgb(2 8 16 / 28%)` overlay sits at z-index 
 
 ### Section Introductions
 
-`SiteMotion` progressively enhances section titles, archive/project headings and selected-project copy with a finite 360ms entrance from .7 opacity and 8px below. The content is visible before enhancement. One IntersectionObserver unobserves each completed target and disconnects when finished; listeners, classes and observation are cleaned up on unmount. Initial or live reduced motion removes these entrances. Unsupported observation or media-query APIs leave the complete reading surface available. Reduced motion also removes shared spatial hover/press effects and makes other control transitions effectively immediate, retaining color and focus feedback. These introductions add no continuous loop; the separately controlled background network follows the bounds above.
+`SiteMotion` uses Framer Motion's lazy `dom/mini` entry point for finite native Web Animations. Hero identity/index and project image/copy have complementary horizontal arrivals; section headings, skill groups and career milestones use short upward entrances. Do not animate a nested heading separately from its animated parent. Desktop travel is at most 24px over 560ms; mobile travel is at most 10px over 380ms. Both use cubic-bezier(.16,1,.3,1), starting at .75 opacity; sibling delays are capped at 180ms. The content stays visible before enhancement and if the optional library cannot load.
+
+An IntersectionObserver runs each target once, retaining observation only until its finite entrance finishes, then releasing its native animation controls and original inline-style values/priorities. Effects Off, reduced motion, hidden tabs or offscreen exits settle a running arrival to visible content. Preference/listener cleanup and stale-import guards prevent work after unmount. Unsupported observation, media queries or Web Animations leave static content. Existing native hover/press and page fades remain separate; there is no layout-driving animation, scrolling interception, form movement or new ambient loop.
 
 ## Do's and Don'ts
 

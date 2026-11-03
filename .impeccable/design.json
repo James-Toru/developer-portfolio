@@ -186,8 +186,8 @@
       },
       {
         "name": "introduction",
-        "value": "360ms cubic-bezier(.16, 1, .3, 1)",
-        "purpose": "Once-visible section/project introductions from .7 opacity and 8px below. Content stays visible before enhancement; completed targets unobserved; reduced motion removes the entrance."
+        "value": "desktop 560ms / mobile 380ms; cubic-bezier(.16,1,.3,1); stagger <=180ms",
+        "purpose": "Lazy Framer Motion mini native transform/opacity arrivals: opposing hero/project slides, short upward section/skills/career entrances, once per target. Visible static defaults; no nested reveals. Off/reduced/hidden/offscreen and unmount settle and release controls; restore original inline styles. Mobile travel at most 10px, desktop 24px."
       },
       {
         "name": "mobile-menu-arrival",
@@ -330,6 +330,11 @@
         "name": "The Intermittent Name Glitch Rule",
         "body": "Preserve the solid selectable hero name and static diagonal cut. Accessibility-hidden thin cyan/deep-navy overlays briefly offset by at most four pixels for .34 seconds per 8.5-second cycle, with .18-second word stagger and tiny 3px / -2px / 1px live-word stutter inspired by the owner’s RAXOS reference. Reuse the existing SiteMotion observer and visibility, Effects Off and reduced-motion gates. Add no library, timer or frame loop.",
         "section": "shapes"
+      },
+      {
+        "name": "The Viewport Hero Rule",
+        "body": "Use the available small-viewport height beneath the measured header as a minimum, with responsive top padding and height-capped name lettering. Desktop contents fit the first screen; mobile keeps the identity/actions high and lets the featured index flow below. Never clip or scroll-lock short screens. Wrap long index names within their title cells.",
+        "section": "layout"
       }
     ],
     "dos": [

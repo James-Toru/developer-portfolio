@@ -18,6 +18,8 @@ const observe = vi.fn();
 const unobserve = vi.fn();
 const disconnect = vi.fn();
 const created = vi.fn();
+const animateMini = vi.hoisted(() => vi.fn());
+vi.mock("framer-motion/dom/mini", () => ({ animate: animateMini }));
 const headings = () => [...fixture.querySelectorAll<HTMLElement>(".section-title, .selected-copy, .archive-heading")];
 async function render() { await act(async () => { app.render(<SiteMotion />); }); }
 function intersection(target: HTMLElement): IntersectionObserverEntry {
@@ -49,6 +51,7 @@ beforeEach(() => {
 afterEach(async () => {
   await act(async () => { app.unmount(); });
   fixture.remove(); host.remove();
+  delete (Element.prototype as Partial<Element>).animate;
   vi.restoreAllMocks(); vi.unstubAllGlobals();
 });
 
@@ -100,48 +103,25 @@ describe("bounded site motion", () => {
     expect(disconnect).toHaveBeenCalled();
   });
 
-  it("keeps content visible before intersection and releases completed targets", async () => {
+  it("lazily slides visible headings with Framer Motion and leaves ordinary copy alone", async () => {
+    Object.defineProperty(Element.prototype, "animate", { configurable: true, value: vi.fn() });
+    animateMini.mockImplementation(() => ({ finished: Promise.resolve(), complete: vi.fn(), cancel: vi.fn() }));
     await render();
-    expect(observe).toHaveBeenCalledTimes(3);
-    expect(headings().every(node => !node.hidden && !node.classList.contains("motion-enter"))).toBe(true);
-    enter([headings()[0]]);
-    expect(headings()[0].classList.contains("motion-enter")).toBe(true);
+    expect(animateMini).not.toHaveBeenCalled();
+    expect(headings().every(node => !node.hidden && node.style.opacity === "")).toBe(true);
+    await act(async () => { enter([headings()[0]]); });
+    expect(animateMini).toHaveBeenCalledWith(headings()[0], expect.objectContaining({ opacity: [.75, 1], transform: expect.any(Array) }), expect.objectContaining({ duration: expect.any(Number) }));
     expect(unobserve).toHaveBeenCalledWith(headings()[0]);
-    expect(disconnect).not.toHaveBeenCalled();
-    enter(headings().slice(1));
-    expect(disconnect).toHaveBeenCalledTimes(1);
-  });
-
-  it("respects reduced motion initially and when the preference changes live", async () => {
-    preference.matches = true;
-    await render();
-    expect(created).not.toHaveBeenCalled();
-    preference.set(false);
-    expect(observe).toHaveBeenCalledTimes(3);
-    enter([headings()[0]]);
-    preference.set(true);
-    expect(disconnect).toHaveBeenCalled();
-    expect(headings().every(node => !node.classList.contains("motion-enter"))).toBe(true);
+    expect(fixture.querySelector("p")?.getAttribute("style")).toBeNull();
+    expect(headings()[0].style.transform).toBe("");
   });
 
   it("leaves the complete reading surface available when observation is unsupported", async () => {
     vi.stubGlobal("IntersectionObserver", undefined);
     await render();
     expect(fixture.textContent).toContain("Selected work");
-    expect(headings().every(node => !node.hidden && !node.classList.contains("motion-enter"))).toBe(true);
+    expect(headings().every(node => !node.hidden && node.style.opacity === "")).toBe(true);
     expect(created).not.toHaveBeenCalled();
-  });
-
-  it("cleans up observers, preference subscriptions and animation classes on unmount", async () => {
-    const remove = vi.spyOn(preference, "removeEventListener");
-    await render();
-    const previousCallback = callback;
-    enter([headings()[0]]);
-    await act(async () => { app.unmount(); });
-    app = createRoot(host);
-    expect(disconnect).toHaveBeenCalled();
-    expect(remove).toHaveBeenCalledWith("change", expect.any(Function));
-    previousCallback([intersection(headings()[1])], observer);
-    expect(headings().every(node => !node.classList.contains("motion-enter"))).toBe(true);
+    expect(animateMini).not.toHaveBeenCalled();
   });
 });

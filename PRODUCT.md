@@ -10,6 +10,8 @@ web
 
 The owner approved Next.js App Router, TypeScript, native CSS, locally maintained content and limited client-side enhancement. The approved Resend contact feature replaces static-only export with a Next.js server and a native POST Route Handler; portfolio/project pages remain pre-rendered. Deployment provider and domain are open decisions; the current review is local.
 
+The owner subsequently requested Framer Motion for sliding/eased entrances. Use its mini DOM animation entry point on demand, with static visible defaults, smaller mobile travel and existing Effects Off/reduced-motion controls. This approval does not change the lightweight background or stationary-artwork requirements.
+
 ## Users
 
 Prospective clients are the primary audience. They need to understand James Gatoru’s software and agentic AI capabilities, inspect relevant real work and contact him. Employers are an occasional secondary audience evaluating his projects, skills and experience.

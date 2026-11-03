@@ -1,6 +1,14 @@
+/* Fill the first screen without forcing content into a fixed-height canvas.
+   Header space and height-aware spacing keep the introduction within reach. */
+.hero .hero-layout { min-height: calc(100svh - 77px); padding-top: clamp(32px, 6svh, 64px); padding-bottom: clamp(24px, 4svh, 48px); }
+.hero .index-link > span:nth-child(2) { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  .hero .hero-layout { min-height: calc(100svh - 73px); }
+}
+
 /* Reserve the width of the extended lettering in normal flow. The glyph transform
    only uses the space already assigned to the heading, including at 320px. */
-.hero .hero-intro h1 { width: 100%; padding-right: 24%; font-size: clamp(4.6rem, 22vw, 10rem); }
+.hero .hero-intro h1 { width: 100%; padding-right: 24%; font-size: clamp(4.6rem, min(22vw, 18svh), 10rem); }
 .hero .hero-intro h1 > span { position: relative; display: block; width: max-content; transform: scaleX(1.32); transform-origin: left center; mask-image: linear-gradient(174deg, #000 calc(50% - clamp(1px, .1vw, 1.5px)), transparent calc(50% - clamp(1px, .1vw, 1.5px)), transparent calc(50% + clamp(1px, .1vw, 1.5px)), #000 calc(50% + clamp(1px, .1vw, 1.5px))); }
 /* Short word stutters and decorative slices preserve the name's normal flow. */
 .name-live { display: block; }
@@ -34,11 +42,11 @@
   #hero-title.signal-active .name-live, #hero-title.signal-active .name-glitch::before, #hero-title.signal-active .name-glitch::after { animation: none; }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
-  .hero .hero-intro h1 { font-size: clamp(8rem, 17vw, 11rem); }
+  .hero .hero-intro h1 { font-size: clamp(6rem, min(17vw, 20svh), 11rem); }
 }
 @media (min-width: 1024px) {
-  .hero .hero-layout { grid-template-columns: minmax(0, 1.85fr) minmax(280px, 1fr); gap: clamp(40px, 5vw, 80px); padding-top: clamp(230px, 19vw, 310px); }
-  .hero .hero-intro h1 { font-size: clamp(8.5rem, 12.6vw, 12.5rem); line-height: .84; }
+  .hero .hero-layout { grid-template-columns: minmax(0, 1.85fr) minmax(280px, 1fr); align-content: center; gap: clamp(40px, 5vw, 80px); }
+  .hero .hero-intro h1 { font-size: clamp(6rem, min(12.6vw, 20svh), 12.5rem); line-height: .84; }
   .hero .hero-intro h1 > span { transform: scaleX(1.46); }
 }
 
