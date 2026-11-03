@@ -4,19 +4,13 @@
   "title": "Design System: Midnight Network",
   "extensions": {
     "colorMeta": {
-      "cobalt": {
+      "navy": {
         "role": "primary",
-        "displayName": "Cobalt",
-        "canonical": "#1357f5",
+        "displayName": "Deep navy",
+        "canonical": "#031647",
         "tonalRamp": [
-          "oklch(15% 0.24401 263.15)",
-          "oklch(26.43% 0.24401 263.15)",
-          "oklch(37.86% 0.24401 263.15)",
-          "oklch(49.29% 0.24401 263.15)",
-          "oklch(60.71% 0.24401 263.15)",
-          "oklch(72.14% 0.24401 263.15)",
-          "oklch(83.57% 0.24401 263.15)",
-          "oklch(95% 0.24401 263.15)"
+          "#031647",
+          "#0b285e"
         ]
       },
       "cyan": {
@@ -108,6 +102,16 @@
           "oklch(83.57% 0.02521 248.15)",
           "oklch(95% 0.02521 248.15)"
         ]
+      },
+      "navy-hover": {
+        "role": "primary-hover",
+        "displayName": "Navy hover",
+        "canonical": "#0b285e"
+      },
+      "action-edge": {
+        "role": "control-boundary",
+        "displayName": "Action edge",
+        "canonical": "#557ca8"
       }
     },
     "typographyMeta": {
@@ -215,9 +219,9 @@
       "name": "Primary action",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Clipped cobalt action with live text and a shared arrow hit target. Shared motion is defined in src/styles/motion.css; reduced motion removes spatial feedback.",
+      "description": "Clipped navy action with live text and a shared arrow hit target. Shared motion is defined in src/styles/motion.css; reduced motion removes spatial feedback.",
       "html": "<a class=\"ds-button ds-primary\" href=\"#work\">Explore my work <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a>",
-      "css": ".ds-button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:54px;padding:12px 24px;text-decoration:none;color:var(--text,#eaf3fa);font:italic 800 1.35rem/1.2 var(--font-display,\"Barlow Condensed\",sans-serif);letter-spacing:.045em;text-transform:uppercase;isolation:isolate;transition:color 180ms ease-out,transform 220ms cubic-bezier(.16,1,.3,1)}.ds-button::before{content:\"\";position:absolute;inset:0;z-index:-1;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);transition:background-color 180ms ease-out}.ds-button svg{flex-shrink:0}.ds-button:hover{color:white}.ds-button:active{color:var(--cyan,#29dce8)}.ds-button:focus-visible{outline:2px solid var(--cyan,#29dce8);outline-offset:5px}.ds-primary::before{background:var(--cobalt,#1357f5)}.ds-primary:hover::before{background:#0849dc}.ds-button svg{transition:transform 220ms cubic-bezier(.16,1,.3,1)}.ds-button:focus-visible svg{transform:translateX(5px)}@media(hover:hover) and (pointer:fine){.ds-button:hover{transform:translateY(-2px)}.ds-button:hover svg{transform:translateX(5px)}}.ds-button:active{transform:scale(.98)}@media(prefers-reduced-motion:reduce){.ds-button,.ds-button svg{transition:none}.ds-button:hover,.ds-button:active,.ds-button:focus-visible svg,.ds-button:hover svg{transform:none}}"
+      "css": ".ds-button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:54px;padding:12px 24px;text-decoration:none;color:var(--text,#eaf3fa);font:italic 800 1.35rem/1.2 var(--font-display,\"Barlow Condensed\",sans-serif);letter-spacing:.045em;text-transform:uppercase;isolation:isolate;transition:color 180ms ease-out,transform 220ms cubic-bezier(.16,1,.3,1)}.ds-button::before{content:\"\";position:absolute;inset:0;z-index:-1;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);transition:background-color 180ms ease-out}.ds-button svg{flex-shrink:0}.ds-button:hover{color:white}.ds-button:active{color:var(--cyan,#29dce8)}.ds-button:focus-visible{outline:2px solid var(--cyan,#29dce8);outline-offset:5px}.ds-primary::before{background:var(--action-edge,#557ca8)}.ds-primary::after{transition:background-color 180ms ease-out;content:\"\";position:absolute;inset:1px;z-index:-1;background:var(--navy,#031647);clip-path:polygon(17px 0,100% 0,100% calc(100% - 17px),calc(100% - 17px) 100%,0 100%,0 17px)}.ds-primary:hover::after{background:var(--navy-hover,#0b285e)}.ds-button svg{transition:transform 220ms cubic-bezier(.16,1,.3,1)}.ds-button:focus-visible svg{transform:translateX(5px)}@media(hover:hover) and (pointer:fine){.ds-button:hover{transform:translateY(-2px)}.ds-button:hover svg{transform:translateX(5px)}}.ds-button:active{transform:scale(.98)}@media(prefers-reduced-motion:reduce){.ds-button,.ds-button svg{transition:none}.ds-button:hover,.ds-button:active,.ds-button:focus-visible svg,.ds-button:hover svg{transform:none}}"
     },
     {
       "name": "Outlined action",
@@ -267,9 +271,9 @@
     {
       "name": "Contact band",
       "kind": "custom",
-      "description": "Broad cobalt close with an enquiry form, direct email and profile links. This sample shows the direct-contact portion; square navy form controls and live feedback are defined in src/styles/contact.css. Accepted success adds a nonmodal navy/cyan clipped-corner popup with Barlow Condensed heading, Exo 2 copy, authored SVG check, reduced-motion support and explicit keyboard dismissal; its responsive sizing and focus lifecycle are recorded in DESIGN.md. At 767px and below, a decorative pointer-transparent 28% navy viewport overlay sits below the popup and shares all dismissal paths; desktop hides it. Popup/backdrop enter with 220ms opacity (popup travel 230ms) and retain a 180ms closing phase; reduced motion keeps fades without travel. Five seconds begins dismissal, and reopen cancels stale exit.",
+      "description": "Broad navy close with an enquiry form, direct email and profile links. This sample shows the direct-contact portion; square navy form controls and live feedback are defined in src/styles/contact.css. Accepted success adds a nonmodal navy/cyan clipped-corner popup with Barlow Condensed heading, Exo 2 copy, authored SVG check, reduced-motion support and explicit keyboard dismissal; its responsive sizing and focus lifecycle are recorded in DESIGN.md. At 767px and below, a decorative pointer-transparent 28% navy viewport overlay sits below the popup and shares all dismissal paths; desktop hides it. Popup/backdrop enter with 220ms opacity (popup travel 230ms) and retain a 180ms closing phase; reduced motion keeps fades without travel. Five seconds begins dismissal, and reopen cancels stale exit.",
       "html": "<section class=\"ds-contact\" aria-labelledby=\"ds-contact-title\"><h2 id=\"ds-contact-title\">Let’s build something.</h2><a class=\"ds-email\" href=\"mailto:gatorumbugua@gmail.com\">gatorumbugua@gmail.com <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a><div class=\"ds-social\"><a href=\"https://github.com/James-Toru\">GitHub <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a><a href=\"https://www.linkedin.com/in/james-mbugua-78a63917b/\">LinkedIn <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a></div></section>",
-      "css": ".ds-contact{background:var(--cobalt,#1357f5);color:var(--text,#eaf3fa);padding:clamp(44px,6vw,88px) var(--gutter,clamp(20px,4vw,64px));font:400 1.125rem/1.55 'Exo 2',sans-serif}.ds-contact h2{margin:0;font:italic 800 clamp(2.4rem,6vw,6rem)/1 var(--font-display,\"Barlow Condensed\",sans-serif);text-transform:uppercase;text-wrap:balance}.ds-contact a{color:inherit;text-decoration:none;transition:color 180ms ease-out}.ds-email{display:inline-flex;min-height:44px;align-items:center;gap:16px;margin-top:20px;font-size:clamp(1rem,2.5vw,2rem);overflow-wrap:anywhere}.ds-contact svg{flex-shrink:0}.ds-social{display:flex;flex-wrap:wrap;gap:24px;margin-top:24px}.ds-social a{display:inline-flex;align-items:center;min-height:44px;gap:10px}.ds-contact a:focus-visible{outline:2px solid white;outline-offset:5px}.ds-contact a:hover,.ds-contact a:focus-visible{color:white}.ds-contact svg{transition:transform 220ms cubic-bezier(.16,1,.3,1)}.ds-contact a:focus-visible svg{transform:translateX(5px)}@media(hover:hover) and (pointer:fine){.ds-contact a:hover svg{transform:translateX(5px)}}@media(prefers-reduced-motion:reduce){.ds-contact a,.ds-contact svg{transition:none}.ds-contact a:hover svg,.ds-contact a:focus-visible svg{transform:none}}"
+      "css": ".ds-contact{background:var(--navy,#031647);color:var(--text,#eaf3fa);padding:clamp(44px,6vw,88px) var(--gutter,clamp(20px,4vw,64px));font:400 1.125rem/1.55 'Exo 2',sans-serif}.ds-contact h2{margin:0;font:italic 800 clamp(2.4rem,6vw,6rem)/1 var(--font-display,\"Barlow Condensed\",sans-serif);text-transform:uppercase;text-wrap:balance}.ds-contact a{color:inherit;text-decoration:none;transition:color 180ms ease-out}.ds-email{display:inline-flex;min-height:44px;align-items:center;gap:16px;margin-top:20px;font-size:clamp(1rem,2.5vw,2rem);overflow-wrap:anywhere}.ds-contact svg{flex-shrink:0}.ds-social{display:flex;flex-wrap:wrap;gap:24px;margin-top:24px}.ds-social a{display:inline-flex;align-items:center;min-height:44px;gap:10px}.ds-contact a:focus-visible{outline:2px solid white;outline-offset:5px}.ds-contact a:hover,.ds-contact a:focus-visible{color:white}.ds-contact svg{transition:transform 220ms cubic-bezier(.16,1,.3,1)}.ds-contact a:focus-visible svg{transform:translateX(5px)}@media(hover:hover) and (pointer:fine){.ds-contact a:hover svg{transform:translateX(5px)}}@media(prefers-reduced-motion:reduce){.ds-contact a,.ds-contact svg{transition:none}.ds-contact a:hover svg,.ds-contact a:focus-visible svg{transform:none}}"
     }
   ],
   "narrative": {
@@ -284,7 +288,7 @@
     "rules": [
       {
         "name": "The Signal Hierarchy Rule",
-        "body": "Cobalt carries filled actions, cyan carries interface edges and feedback, and coral remains a small signal.",
+        "body": "Deep navy carries filled actions, cyan carries interface edges and feedback, and coral remains a small signal.",
         "section": "colors"
       },
       {
@@ -309,7 +313,7 @@
       }
     ],
     "dos": [
-      "Do preserve the cobalt action, cyan interface and minor coral signal hierarchy.",
+      "Do preserve the navy action, cyan interface and minor coral signal hierarchy.",
       "Do keep all meaningful text and actions in HTML, with actual links and inline SVG icons.",
       "Do reserve width for extended display lettering and let content reflow on narrow or short screens.",
       "Do pair expressive imagery with quiet reading surfaces and visible illustrative-image labels.",

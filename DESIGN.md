@@ -2,7 +2,9 @@
 name: Midnight Network — James Gatoru
 description: A rain-lit city portfolio with clear work, live typography and optional atmosphere.
 colors:
-  cobalt: "#1357f5"
+  navy: "#031647"
+  navy-hover: "#0b285e"
+  action-edge: "#557ca8"
   cyan: "#29dce8"
   coral: "#f56f68"
   background: "#06121f"
@@ -52,7 +54,7 @@ spacing:
   gutter: "clamp(20px, 4vw, 64px)"
 components:
   button-primary:
-    backgroundColor: "{colors.cobalt}"
+    backgroundColor: "{colors.navy}"
     textColor: "{colors.text}"
     rounded: "{rounded.square}"
     padding: "12px 24px"
@@ -108,7 +110,7 @@ A dark blue foundation supports bright, purposeful interface signals; exact prim
 
 ### Primary
 
-- **Cobalt:** filled primary actions and the contact band. It gives important destinations a broad, unmistakable surface.
+- **Deep navy:** filled primary actions and the contact band. It gives important destinations a broad, unmistakable surface.
 
 ### Secondary
 
@@ -125,7 +127,7 @@ A dark blue foundation supports bright, purposeful interface signals; exact prim
 - **Text:** primary reading and display type.
 - **Muted:** supporting copy, dates, metadata and illustrative-image labels.
 
-**The Signal Hierarchy Rule.** Cobalt carries filled actions, cyan carries interface edges and feedback, and coral remains a small signal.
+**The Signal Hierarchy Rule.** Deep navy carries filled actions, cyan carries interface edges and feedback, and coral remains a small signal.
 
 ## Typography
 
@@ -181,7 +183,9 @@ Use unaltered public website or sign-in captures in their original aspect ratio,
 
 ### Buttons
 
-Condensed, italic and direct. Primary actions use cobalt; secondary actions use a cyan clipped outline around the background surface. Both use the frontmatter padding and a minimum height rather than a forced fixed height; mobile reduces the minimum to 52px. Labels and the inline SVG arrow share one hit target. Hover changes the primary fill or the outlined action’s inner surface. The hero’s active state turns text cyan. Shared actions have no underline; use color, directional arrow feedback and visible keyboard focus to identify interaction. Keep touch feedback short and avoid a sticky hover dependence.
+The primary fill matches the CV’s deep navy (#031647), with #0b285e hover. A 1px #557ca8 clipped edge distinguishes primary and submit actions from dark surroundings; the inner fill follows the existing opposing-corner geometry. The secondary action retains its brighter 2px cyan edge.
+
+Condensed, italic and direct. Primary actions use navy; secondary actions use a cyan clipped outline around the background surface. Both use the frontmatter padding and a minimum height rather than a forced fixed height; mobile reduces the minimum to 52px. Labels and the inline SVG arrow share one hit target. Hover changes the primary fill or the outlined action’s inner surface. The hero’s active state turns text cyan. Shared actions have no underline; use color, directional arrow feedback and visible keyboard focus to identify interaction. Keep touch feedback short and avoid a sticky hover dependence.
 
 ### Inputs / Fields
 
@@ -199,7 +203,7 @@ Project presentation uses open rows and image plates rather than elevated card t
 
 Page navigation uses a native same-origin cross-document opacity handoff through `@view-transition`, preserving ordinary links and browser history. Root snapshots fade out over 160ms and in over 220ms, shortened to 120ms/160ms at 767px and below. Disable the default snapshot geometry interpolation: no zoom, travel, blur or shared-image morph. Reduced motion opts out, and unsupported browsers keep normal navigation. Fragment links, downloads and external destinations are unaffected. This adds CSS only, with no navigation library or artificial wait.
 
-Desktop navigation sits beside the condensed wordmark and a thin cyan rule. Mobile uses a labeled native Menu disclosure with a surface-colored dropdown. Links keep at least 44px of usable height. Hover is cyan; global keyboard focus is a 2px cyan outline with 5px offset. The menu closes on a link activation and Escape restores focus to its trigger. Site links have no underlines. Hover and focus use cyan on navy, light text for existing cyan text links, and white on the cobalt contact band. Preserve the outlined keyboard focus indicator independently of motion. Expanded mobile navigation has a finite 180ms entrance.
+Desktop navigation sits beside the condensed wordmark and a thin cyan rule. Mobile uses a labeled native Menu disclosure with a surface-colored dropdown. Links keep at least 44px of usable height. Hover is cyan; global keyboard focus is a 2px cyan outline with 5px offset. The menu closes on a link activation and Escape restores focus to its trigger. Site links have no underlines. Hover and focus use cyan on navy, light text for existing cyan text links, and white on the navy contact band. Preserve the outlined keyboard focus indicator independently of motion. Expanded mobile navigation has a finite 180ms entrance.
 
 ### Effects Control
 
@@ -207,7 +211,7 @@ Auto and Off are adjacent square buttons with a visible Effects label. The press
 
 ### Contact Band
 
-A broad cobalt surface closes the page with a condensed italic heading, a wrapping direct email link and profile links. The shared enquiry form sits beside the introduction on wide screens and below it at 767px and narrower. Use square navy inputs with Exo 2 labels and text, a navy action with the existing clipped-corner shape, and white keyboard focus outlines against cobalt. Form fields reserve at least 52px height; the message expands vertically. Pending fields stay stable and disabled, while live text communicates sending, acceptance or recovery. Field errors use explicit text and an associated invalid state rather than color alone. Keep the direct email destination available in unavailable/error and noscript states. This extends the existing surface and input/action language; it does not introduce a separate visual identity.
+A broad navy surface closes the page with a condensed italic heading, a wrapping direct email link and profile links. The shared enquiry form sits beside the introduction on wide screens and below it at 767px and narrower. Use square navy inputs with Exo 2 labels and text, a navy action with the existing clipped-corner shape, and white keyboard focus outlines against navy. Form fields reserve at least 52px height; the message expands vertically. Pending fields stay stable and disabled, while live text communicates sending, acceptance or recovery. Field errors use explicit text and an associated invalid state rather than color alone. Keep the direct email destination available in unavailable/error and noscript states. This extends the existing surface and input/action language; it does not introduce a separate visual identity.
 
 The accepted-success notification is an opaque navy, cyan-edged nonmodal aside fixed at the lower right on desktop and centred horizontally and vertically at 767px and below. Its opposing corner cuts (18px outer, 17px inner) frame an authored SVG check and live copy, without a floating shadow. Width is capped at 430px and otherwise leaves 32px total horizontal clearance; the right inset is fluid (16–48px), and the bottom inset is 24px plus the safe area. A viewport-relative maximum height (100dvh minus 64px and the bottom safe area) permits internal scrolling. The two-column layout uses a 48px icon, 18px gap and 28px by 24px padding. At 480px and below it uses a 36px icon, 12px gap, 24px by 20px padding; mobile centring overrides the right/bottom insets. The heading is italic 800 Barlow Condensed (2.2rem, 1.05 line height, .02em tracking; 1.9rem on narrow screens); supporting copy is muted Exo 2 (1rem, 1.55 line height). Popup entry fades from zero opacity over 220ms while travelling upward 14px over 230ms; the SVG check draws over 280ms. These share cubic-bezier(.16, 1, .3, 1). CSS `@starting-style` supplies the entry state; browsers without support show an immediate entrance and retain the ordinary exit transition. Reduced motion preserves the opacity fade while removing popup travel and the check draw.
 
@@ -223,7 +227,7 @@ At 767px and below, a full-viewport `rgb(2 8 16 / 28%)` overlay sits at z-index 
 
 ### Do:
 
-- **Do** preserve the cobalt action, cyan interface and minor coral signal hierarchy.
+- **Do** preserve the navy action, cyan interface and minor coral signal hierarchy.
 - **Do** keep all meaningful text and actions in HTML, with actual links and inline SVG icons.
 - **Do** reserve width for extended display lettering and let content reflow on narrow or short screens.
 - **Do** pair expressive imagery with quiet reading surfaces and visible illustrative-image labels.

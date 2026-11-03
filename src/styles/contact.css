@@ -17,8 +17,9 @@
 .contact-form :disabled { cursor: wait; }
 .contact-field :disabled { color: var(--muted); border-color: var(--muted); }
 .contact-submit { border: 0; color: var(--text); background: transparent; cursor: pointer; }
-.contact-submit::before { background: var(--background); }
-.contact-submit:hover::before { background: var(--surface); }
+.contact-submit::before { background: var(--action-edge); }
+.contact-submit::after { content: ''; position: absolute; inset: 1px; z-index: -1; background: var(--background); clip-path: polygon(17px 0, 100% 0, 100% calc(100% - 17px), calc(100% - 17px) 100%, 0 100%, 0 17px); }
+.contact-submit:hover::after { background: var(--surface); }
 .contact-submit:disabled { color: var(--muted); }
 .contact-status { min-height: 3.1em; margin-top: 20px; font-size: 1rem; overflow-wrap: anywhere; }
 .contact-status p { max-width: 65ch; }
