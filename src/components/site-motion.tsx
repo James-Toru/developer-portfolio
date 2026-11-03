@@ -6,7 +6,7 @@ import { readEffectsPreference, subscribeEffectsPreference } from "@/lib/effects
 export function SiteMotion() {
   useEffect(() => {
     if (typeof window.matchMedia !== "function" || typeof IntersectionObserver === "undefined") return;
-    const targets = [...document.querySelectorAll<HTMLElement>(".skills-group, .career-stop-current")];
+    const targets = [...document.querySelectorAll<HTMLElement>(".skills-group, .career-stop-current, #hero-title")];
     if (!targets.length) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const visible = new Set<Element>();

@@ -325,6 +325,11 @@
         "name": "The Connected Skills and Career Rule",
         "body": "Skills uses an open asymmetric toolchain: Agentic AI anchors the desktop grid, with four supporting disciplines; tablet uses two columns and mobile one. Tools are factual, always visible and carry no proficiency scores. Experience uses a most-recent-first semantic roadmap with dated angular milestones and a textual current-role marker. Preserve profile facts, natural reflow and server-rendered content with the existing SiteMotion controller enabling gentle CSS square travel and current-diamond pulsing only for visible targets in active tabs, Effects Auto and no reduced motion. Keep static markers as the fallback; add no animation library or per-frame JavaScript.",
         "section": "components"
+      },
+      {
+        "name": "The Intermittent Name Glitch Rule",
+        "body": "Preserve the solid selectable hero name and static diagonal cut. Accessibility-hidden thin cyan/coral overlays briefly offset by at most four pixels for .34 seconds per 8.5-second cycle, with .14-second word stagger. Reuse the existing SiteMotion observer and visibility, Effects Off and reduced-motion gates. Add no library, timer or frame loop.",
+        "section": "shapes"
       }
     ],
     "dos": [
@@ -343,3 +348,4 @@
     ]
   }
 }
+

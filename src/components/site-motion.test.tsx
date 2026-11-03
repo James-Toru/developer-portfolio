@@ -54,11 +54,11 @@ afterEach(async () => {
 
 describe("bounded site motion", () => {
   it("runs line signals only while visible, enabled and in an active tab", async () => {
-    fixture.innerHTML = '<article class="skills-group">Skills</article><li class="career-stop-current">Current role</li>';
+    fixture.innerHTML = '<article class="skills-group">Skills</article><li class="career-stop-current">Current role</li><h1 id="hero-title">James Gatoru</h1>';
     let hidden = false;
     vi.spyOn(document, "hidden", "get").mockImplementation(() => hidden);
     await render();
-    const targets = [...fixture.querySelectorAll<HTMLElement>(".skills-group, .career-stop-current")];
+    const targets = [...fixture.querySelectorAll<HTMLElement>(".skills-group, .career-stop-current, #hero-title")];
     expect(targets.every(target => !target.classList.contains("signal-active"))).toBe(true);
     enter(targets);
     expect(targets.every(target => target.classList.contains("signal-active"))).toBe(true);

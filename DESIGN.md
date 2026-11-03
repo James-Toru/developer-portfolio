@@ -175,6 +175,8 @@ The form language is square and angular. Primary and outlined actions use opposi
 
 The name’s two live spans use a static 174-degree mask with a narrow transparent gap rising through the letterforms. This cut belongs to the identity treatment; it is not looping distortion or a replacement for the text. The corner bracket beside the hero name is a small framing detail.
 
+The owner's later name-glitch request adds two decorative, accessibility-hidden text slices over each live word. A brief stepped cyan/coral offset burst occupies .34 seconds of an 8.5-second cycle, with the second word delayed .14 seconds. Keep the base name solid, selectable and stationary; only thin overlays move by at most four pixels. The existing SiteMotion visibility/preference controller gates this effect exactly like the toolchain signals: no offscreen or hidden-tab loop, no animation with Effects Off or reduced motion. The initial static name is the fallback, and no new library, timer or animation frame loop is introduced.
+
 ## Components
 
 ### Skills & Career Roadmap
