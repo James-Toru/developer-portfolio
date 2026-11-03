@@ -1,5 +1,20 @@
 :root { --motion-ease: cubic-bezier(.16, 1, .3, 1); }
 
+/* Native page handoff: no link interception, delay or additional script. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  /* Suppress the browser's default size/position interpolation. */
+  ::view-transition-group(root) { animation: none; }
+  ::view-transition-old(root) { animation: page-depart 160ms ease-out both; }
+  ::view-transition-new(root) { animation: page-arrive 220ms var(--motion-ease) both; }
+}
+@media (prefers-reduced-motion: no-preference) and (max-width: 767px) {
+  ::view-transition-old(root) { animation-duration: 120ms; }
+  ::view-transition-new(root) { animation-duration: 160ms; }
+}
+@keyframes page-depart { to { opacity: 0; } }
+@keyframes page-arrive { from { opacity: 0; } }
+
 /* Interaction acknowledges direction and state without changing layout. */
 a:any-link { text-decoration: none; transition: color 180ms ease-out; }
 a:any-link:where(:not(.button, .skip-link)):is(:hover, :focus-visible) { color: var(--cyan); }

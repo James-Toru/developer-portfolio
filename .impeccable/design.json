@@ -146,6 +146,11 @@
     ],
     "motion": [
       {
+        "name": "page-navigation",
+        "value": "desktop departure 160ms/arrival 220ms; mobile 120ms/160ms",
+        "purpose": "CSS-only cross-document root opacity handoff on same-origin ordinary links; no geometry interpolation. Reduced motion opts out; unsupported browsers navigate normally. No script, navigation delay or shared-image morph."
+      },
+      {
         "name": "hero-interface",
         "value": "180ms ease-out",
         "purpose": "Shared link, input and action-surface color feedback; links have no underline and retain visible keyboard focus."
