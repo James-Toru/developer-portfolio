@@ -21,7 +21,7 @@ describe("exported HTML without JavaScript", () => {
     expect(page.querySelector('a[href="/james-gatoru-cv.pdf"]')).not.toBeNull();
   });
 
-  it("lists every project and distinguishes supporting repositories before hydration", () => {
+  it("lists the curated projects without the removed supporting section before hydration", () => {
     const page = readPage("work/index.html");
     expect(page.querySelector("h1")?.textContent).toContain("Work");
     for (const project of getProjects()) {
@@ -32,6 +32,8 @@ describe("exported HTML without JavaScript", () => {
       }
     }
     expect(page.querySelector('label[for="project-search"]')).not.toBeNull();
+    expect(page.querySelector("#supporting-repositories")).toBeNull();
+    expect(page.querySelector('a[href="/work/lugawa/"]')).toBeNull();
     expect(page.querySelector("noscript")?.textContent).toContain("all projects");
   });
 

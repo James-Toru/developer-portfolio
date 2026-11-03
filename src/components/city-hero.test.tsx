@@ -30,7 +30,7 @@ async function intersect(visible: boolean) {
   await act(async () => { intersection([{ isIntersecting: visible } as IntersectionObserverEntry], {} as IntersectionObserver); });
 }
 async function expectActive() {
-  await vi.waitFor(() => expect(hero().dataset.effectsPointer).toBe("true"));
+  await vi.waitFor(() => expect(hero().dataset.effectsAmbient).toBe("true"));
 }
 
 beforeEach(() => {
@@ -69,6 +69,15 @@ afterEach(async () => {
 });
 
 describe("CityHero preferences and subscriptions", () => {
+  it("keeps the city image stationary under pointer movement while Auto rain is active", async () => {
+    await render(); await intersect(true); await expectActive();
+    const event = new Event("pointermove");
+    Object.assign(event, { pointerType: "mouse", clientX: 900, clientY: 300 });
+    await act(async () => { hero().dispatchEvent(event); });
+    expect(hero().dataset.effectsPointer).not.toBe("true");
+    expect(container.querySelector(".hero-art img")?.getAttribute("style")).toBeNull();
+    expect(frames.size).toBe(0);
+  });
   it("persists Off and restores it after remount without starting decoration", async () => {
     await render();
     await intersect(true); await expectActive();

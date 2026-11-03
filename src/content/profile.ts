@@ -52,7 +52,7 @@ export const profile: Profile = {
       organization: "Freelance",
       role: "Software Developer",
       period: "June 2020–January 2023",
-      summary: "Web application development, including Lugawa, Texplore and Aslice.",
+      summary: "Web application development, including Texplore and Aslice.",
     },
   ],
 };

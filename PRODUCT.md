@@ -24,7 +24,7 @@ The initial content comes from the two supplied CVs and the public James-Toru Gi
 
 ## Capabilities and Constraints
 
-- The current collection contains 28 public-facing records assembled from CV work and public repositories. The archive distinguishes professional work, independent projects, experiments, forks and supporting repositories; a complete inventory is not a claim of 28 shipped client products.
+- The current collection contains 18 curated records assembled from CV work, public repositories and the owner's 2026-11-03 additions. LawPro360, DOLMIS, CargoForward360 and Nashami Limited are featured. The owner removed the specified repositories, forks and supporting section; the original research inventory remains historical evidence rather than a publishing requirement.
 - Search by project or technology and category filters enhance the archive. All records and direct project links remain available in the initial HTML.
 - Contact uses the confirmed email, gatorumbugua@gmail.com, and verified profile links. There is no message-sending backend, account system, database or CMS.
 - The owner approved original layered city artwork and lightweight, optional effects. A real-time 3D renderer, video background, forced intro, scroll interception and audio are outside the first release.
@@ -41,12 +41,12 @@ James Gatoru is the portfolio identity; James / Toru is the implemented wordmark
 - Approved concepts: [desktop](concepts/cyberpunk-midnight-network-v2.png) and [mobile](concepts/cyberpunk-midnight-mobile-v1.png).
 - Source provenance: [project research inventory](docs/research/project-sources.json), with supplied CV and GitHub evidence. [RAXOS adaptation notes](docs/research/raxos-reference.md) record the reviewed implementation reference.
 - Public project copy must stay within verified role, scope, technologies and contribution. Sparse evidence calls for a concise overview; it does not authorize invented results, metrics, testimonials, responsibilities or availability.
-- Project illustrations are labeled as illustrative rather than presented as application screenshots.
+- Real public website/sign-in previews are labeled accordingly, with local source captures and provenance. Illustrations remain explicitly illustrative; inaccessible or private dashboards are not invented.
 
 ## Product Principles
 
 - Make relevant work easy to inspect and direct contact easy to reach.
-- Represent the complete source collection honestly, preserving the difference between original work, experiments, forks and supporting resources.
+- Represent the owner's curated collection honestly, preserving the difference between professional work, independent projects and experiments.
 - Keep core content available before client enhancement and without decorative motion.
 - Preserve the portfolio’s identity across screen sizes while prioritizing readable content and usable controls.
 - Add new projects through evidence-backed local content rather than runtime service dependencies.

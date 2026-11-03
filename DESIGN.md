@@ -165,7 +165,7 @@ Depth comes primarily from original city artwork, the dark fade into the page an
 
 **The Art Carries Atmosphere Rule.** Let imagery carry the cinematic depth; keep long reading surfaces calm and opaque.
 
-Only the city art responds to eligible pointer input. The source caps pointer displacement at 10px per axis and coalesces work into requested frames. Art transition is 200ms with `cubic-bezier(.16, 1, .3, 1)`; the localized rain cycle is 3500ms. Interface color transitions in the hero are 180ms ease-out. These values describe the shipped effects, not proof of device performance.
+The city art remains stationary under pointer input, per the owner's 2026-11-03 refinement. Only the optional localized rain animates, with a 3500ms cycle. Interface color transitions in the hero are 180ms ease-out. These values describe the shipped effects, not proof of device performance.
 
 ## Shapes
 
@@ -174,6 +174,10 @@ The form language is square and angular. Primary and outlined actions use opposi
 The name’s two live spans use a static 174-degree mask with a narrow transparent gap rising through the letterforms. This cut belongs to the identity treatment; it is not looping distortion or a replacement for the text. The corner bracket beside the hero name is a small framing detail.
 
 ## Components
+
+### Project Previews
+
+Use unaltered public website or sign-in captures in their original aspect ratio, optimized locally as AVIF/WebP with intrinsic dimensions. Captions distinguish public website previews, public sign-in previews and illustrative covers. Preserve each project's actual visual identity inside the navy portfolio; do not fabricate dashboard interfaces or recolor screenshots. Archive previews are capped at 320px and flow above the project title on small screens.
 
 ### Buttons
 

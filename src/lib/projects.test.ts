@@ -2,46 +2,54 @@ import { describe, expect, it } from "vitest";
 import inventory from "../../docs/research/project-sources.json";
 import { profile } from "../content/profile";
 import { filterProjects, getNextProject, getProject, getProjects } from "./projects";
+import { projectArt } from "../content/project-art";
 
 describe("source-backed archive", () => {
-  it("preserves all 13 CV records and all 17 repository references in 28 unique entries", () => {
+  it("curates the source archive without publishing the removed repositories", () => {
     const projects = getProjects();
-    expect(projects).toHaveLength(28);
-    expect(new Set(projects.map(({ slug }) => slug)).size).toBe(28);
-    for (const source of inventory.cvProjects) {
+    expect(projects).toHaveLength(18);
+    expect(new Set(projects.map(({ slug }) => slug)).size).toBe(18);
+    for (const source of inventory.cvProjects.filter(({ id }) => id !== "lugawa")) {
       expect(projects.find(({ slug }) => slug === source.id), source.id).toBeDefined();
     }
-    for (const source of inventory.publicRepositories) {
-      expect(projects.filter(({ repository }) => repository === source.url), source.name).toHaveLength(1);
+    for (const slug of ["github-agent-workflow", "github-agent-workflow-test", "lugawa", "icecreamshop", "ics2409-neural-networks-assignment", "jgatoruportfolio", "lovable", "test", "login", "james-toru", "uml-diagrams", "chatgpt-vscode"]) {
+      expect(getProject(slug), slug).toBeUndefined();
     }
+    expect(projects.some(({ kind }) => kind === "supporting" || kind === "fork")).toBe(false);
   });
 
-  it("merges only Lugawa and Texplore while keeping public AI work separate from TYTOS", () => {
+  it("retains the Texplore source merge while keeping public AI work separate from TYTOS", () => {
     const withRepository = inventory.cvProjects.filter(({ id }) => getProject(id)?.repository);
-    expect(withRepository.map(({ id }) => id).sort()).toEqual(["lugawa", "texplore"]);
-    expect(getProject("lugawa")).toMatchObject({ organization: "Freelance", repository: "https://github.com/James-Toru/Lugawa" });
+    expect(withRepository.map(({ id }) => id).sort()).toEqual(["texplore"]);
     expect(getProject("texplore")).toMatchObject({ organization: "Freelance", repository: "https://github.com/James-Toru/texplore" });
     expect(getProject("agentic-workflows")).toMatchObject({ organization: "TYTOS GmbH", kind: "professional" });
     expect(getProject("agentic-workflows")?.repository).toBeUndefined();
     expect(getProject("agent-pipeline-foundry")?.organization).toBeUndefined();
   });
 
-  it("labels the upstream fork and supporting repositories explicitly", () => {
-    expect(getProject("chatgpt-vscode")?.kind).toBe("fork");
-    expect(getProject("james-toru")?.kind).toBe("supporting");
-    expect(getProject("uml-diagrams")?.kind).toBe("supporting");
-    expect(getProject("github-agent-workflow-test")?.kind).toBe("experiment");
-    expect(getProject("ics2409-neural-networks-assignment")?.kind).toBe("experiment");
+  it("features the four major projects with supplied website destinations", () => {
+    expect(getProjects().filter(({ featured }) => featured).map(({ title, demo }) => [title, demo])).toEqual([
+      ["LawPro360", "https://legal.igc.co.ke/"],
+      ["DOLMIS", "https://dolmis.go.ke/"],
+      ["CargoForward360", "https://consignment.igc.co.ke/"],
+      ["Nashami Limited", "https://nashamiltd.org/"],
+    ]);
+    expect(getProject("nashami-limited")?.contribution).toMatch(/logo.*graphics/i);
   });
 
-  it("exposes only the four checked demos and no invented screenshots", () => {
+  it("keeps screenshot evidence distinct from illustrative covers", () => {
     expect(getProjects().flatMap(({ demo }) => demo ? [demo] : []).sort()).toEqual([
       "https://agent-pipeline-foundry.vercel.app",
+      "https://consignment.igc.co.ke/",
+      "https://dolmis.go.ke/",
+      "https://legal.igc.co.ke/",
+      "https://nashamiltd.org/",
       "https://njoroge-kiriro-advocates.vercel.app",
       "https://raxos-website.vercel.app",
       "https://testassessment.vercel.app",
-    ]);
-    expect(getProjects().some(({ image }) => image !== undefined)).toBe(false);
+    ].sort());
+    expect(projectArt["lawpro360"]).toMatchObject({ kind: "screenshot" });
+    expect(projectArt["ecms"]).toMatchObject({ kind: "illustration" });
     expect(getProject("raxos-website")?.contribution).toBe("Built the RAXOS website.");
     expect(getProject("testassessment")?.context).toContain("does not persist");
   });
@@ -80,7 +88,7 @@ describe("project filtering", () => {
     expect(result.map(({ slug }) => slug)).toEqual(["kalamu", "iot-school", "mechwangu", "church-management"]);
     expect(filterProjects(projects, "NestJS", "AI & automation")).toEqual([]);
     expect(filterProjects(projects, "", "unknown-category")).toEqual([]);
-    expect(projects).toHaveLength(28);
+    expect(projects).toHaveLength(18);
   });
 
   it("returns all records for an empty query and all category, and handles empty inputs", () => {

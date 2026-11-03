@@ -1,0 +1,167 @@
+{
+  "method": "Screenshots from supported browser controls; resize and format optimization only; no login or private application data.",
+  "previews": [
+    {
+      "slug": "lawpro360",
+      "url": "https://legal.igc.co.ke/",
+      "capturedOn": "2026-11-03",
+      "kind": "public-website",
+      "source": "docs/project-previews/2026-11-03/lawpro360.jpg",
+      "sourceSha256": "801d39f74b3107ab2fa83f1494b6991ef3205c19cf53b4f2150b358f3473d41a",
+      "width": 1080,
+      "height": 608,
+      "variants": [
+        {
+          "path": "/projects/lawpro360.avif",
+          "bytes": 17737,
+          "sha256": "795df404359cd68122b308d839f05236eed3631c4f9bdba24f6077c19919c6a3"
+        },
+        {
+          "path": "/projects/lawpro360.webp",
+          "bytes": 25476,
+          "sha256": "31829e23f369a6c9fe97253946dae1650a5425d354a36577178c391ee5d8fe9e"
+        }
+      ]
+    },
+    {
+      "slug": "cargoforward360",
+      "url": "https://consignment.igc.co.ke/",
+      "capturedOn": "2026-11-03",
+      "kind": "public-website",
+      "source": "docs/project-previews/2026-11-03/cargoforward360.jpg",
+      "sourceSha256": "30313b0a4d5d9aab6cd01b54ecf05eeca1ea79dd272dc084a94ef96d120227cc",
+      "width": 1080,
+      "height": 608,
+      "variants": [
+        {
+          "path": "/projects/cargoforward360.avif",
+          "bytes": 8711,
+          "sha256": "2d910bd707ae7c602714042e8d0eaf4263ddf19a63043112fe3b33c559307572"
+        },
+        {
+          "path": "/projects/cargoforward360.webp",
+          "bytes": 14768,
+          "sha256": "3d9efa940e6bbb41c5f398d9abe590a148b18b0765278beb2ba5d209b90be637"
+        }
+      ]
+    },
+    {
+      "slug": "nashami-limited",
+      "url": "https://nashamiltd.org/",
+      "capturedOn": "2026-11-03",
+      "kind": "public-website",
+      "source": "docs/project-previews/2026-11-03/nashami-limited.jpg",
+      "sourceSha256": "c49440b412f93c716bc38ddf20e6883c3329c2d0aacd1112666c97156dd639b5",
+      "width": 1080,
+      "height": 608,
+      "variants": [
+        {
+          "path": "/projects/nashami-limited.avif",
+          "bytes": 21883,
+          "sha256": "48e0fe1e0bd28b13c1b7690a968c473cf02eb801d61df48c769163a7e02b334e"
+        },
+        {
+          "path": "/projects/nashami-limited.webp",
+          "bytes": 32102,
+          "sha256": "83874f6e784964fdc20f95c8ad3067510c666c32ed1c6d50c99d8790e6f4750c"
+        }
+      ]
+    },
+    {
+      "slug": "raxos-website",
+      "url": "https://raxos-website.vercel.app/",
+      "capturedOn": "2026-11-03",
+      "kind": "public-website",
+      "source": "docs/project-previews/2026-11-03/raxos-website.jpg",
+      "sourceSha256": "db00409727b16984725c818d10b8864f230a5c32b5c767e5817bec470b7f1474",
+      "width": 1080,
+      "height": 608,
+      "variants": [
+        {
+          "path": "/projects/raxos-website.avif",
+          "bytes": 15796,
+          "sha256": "7ca05bc2e1d4f486974cc8d860f48998611e39fb711cc5ad8bed6c410b34b53b"
+        },
+        {
+          "path": "/projects/raxos-website.webp",
+          "bytes": 19948,
+          "sha256": "78ce080c101ee1aedd2e6bce479d643c4452726eeb1cd07a4e0580a756f04996"
+        }
+      ]
+    },
+    {
+      "slug": "njoroge-kiriro-advocates",
+      "url": "https://njoroge-kiriro-advocates.vercel.app/",
+      "capturedOn": "2026-11-03",
+      "kind": "public-website",
+      "source": "docs/project-previews/2026-11-03/njoroge-kiriro-advocates.jpg",
+      "sourceSha256": "a08f9327760e5560b9a911796028200eab21ff86aad395abb5466bd1321b0a9f",
+      "width": 1080,
+      "height": 608,
+      "variants": [
+        {
+          "path": "/projects/njoroge-kiriro-advocates.avif",
+          "bytes": 21664,
+          "sha256": "2ab53f0269458d533d54f61e57e01157e8d813a7c8e070bf152bbd0e779e0fc1"
+        },
+        {
+          "path": "/projects/njoroge-kiriro-advocates.webp",
+          "bytes": 35126,
+          "sha256": "55870554c9577863e532353780d017f3275570ea6db8b0b101f66dd5f161e28b"
+        }
+      ]
+    },
+    {
+      "slug": "agent-pipeline-foundry",
+      "url": "https://agent-pipeline-foundry.vercel.app/login?redirectTo=%2F",
+      "capturedOn": "2026-11-03",
+      "kind": "public-sign-in",
+      "source": "docs/project-previews/2026-11-03/agent-pipeline-foundry.jpg",
+      "sourceSha256": "45127ce4cf65de1bb0184ee18e08aeaea52cec95bd455d1b0fa981981c34116b",
+      "width": 1080,
+      "height": 608,
+      "variants": [
+        {
+          "path": "/projects/agent-pipeline-foundry.avif",
+          "bytes": 4482,
+          "sha256": "0e9c7358bea5185dce3fcf634f4fdbc65adcf30c853a4ecbaa57bc33f5867ff6"
+        },
+        {
+          "path": "/projects/agent-pipeline-foundry.webp",
+          "bytes": 6768,
+          "sha256": "cc4ba5cd41dd8e1f37ef030fe6fc0ebe5bea543f40b2fbc2b295799de95d146e"
+        }
+      ]
+    },
+    {
+      "slug": "testassessment",
+      "url": "https://testassessment.vercel.app/",
+      "capturedOn": "2026-11-03",
+      "kind": "public-website",
+      "source": "docs/project-previews/2026-11-03/testassessment.jpg",
+      "sourceSha256": "7e18021710513cee29d74b7d57b1f85f7434d9972629bef31d3ad641fb4cc2e1",
+      "width": 1080,
+      "height": 608,
+      "variants": [
+        {
+          "path": "/projects/testassessment.avif",
+          "bytes": 15166,
+          "sha256": "af05555805665a10997aa263968f4510570958bda688cf8cbac1eeec725c0a97"
+        },
+        {
+          "path": "/projects/testassessment.webp",
+          "bytes": 24448,
+          "sha256": "0a021e43e649f84298a4abbf46efb62ae1ac075bdef147eb41b91ca11493be2d"
+        }
+      ]
+    }
+  ],
+  "unavailable": [
+    {
+      "slug": "ecms",
+      "url": "https://dolmis.go.ke/",
+      "observedOn": "2026-11-03",
+      "reason": "Browser certificate-date error (ERR_CERT_DATE_INVALID). Security warning was not bypassed. Existing portal illustration remains explicitly illustrative."
+    }
+  ]
+}

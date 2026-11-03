@@ -7,17 +7,16 @@ import type { HeroEffectsController } from "@/lib/hero-effects";
 import { projectArt } from "@/content/project-art";
 import { Arrow } from "./arrow";
 import { EffectsControl } from "./effects-control";
+import { ProjectPicture } from "./project-media";
 import "@/styles/hero.css";
 
 export function CityHero({ featured }: { featured: readonly Project[] }) {
   const rootRef = useRef<HTMLElement>(null);
-  const artRef = useRef<HTMLImageElement>(null);
   const [preference, setPreference] = useState<EffectsPreference | null>(null);
 
   useEffect(() => {
     const root = rootRef.current;
-    const art = artRef.current;
-    if (!root || !art || preference === null || !window.matchMedia) return;
+    if (!root || preference === null || !window.matchMedia) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const fine = window.matchMedia("(pointer: fine)");
@@ -28,11 +27,13 @@ export function CityHero({ featured }: { featured: readonly Project[] }) {
     let controller: HeroEffectsController | undefined;
 
     function policy() {
-      return resolveEffectsPolicy({
+      const resolved = resolveEffectsPolicy({
         preference: preference!, reducedMotion: reduced.matches,
         finePointer: fine.matches, hover: hover.matches,
         visible, documentVisible: !document.hidden,
       });
+      // The owner requested a stationary city. Auto may animate rain only.
+      return { ambient: resolved.ambient, pointer: false };
     }
 
     function sync() {
@@ -40,10 +41,10 @@ export function CityHero({ featured }: { featured: readonly Project[] }) {
       const next = policy();
       controller?.updatePolicy(next);
       // Touch retains the baked-in rain. Load the enhancement only when useful.
-      if (controller || loading || !next.pointer) return;
+      if (controller || loading || !next.ambient || !fine.matches || !hover.matches) return;
       loading = true;
       void import("@/lib/hero-effects").then(({ mountHeroEffects }) => {
-        if (!disposed) controller = mountHeroEffects(root!, [art!], policy());
+        if (!disposed) controller = mountHeroEffects(root!, [], policy());
       }).catch(() => {
         // A failed decorative chunk must leave the complete static hero usable.
         loading = false;
@@ -73,7 +74,7 @@ export function CityHero({ featured }: { featured: readonly Project[] }) {
       <source media="(max-width: 767px)" srcSet="/art/city-mobile.avif" type="image/avif" />
       <source media="(max-width: 767px)" srcSet="/art/city-mobile.webp" type="image/webp" />
       <source srcSet="/art/city-desktop.avif" type="image/avif" />
-      <img ref={artRef} src="/art/city-desktop.webp" width="1536" height="1024" alt="" fetchPriority="high" />
+      <img src="/art/city-desktop.webp" width="1536" height="1024" alt="" fetchPriority="high" />
     </picture>
     <div className="hero-atmosphere" aria-hidden="true"><span className="hero-rain" /></div>
     <div className="hero-layout content-width">
@@ -88,13 +89,13 @@ export function CityHero({ featured }: { featured: readonly Project[] }) {
         <div className="hero-effects-slot"><EffectsControl onChange={setPreference} /></div>
       </div>
       <nav className="hero-index" aria-label="Featured work">
-        <p className="illustration-note">Illustrative project visuals</p>
-        {featured.map((project, index) => {
+        <p className="illustration-note">Project previews & covers</p>
+        {featured.slice(0, 3).map((project, index) => {
           const art = projectArt[project.slug];
           return <a href={`#${project.slug}`} className="index-link" key={project.slug}>
             <span className="index-number" aria-hidden="true">0{index + 1} /</span>
             <span>{project.slug === "agentic-workflows" ? "Agentic Workflows" : project.title}</span>
-            {art && <picture className="index-art"><source srcSet={`${art.src}.avif`} type="image/avif" /><img src={`${art.src}.webp`} width={art.width} height={art.height} alt="" loading="lazy" /></picture>}
+            {art && <span className="index-art"><ProjectPicture art={art} decorative /></span>}
             <Arrow />
           </a>;
         })}

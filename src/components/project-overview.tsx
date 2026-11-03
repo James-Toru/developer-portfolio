@@ -2,6 +2,7 @@ import type { Project } from "@/lib/projects";
 import { profile } from "@/content/profile";
 import { projectArt } from "@/content/project-art";
 import { Arrow } from "./arrow";
+import { ProjectMedia } from "./project-media";
 
 export function ProjectOverview({ project, next }: { project: Project; next?: Project }) {
   const art = projectArt[project.slug];
@@ -20,7 +21,7 @@ export function ProjectOverview({ project, next }: { project: Project; next?: Pr
         {(project.repository || project.demo) && <div><h2>Explore</h2><div className="project-external-links">{project.repository && <a className="text-link" href={project.repository}>View repository <Arrow /></a>}{project.demo && <a className="text-link" href={project.demo}>Visit website <Arrow /></a>}</div></div>}
       </div>
     </div>
-    {art && <figure className="project-plate overview-plate"><picture><source srcSet={`${art.src}.avif`} type="image/avif" /><img src={`${art.src}.webp`} width={art.width} height={art.height} alt={art.label} /></picture><figcaption>Illustrative visual — {art.label.toLowerCase()}.</figcaption></figure>}
+    {art && <ProjectMedia art={art} className="overview-plate" />}
     <div className="project-close"><div><h2>Have a project in mind?</h2><a className="text-link" href={`mailto:${profile.email}`}>Let’s talk <Arrow /></a></div>{next && <a className="next-project" href={`/work/${next.slug}/`}><span>Next project</span><strong>{next.title}</strong><Arrow /></a>}</div>
   </article>;
 }

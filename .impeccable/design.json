@@ -151,11 +151,6 @@
         "purpose": "Hero link color and action-surface state changes."
       },
       {
-        "name": "art-response",
-        "value": "200ms cubic-bezier(.16, 1, .3, 1)",
-        "purpose": "Art-only transform response, capped at 10px per axis."
-      },
-      {
         "name": "localized-rain",
         "value": "3500ms linear infinite",
         "purpose": "Optional bounded hero rain; disabled under reduced motion or Effects Off and suspended offscreen/hidden."
