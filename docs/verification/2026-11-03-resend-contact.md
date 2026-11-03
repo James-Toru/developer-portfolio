@@ -2,7 +2,7 @@
 
 The owner approved Resend delivery to `gatorumbugua@gmail.com`, a Name/Email/Message form and a Next.js backend. The portfolio now uses a Next.js server; the content pages remain pre-rendered. `out/` is a freshly generated verification snapshot, not the application deployment output.
 
-This record describes implementation QA. A later owner-authorized [live onboarding-sender test](2026-11-03-resend-live-test.md) confirmed real Resend acceptance; Gmail inbox arrival remains awaiting owner confirmation.
+This record describes implementation QA. A later owner-authorized [live onboarding-sender test](2026-11-03-resend-live-test.md) confirmed real Resend acceptance, and the owner subsequently confirmed receipt in Gmail.
 
 ## Backend evidence
 

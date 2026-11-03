@@ -25,6 +25,26 @@
 .contact-status a, .contact-noscript a { font-weight: 600; }
 .contact-noscript { margin-top: 16px; font-size: 1rem; }
 .contact-honeypot, .contact-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.contact-confirmation { position: fixed; z-index: 80; right: clamp(16px, 3vw, 48px); bottom: calc(24px + env(safe-area-inset-bottom)); width: min(430px, calc(100% - 32px)); max-height: calc(100dvh - 64px - env(safe-area-inset-bottom)); overflow: auto; isolation: isolate; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 18px; padding: 28px 24px; color: var(--text); animation: confirmation-arrive 220ms cubic-bezier(.16, 1, .3, 1); }
+.contact-confirmation::before, .contact-confirmation::after { content: ''; position: absolute; pointer-events: none; }
+.contact-confirmation::before { inset: 0; z-index: -2; background: var(--cyan); clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px)); }
+.contact-confirmation::after { inset: 1px; z-index: -1; background: var(--background); clip-path: polygon(0 0, calc(100% - 17px) 0, 100% 17px, 100% 100%, 17px 100%, 0 calc(100% - 17px)); }
+.contact-confirmation-icon { color: var(--cyan); }
+.confirmation-frame { opacity: .55; }
+.confirmation-check { stroke-dasharray: 32; animation: confirmation-check 280ms cubic-bezier(.16, 1, .3, 1); }
+.contact-confirmation h3 { padding-right: 28px; font: italic 800 2.2rem/1.05 var(--font-display); text-transform: uppercase; letter-spacing: .02em; }
+.contact-confirmation-copy p { margin-top: 10px; max-width: 34ch; color: var(--muted); font: 400 1rem/1.55 var(--font-body); }
+.contact-confirmation-close { position: absolute; top: 8px; right: 8px; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+.contact-confirmation-close:hover { color: var(--text); background: var(--surface); }
+.contact-confirmation-close:focus-visible { color: var(--text); outline: 2px solid var(--cyan); outline-offset: -4px; }
+@keyframes confirmation-arrive { from { opacity: .6; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes confirmation-check { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .contact-confirmation, .confirmation-check { animation: none; } }
+@media (max-width: 480px) {
+  .contact-confirmation { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; padding: 24px 20px; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); }
+  .contact-confirmation-icon { width: 36px; height: 36px; }
+  .contact-confirmation h3 { font-size: 1.9rem; }
+}
 @media (max-width: 1023px) { .contact-identity-fields { grid-template-columns: 1fr; gap: 0; } }
 @media (max-width: 767px) {
   .contact-layout { grid-template-columns: 1fr; gap: 32px; }

@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { profile } from "@/content/profile";
 import { CONTACT_FIELD_LIMITS, type ContactField, type ContactResponse } from "@/lib/contact-contract";
 import { Arrow } from "./arrow";
+import { ContactConfirmation } from "./contact-confirmation";
 
 type FieldErrors = Partial<Record<ContactField, string>>;
 type Feedback = { kind: "idle" | "pending" | "success" | "error"; message: string };
@@ -27,6 +28,7 @@ export function ContactForm() {
   const [ready, setReady] = useState(false);
   const [feedback, setFeedback] = useState<Feedback>({ kind: "idle", message: "" });
   const [errors, setErrors] = useState<FieldErrors>({});
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const pending = feedback.kind === "pending";
 
   useEffect(() => {
@@ -52,6 +54,7 @@ export function ContactForm() {
     const data = new FormData(form);
     const controller = new AbortController();
     activeRequest.current = controller;
+    setShowConfirmation(false);
     setErrors({});
     setFeedback({ kind: "pending", message: "Sending your message…" });
     let timedOut = false;
@@ -71,6 +74,7 @@ export function ContactForm() {
       if (response.ok && result.ok) {
         form.reset();
         setFeedback({ kind: "success", message: "Message sent — accepted for delivery. Thank you for getting in touch." });
+        setShowConfirmation(true);
       } else if (!result.ok) {
         setErrors(result.fieldErrors ?? {});
         setFeedback({ kind: "error", message: `${result.error} Your draft is still here.` });
@@ -93,7 +97,15 @@ export function ContactForm() {
     return { "aria-invalid": errors[field] ? true as const : undefined, "aria-describedby": errors[field] ? `${id}-${field}-error` : undefined };
   }
 
-  return <form className="contact-form" ref={formRef} onSubmit={send} aria-label="Send an enquiry">
+  function dismissConfirmation() {
+    const focusWasInPopup = document.activeElement?.closest(".contact-confirmation");
+    setShowConfirmation(false);
+    if (focusWasInPopup) formRef.current?.querySelector<HTMLButtonElement>('button[type="submit"]')?.focus();
+  }
+
+  return <><form className="contact-form" ref={formRef} onSubmit={send} aria-label="Send an enquiry" onFocusCapture={(event) => {
+    if (showConfirmation && (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) setShowConfirmation(false);
+  }}>
     <p className="contact-form-note">All fields are required.</p>
     <fieldset disabled={pending} aria-busy={pending}>
       <legend className="contact-sr-only">Your enquiry</legend>
@@ -121,8 +133,8 @@ export function ContactForm() {
       <button type="submit" className="button contact-submit" disabled={!ready || pending}>{pending ? "Sending…" : "Send message"}<Arrow /></button>
     </fieldset>
     <div className="contact-status" role="status" aria-live="polite" aria-atomic="true" data-state={feedback.kind}>
-      {feedback.message && <p>{feedback.message}{feedback.kind === "error" && <> <a href={`mailto:${profile.email}`}>Email {profile.email}</a></>}</p>}
+      {feedback.message && <p className={showConfirmation && feedback.kind === "success" ? "contact-sr-only" : undefined}>{feedback.message}{feedback.kind === "error" && <> <a href={`mailto:${profile.email}`}>Email {profile.email}</a></>}</p>}
     </div>
     <noscript><p className="contact-noscript">Sending through this form needs JavaScript. <a href={`mailto:${profile.email}`}>Email {profile.email}</a> instead.</p></noscript>
-  </form>;
+  </form>{showConfirmation && <ContactConfirmation onDismiss={dismissConfirmation} />}</>;
 }

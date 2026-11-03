@@ -25,6 +25,8 @@ pnpm preview
 
 The form is shared by the homepage and work archive. Name, email and message are required, with limits of 100, 254 and 5,000 characters. Native browser checks complement authoritative server validation. While sending, fields are frozen and repeated submits are ignored. A confirmed provider acceptance clears the draft and announces “Message sent”; this confirms acceptance for delivery, not inbox arrival. Failure, unavailable configuration and the 15-second client timeout retain the draft for an explicit retry. No automatic retries occur. Direct email and profile links remain available; without JavaScript, use the email link.
 
+Successful submissions also show a navy/cyan confirmation popup with a brief check animation. Close or Escape dismisses it; returning to an input hides it so it cannot obscure continued editing. It stays available until dismissed, preserves the inline/live confirmation, and respects reduced motion. Popup QA uses mocked acceptance, with evidence in `docs/verification/2026-11-03-contact-popup.md`.
+
 For local review without sending real mail, leave `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` blank. A valid submission returns an honest unavailable response. Automated tests mock the provider; a local build or form review does not prove live delivery.
 
 When live delivery is needed, copy `.env.example` to the ignored `.env.local` and configure these values locally or through the host's secret settings:

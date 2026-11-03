@@ -97,6 +97,65 @@ describe("contact form", () => {
     expect(status().textContent).not.toMatch(/delivered to.*inbox/i);
   });
 
+  it("opens a nonmodal success confirmation only after provider acceptance", async () => {
+    request.mockResolvedValue(response({ ok: true }));
+    await render(); fill(); await send();
+    expect(container.querySelector(".contact-confirmation h3")?.textContent).toBe("Message sent.");
+    expect(container.querySelector(".contact-confirmation")?.getAttribute("aria-modal")).toBeNull();
+    expect(container.querySelector(".contact-confirmation [role='dialog']")).toBeNull();
+    expect(container.querySelector(".contact-confirmation button")?.getAttribute("aria-label")).toBe("Dismiss confirmation");
+    expect(document.activeElement).not.toBe(container.querySelector(".contact-confirmation button"));
+  });
+
+  it("dismisses the popup without losing the inline confirmation or submitting again", async () => {
+    request.mockResolvedValue(response({ ok: true }));
+    await render(); fill(); await send();
+    const dismiss = container.querySelector<HTMLButtonElement>('.contact-confirmation button');
+    expect(dismiss).not.toBeNull();
+    dismiss!.focus();
+    await act(async () => { dismiss!.click(); });
+    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    expect(status().textContent).toContain("accepted for delivery");
+    expect(document.activeElement).toBe(submit());
+    expect(request).toHaveBeenCalledTimes(1);
+  });
+
+  it("closes on Escape and returns popup keyboard focus without losing a new draft", async () => {
+    request.mockResolvedValue(response({ ok: true }));
+    await render(); fill(); await send();
+    expect(container.querySelector(".contact-confirmation")).not.toBeNull();
+    input("message").value = "A follow-up draft.";
+    container.querySelector<HTMLButtonElement>(".contact-confirmation button")!.focus();
+    await act(async () => { document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })); });
+    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    expect(input("message").value).toBe("A follow-up draft.");
+    expect(document.activeElement).toBe(submit());
+    expect(request).toHaveBeenCalledTimes(1);
+  });
+
+  it("dismisses when returning to a field so the popup cannot obscure continued editing", async () => {
+    request.mockResolvedValue(response({ ok: true }));
+    await render(); fill(); await send();
+    expect(container.querySelector(".contact-confirmation")).not.toBeNull();
+    input("message").value = "A new enquiry draft.";
+    await act(async () => { input("message").focus(); });
+    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    expect(input("message").value).toBe("A new enquiry draft.");
+    expect(document.activeElement).toBe(input("message"));
+    expect(request).toHaveBeenCalledTimes(1);
+  });
+
+  it("removes an old success popup when a later submission fails", async () => {
+    request.mockResolvedValueOnce(response({ ok: true }));
+    request.mockResolvedValueOnce(response({ ok: false, error: "Sending is unavailable." }, 503));
+    await render(); fill(); await send();
+    expect(container.querySelector(".contact-confirmation")).not.toBeNull();
+    fill(); await send();
+    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    expectDraft();
+    expect(status().textContent).toContain("unavailable");
+  });
+
   it("preserves an unavailable draft and permits an explicit successful retry", async () => {
     request.mockResolvedValueOnce(response({ ok: false, error: "Message sending is unavailable. Please use the email link." }, 503));
     request.mockResolvedValueOnce(response({ ok: true }));

@@ -11,7 +11,7 @@ Exactly one live test was submitted through the actual browser contact form:
 - Subject: Portfolio enquiry from Portfolio delivery test
 - Message: This is a test enquiry from the Midnight Network portfolio contact form, sent using Resend’s onboarding sender. No reply is needed.
 
-The form changed from disabled Sending to “Message sent — accepted for delivery. Thank you for getting in touch.” All fields cleared and the action became available again. The backend produces this success only after Resend returns a successful response with an acceptance id. This verifies real provider acceptance; the owner must still confirm arrival in Gmail inbox/spam. No additional submissions were made.
+The form changed from disabled Sending to “Message sent — accepted for delivery. Thank you for getting in touch.” All fields cleared and the action became available again. The backend produces this success only after Resend returns a successful response with an acceptance id. This verified real provider acceptance; the owner subsequently confirmed receiving the test email in Gmail. No additional live submissions were made during the following popup refinement.
 
 Actual browser evidence: [accepted submission](screenshots/2026-11-03/contact-resend-live-accepted.jpg).
 
