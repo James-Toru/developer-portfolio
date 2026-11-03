@@ -1,0 +1,16 @@
+.back-to-top { position: fixed; z-index: 60; right: max(8px, env(safe-area-inset-right)); bottom: calc(20px + env(safe-area-inset-bottom)); width: 56px; height: 64px; padding: 0; border: 0; background: transparent; color: var(--muted); cursor: pointer; isolation: isolate; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity 180ms ease-out, transform 220ms var(--motion-ease), visibility 0s 180ms; }
+.back-to-top::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--background); clip-path: polygon(13px 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%, 0 13px); }
+.back-to-top[data-visible="true"] { opacity: 1; visibility: visible; transform: translateY(0); transition-delay: 0s; }
+.back-to-top svg { display: block; }
+.return-frame { stroke: var(--muted); stroke-opacity: .5; }
+.return-progress { stroke: var(--cyan); stroke-width: 1.3; transition: stroke-dashoffset 80ms linear; }
+.return-arrow { stroke: var(--cyan); stroke-width: 1.8; stroke-linecap: square; stroke-linejoin: miter; transition: transform 220ms var(--motion-ease); }
+.back-to-top span { position: absolute; left: 0; right: 0; bottom: 8px; font: 600 .7rem/1 var(--font-body); text-transform: uppercase; letter-spacing: .1em; }
+.back-to-top:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; color: var(--text); }
+.back-to-top:focus-visible .return-arrow { transform: translateY(-3px); }
+@media (hover: hover) and (pointer: fine) { .back-to-top:hover { color: var(--text); } .back-to-top:hover .return-arrow { transform: translateY(-3px); } }
+.back-to-top:active .return-arrow { transform: translateY(-5px); }
+/* Reserve the footer's final row without narrowing its copyright text. */
+.site-footer > a:last-child { margin-inline-end: 72px; }
+body:has(.contact-confirmation) .back-to-top { opacity: 0; visibility: hidden; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .back-to-top, .back-to-top .return-arrow { transform: none !important; transition: none; } .return-progress { transition: none; } }

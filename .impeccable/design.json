@@ -198,6 +198,11 @@
         "name": "floating-network",
         "value": "desktop 48 nodes / 30 drawn fps / DPR≤1.5; compact 20 / 15 / DPR1",
         "purpose": "Sparse cyan 2D network behind open reading areas. Fine-pointer displacement≤18px; no artwork/content movement. Hidden tabs suspend; reduced motion draws static; shared Effects Off hides and destroys. Backing store≤4M pixels, no animation library."
+      },
+      {
+        "name": "return-signal",
+        "value": "180ms fade / 220ms arrow response; event-driven progress",
+        "purpose": "Angular 56×64px back-to-top beacon appears after meaningful scrolling; real scroll progress traces its perimeter. Native smooth return with main-landmark focus; reduced motion instant. No idle RAF; hide during success popup and reserve footer CV-link clearance."
       }
     ],
     "breakpoints": [
