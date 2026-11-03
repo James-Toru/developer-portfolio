@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-03T09:20:14.096Z",
+  "generatedAt": "2026-11-03T09:51:38.752Z",
   "title": "Design System: Midnight Network",
   "extensions": {
     "colorMeta": {
@@ -148,7 +148,7 @@
       {
         "name": "hero-interface",
         "value": "180ms ease-out",
-        "purpose": "Hero link color and action-surface state changes."
+        "purpose": "Shared link, input and action-surface color feedback; links have no underline and retain visible keyboard focus."
       },
       {
         "name": "localized-rain",
@@ -157,13 +157,33 @@
       },
       {
         "name": "contact-success-arrival",
-        "value": "220ms cubic-bezier(.16, 1, .3, 1)",
-        "purpose": "Finite popup entrance from .6 opacity and 14px below; disabled under reduced motion."
+        "value": "opacity 220ms, transform 230ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Popup opacity 0 to 1 and 14px upward arrival via @starting-style; immediate entry fallback in older browsers. Mobile dimmer fades in over 220ms. Reduced motion preserves opacity and removes travel."
       },
       {
         "name": "contact-success-check",
         "value": "280ms cubic-bezier(.16, 1, .3, 1)",
         "purpose": "Finite SVG check draw from stroke-dashoffset 32 to 0; disabled under reduced motion."
+      },
+      {
+        "name": "contact-success-exit",
+        "value": "180ms ease-out",
+        "purpose": "Controlled closing presence fades popup and mobile overlay together before DOM removal; auto-close starts at 5000ms, normally removing at 5180ms. Reopen cancels stale exit."
+      },
+      {
+        "name": "directional-feedback",
+        "value": "220ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Arrow travel 5px on hover/focus, text link 3px on fine-pointer hover, button lift 2px; short press scale. Reduced motion removes travel."
+      },
+      {
+        "name": "introduction",
+        "value": "360ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Once-visible section/project introductions from .7 opacity and 8px below. Content stays visible before enhancement; completed targets unobserved; reduced motion removes the entrance."
+      },
+      {
+        "name": "mobile-menu-arrival",
+        "value": "180ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Finite disclosure-nav arrival; disabled under reduced motion."
       }
     ],
     "breakpoints": [
@@ -190,17 +210,17 @@
       "name": "Primary action",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Clipped cobalt action with live text and a shared arrow hit target.",
+      "description": "Clipped cobalt action with live text and a shared arrow hit target. Shared motion is defined in src/styles/motion.css; reduced motion removes spatial feedback.",
       "html": "<a class=\"ds-button ds-primary\" href=\"#work\">Explore my work <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a>",
-      "css": ".ds-button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:54px;padding:12px 24px;text-decoration:none;color:var(--text,#eaf3fa);font:italic 800 1.35rem/1.2 var(--font-display,\"Barlow Condensed\",sans-serif);letter-spacing:.045em;text-transform:uppercase;isolation:isolate;transition:color 180ms ease-out}.ds-button::before{content:\"\";position:absolute;inset:0;z-index:-1;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);transition:background-color 180ms ease-out}.ds-button svg{flex-shrink:0}.ds-button:hover{color:white}.ds-button:active{color:var(--cyan,#29dce8)}.ds-button:focus-visible{outline:2px solid var(--cyan,#29dce8);outline-offset:5px}.ds-primary::before{background:var(--cobalt,#1357f5)}.ds-primary:hover::before{background:#0849dc}"
+      "css": ".ds-button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:54px;padding:12px 24px;text-decoration:none;color:var(--text,#eaf3fa);font:italic 800 1.35rem/1.2 var(--font-display,\"Barlow Condensed\",sans-serif);letter-spacing:.045em;text-transform:uppercase;isolation:isolate;transition:color 180ms ease-out,transform 220ms cubic-bezier(.16,1,.3,1)}.ds-button::before{content:\"\";position:absolute;inset:0;z-index:-1;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);transition:background-color 180ms ease-out}.ds-button svg{flex-shrink:0}.ds-button:hover{color:white}.ds-button:active{color:var(--cyan,#29dce8)}.ds-button:focus-visible{outline:2px solid var(--cyan,#29dce8);outline-offset:5px}.ds-primary::before{background:var(--cobalt,#1357f5)}.ds-primary:hover::before{background:#0849dc}.ds-button svg{transition:transform 220ms cubic-bezier(.16,1,.3,1)}.ds-button:focus-visible svg{transform:translateX(5px)}@media(hover:hover) and (pointer:fine){.ds-button:hover{transform:translateY(-2px)}.ds-button:hover svg{transform:translateX(5px)}}.ds-button:active{transform:scale(.98)}@media(prefers-reduced-motion:reduce){.ds-button,.ds-button svg{transition:none}.ds-button:hover,.ds-button:active,.ds-button:focus-visible svg,.ds-button:hover svg{transform:none}}"
     },
     {
       "name": "Outlined action",
       "kind": "button",
       "refersTo": "button-outline",
-      "description": "Cyan clipped outline for the accompanying contact action.",
-      "html": "<a class=\"ds-button ds-outline\" href=\"mailto:gatorumbugua@gmail.com\">Let\u2019s talk <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a>",
-      "css": ".ds-button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:54px;padding:12px 24px;text-decoration:none;color:var(--text,#eaf3fa);font:italic 800 1.35rem/1.2 var(--font-display,\"Barlow Condensed\",sans-serif);letter-spacing:.045em;text-transform:uppercase;isolation:isolate;transition:color 180ms ease-out}.ds-button::before{content:\"\";position:absolute;inset:0;z-index:-1;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);transition:background-color 180ms ease-out}.ds-button svg{flex-shrink:0}.ds-button:hover{color:white}.ds-button:active{color:var(--cyan,#29dce8)}.ds-button:focus-visible{outline:2px solid var(--cyan,#29dce8);outline-offset:5px}.ds-outline::before{background:var(--cyan,#29dce8)}.ds-outline::after{content:\"\";position:absolute;inset:2px;z-index:-1;background:var(--background,#06121f);clip-path:polygon(17px 0,100% 0,100% calc(100% - 17px),calc(100% - 17px) 100%,0 100%,0 17px);transition:background-color 180ms ease-out}.ds-outline:hover::after{background:#123344}"
+      "description": "Cyan clipped outline for the accompanying contact action. Shared motion is defined in src/styles/motion.css; reduced motion removes spatial feedback.",
+      "html": "<a class=\"ds-button ds-outline\" href=\"mailto:gatorumbugua@gmail.com\">Let’s talk <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a>",
+      "css": ".ds-button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:54px;padding:12px 24px;text-decoration:none;color:var(--text,#eaf3fa);font:italic 800 1.35rem/1.2 var(--font-display,\"Barlow Condensed\",sans-serif);letter-spacing:.045em;text-transform:uppercase;isolation:isolate;transition:color 180ms ease-out,transform 220ms cubic-bezier(.16,1,.3,1)}.ds-button::before{content:\"\";position:absolute;inset:0;z-index:-1;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);transition:background-color 180ms ease-out}.ds-button svg{flex-shrink:0}.ds-button:hover{color:white}.ds-button:active{color:var(--cyan,#29dce8)}.ds-button:focus-visible{outline:2px solid var(--cyan,#29dce8);outline-offset:5px}.ds-outline::before{background:var(--cyan,#29dce8)}.ds-outline::after{content:\"\";position:absolute;inset:2px;z-index:-1;background:var(--background,#06121f);clip-path:polygon(17px 0,100% 0,100% calc(100% - 17px),calc(100% - 17px) 100%,0 100%,0 17px);transition:background-color 180ms ease-out}.ds-outline:hover::after{background:#123344}.ds-button svg{transition:transform 220ms cubic-bezier(.16,1,.3,1)}.ds-button:focus-visible svg{transform:translateX(5px)}@media(hover:hover) and (pointer:fine){.ds-button:hover{transform:translateY(-2px)}.ds-button:hover svg{transform:translateX(5px)}}.ds-button:active{transform:scale(.98)}@media(prefers-reduced-motion:reduce){.ds-button,.ds-button svg{transition:none}.ds-button:hover,.ds-button:active,.ds-button:focus-visible svg,.ds-button:hover svg{transform:none}}"
     },
     {
       "name": "Project search",
@@ -229,7 +249,7 @@
       "name": "Archive project row",
       "kind": "card",
       "description": "An open project row with honest classification and a quiet divider, without floating elevation.",
-      "html": "<article class=\"ds-archive-row\"><div class=\"ds-archive-name\"><h3><a href=\"/work/agentic-workflows/\">Agentic systems and workflows <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a></h3><p class=\"ds-archive-kind\">Professional work</p></div><div class=\"ds-archive-description\"><p>Designed AI platforms and supervised multi-agent workflows with human approval, sandboxed execution, deterministic testing, audit trails and workflow orchestration.</p><p class=\"ds-technology-line\">OpenAI \u00b7 TypeScript \u00b7 Next.js \u00b7 Temporal</p></div><p class=\"ds-archive-category\">AI &amp; automation</p></article>",
+      "html": "<article class=\"ds-archive-row\"><div class=\"ds-archive-name\"><h3><a href=\"/work/agentic-workflows/\">Agentic systems and workflows <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a></h3><p class=\"ds-archive-kind\">Professional work</p></div><div class=\"ds-archive-description\"><p>Designed AI platforms and supervised multi-agent workflows with human approval, sandboxed execution, deterministic testing, audit trails and workflow orchestration.</p><p class=\"ds-technology-line\">OpenAI · TypeScript · Next.js · Temporal</p></div><p class=\"ds-archive-category\">AI &amp; automation</p></article>",
       "css": ".ds-archive-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(130px,.4fr);gap:20px 40px;border-top:1px solid #afbdcb35;padding-block:28px;color:var(--text,#eaf3fa);font:400 1.125rem/1.55 'Exo 2',sans-serif}.ds-archive-row p,.ds-archive-row h3{margin:0}.ds-archive-name h3{font-size:clamp(1.25rem,2vw,1.6rem);font-weight:600;line-height:1.1;overflow-wrap:anywhere}.ds-archive-name a{display:flex;min-height:44px;align-items:center;gap:16px;justify-content:space-between;color:inherit;text-decoration:none}.ds-archive-name a:hover{color:var(--cyan,#29dce8)}.ds-archive-name svg{width:22px;flex-shrink:0;color:var(--cyan,#29dce8)}.ds-archive-kind{color:var(--muted,#afbdcb);font-size:.9rem;margin-top:7px!important}.ds-archive-description{color:var(--muted,#afbdcb)}.ds-technology-line{font-size:.95rem;margin-top:14px!important}.ds-archive-category{color:var(--cyan,#29dce8);font-size:1rem}.ds-archive-name a:focus-visible{outline:2px solid var(--cyan,#29dce8);outline-offset:5px}@media(max-width:1023px){.ds-archive-row{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:12px 32px}.ds-archive-category{grid-column:1/-1}}@media(max-width:767px){.ds-archive-row{grid-template-columns:minmax(0,1fr);gap:12px}}"
     },
     {
@@ -242,14 +262,14 @@
     {
       "name": "Contact band",
       "kind": "custom",
-      "description": "Broad cobalt close with an enquiry form, direct email and profile links. This sample shows the direct-contact portion; square navy form controls and live feedback are defined in src/styles/contact.css. Accepted success adds a nonmodal navy/cyan clipped-corner popup with Barlow Condensed heading, Exo 2 copy, authored SVG check, reduced-motion support and explicit keyboard dismissal; its responsive sizing and focus lifecycle are recorded in DESIGN.md. At 767px and below, a decorative pointer-transparent 28% navy viewport overlay sits below the popup and shares all dismissal paths; desktop hides it.",
-      "html": "<section class=\"ds-contact\" aria-labelledby=\"ds-contact-title\"><h2 id=\"ds-contact-title\">Let\u2019s build something.</h2><a class=\"ds-email\" href=\"mailto:gatorumbugua@gmail.com\">gatorumbugua@gmail.com <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a><div class=\"ds-social\"><a href=\"https://github.com/James-Toru\">GitHub <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a><a href=\"https://www.linkedin.com/in/james-mbugua-78a63917b/\">LinkedIn <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a></div></section>",
-      "css": ".ds-contact{background:var(--cobalt,#1357f5);color:var(--text,#eaf3fa);padding:clamp(44px,6vw,88px) var(--gutter,clamp(20px,4vw,64px));font:400 1.125rem/1.55 'Exo 2',sans-serif}.ds-contact h2{margin:0;font:italic 800 clamp(2.4rem,6vw,6rem)/1 var(--font-display,\"Barlow Condensed\",sans-serif);text-transform:uppercase;text-wrap:balance}.ds-contact a{color:inherit;text-underline-offset:.2em}.ds-email{display:inline-flex;min-height:44px;align-items:center;gap:16px;margin-top:20px;font-size:clamp(1rem,2.5vw,2rem);overflow-wrap:anywhere}.ds-contact svg{flex-shrink:0}.ds-social{display:flex;flex-wrap:wrap;gap:24px;margin-top:24px}.ds-social a{display:inline-flex;align-items:center;min-height:44px;gap:10px}.ds-contact a:focus-visible{outline:2px solid white;outline-offset:5px}"
+      "description": "Broad cobalt close with an enquiry form, direct email and profile links. This sample shows the direct-contact portion; square navy form controls and live feedback are defined in src/styles/contact.css. Accepted success adds a nonmodal navy/cyan clipped-corner popup with Barlow Condensed heading, Exo 2 copy, authored SVG check, reduced-motion support and explicit keyboard dismissal; its responsive sizing and focus lifecycle are recorded in DESIGN.md. At 767px and below, a decorative pointer-transparent 28% navy viewport overlay sits below the popup and shares all dismissal paths; desktop hides it. Popup/backdrop enter with 220ms opacity (popup travel 230ms) and retain a 180ms closing phase; reduced motion keeps fades without travel. Five seconds begins dismissal, and reopen cancels stale exit.",
+      "html": "<section class=\"ds-contact\" aria-labelledby=\"ds-contact-title\"><h2 id=\"ds-contact-title\">Let’s build something.</h2><a class=\"ds-email\" href=\"mailto:gatorumbugua@gmail.com\">gatorumbugua@gmail.com <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a><div class=\"ds-social\"><a href=\"https://github.com/James-Toru\">GitHub <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a><a href=\"https://www.linkedin.com/in/james-mbugua-78a63917b/\">LinkedIn <svg width=\"28\" height=\"24\" viewBox=\"0 0 28 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 12h23M17 4l8 8-8 8\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a></div></section>",
+      "css": ".ds-contact{background:var(--cobalt,#1357f5);color:var(--text,#eaf3fa);padding:clamp(44px,6vw,88px) var(--gutter,clamp(20px,4vw,64px));font:400 1.125rem/1.55 'Exo 2',sans-serif}.ds-contact h2{margin:0;font:italic 800 clamp(2.4rem,6vw,6rem)/1 var(--font-display,\"Barlow Condensed\",sans-serif);text-transform:uppercase;text-wrap:balance}.ds-contact a{color:inherit;text-decoration:none;transition:color 180ms ease-out}.ds-email{display:inline-flex;min-height:44px;align-items:center;gap:16px;margin-top:20px;font-size:clamp(1rem,2.5vw,2rem);overflow-wrap:anywhere}.ds-contact svg{flex-shrink:0}.ds-social{display:flex;flex-wrap:wrap;gap:24px;margin-top:24px}.ds-social a{display:inline-flex;align-items:center;min-height:44px;gap:10px}.ds-contact a:focus-visible{outline:2px solid white;outline-offset:5px}.ds-contact a:hover,.ds-contact a:focus-visible{color:white}.ds-contact svg{transition:transform 220ms cubic-bezier(.16,1,.3,1)}.ds-contact a:focus-visible svg{transform:translateX(5px)}@media(hover:hover) and (pointer:fine){.ds-contact a:hover svg{transform:translateX(5px)}}@media(prefers-reduced-motion:reduce){.ds-contact a,.ds-contact svg{transition:none}.ds-contact a:hover svg,.ds-contact a:focus-visible svg{transform:none}}"
     }
   ],
   "narrative": {
     "northStar": "Midnight Network",
-    "overview": "Midnight Network presents James Gatoru\u2019s work inside a rain-lit, layered city. Blue atmosphere, ice-white lettering and cyan interface edges create an immersive setting; generous live typography and direct links keep the work legible and reachable.\n\nThe visual rhythm moves between expressive artwork and calm reading surfaces. Condensed italic display type supplies energy, while ordinary Exo 2 supports project narratives and controls. Atmosphere is a progressive enhancement: the complete composition and content exist before optional movement.",
+    "overview": "Midnight Network presents James Gatoru’s work inside a rain-lit, layered city. Blue atmosphere, ice-white lettering and cyan interface edges create an immersive setting; generous live typography and direct links keep the work legible and reachable.\n\nThe visual rhythm moves between expressive artwork and calm reading surfaces. Condensed italic display type supplies energy, while ordinary Exo 2 supports project narratives and controls. Atmosphere is a progressive enhancement: the complete composition and content exist before optional movement.",
     "keyCharacteristics": [
       "Original city imagery with navy, cobalt and cyan depth.",
       "Large, live condensed italic headings with restrained angular details.",
@@ -274,7 +294,12 @@
       },
       {
         "name": "The Accepted Success Rule",
-        "body": "Show the popup only after an accepted successful response; its copy does not certify inbox delivery. Keep the existing polite live status as the single announcement, visually hiding its success copy while the popup is open and restoring it inline afterward. Do not force focus or trap it. Provide a labeled close button (44px square) with cyan keyboard focus, and Escape dismissal, plus automatic dismissal after 5,000ms at every viewport width. Restore submit focus only when dismissal removes focus from inside the popup. Focusing a form input or textarea dismisses without moving focus or clearing the draft; starting another valid submission removes stale success.",
+        "body": "Show the popup only after an accepted successful response; its copy does not certify inbox delivery. Keep the existing polite live status as the single announcement, visually hiding its success copy while the popup is open and restoring it inline afterward. Do not force focus or trap it. Provide a labeled close button (44px square) with cyan keyboard focus, and Escape dismissal, plus automatic dismissal beginning after 5,000ms at every viewport width. Retain popup and mobile overlay for a coordinated 180ms closing fade, then remove them; disable and accessibility-hide the closing popup. Reopen cancels stale exit and starts a fresh lifetime; unmount clears timers. Restore submit focus only when dismissal removes focus from inside the popup. Focusing a form input or textarea dismisses without moving focus or clearing the draft; starting another valid submission removes stale success.",
+        "section": "components"
+      },
+      {
+        "name": "The Bounded Feedback Rule",
+        "body": "Remove link underlines; preserve readable hover/focus colors, directional arrow feedback and visible focus outlines. Keep section/project entrances finite and visible by default, unobserve completed targets and respect initial/live reduced motion. City artwork stays stationary and no continuous page-wide motion is added.",
         "section": "components"
       }
     ],

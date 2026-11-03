@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
+import { SiteMotion } from "@/components/site-motion";
 import "./globals.css";
 import "@/styles/contact.css";
+import "@/styles/motion.css";
 
 export const metadata: Metadata = {
   title: { default: "James Gatoru — Software Developer & AI Agentic Engineer", template: "%s — James Gatoru" },
@@ -20,6 +22,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         {children}
         <footer className="site-footer"><a href="/">James / Toru</a><span>Software, thoughtfully built.</span><a href="/james-gatoru-cv.pdf">Download CV <span className="file-label">(PDF)</span></a></footer>
+        <SiteMotion />
       </body>
     </html>
   );

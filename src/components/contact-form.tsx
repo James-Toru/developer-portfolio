@@ -136,5 +136,5 @@ export function ContactForm() {
       {feedback.message && <p className={showConfirmation && feedback.kind === "success" ? "contact-sr-only" : undefined}>{feedback.message}{feedback.kind === "error" && <> <a href={`mailto:${profile.email}`}>Email {profile.email}</a></>}</p>}
     </div>
     <noscript><p className="contact-noscript">Sending through this form needs JavaScript. <a href={`mailto:${profile.email}`}>Email {profile.email}</a> instead.</p></noscript>
-  </form>{showConfirmation && <ContactConfirmation onDismiss={dismissConfirmation} />}</>;
+  </form><ContactConfirmation open={showConfirmation} onDismiss={dismissConfirmation} /></>;
 }

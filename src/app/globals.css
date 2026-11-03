@@ -6,7 +6,7 @@
 html { scroll-behavior: smooth; scrollbar-color: #50758a var(--background); }
 body { margin: 0; background: var(--background); color: var(--text); font: 400 1.125rem/1.55 var(--font-body); }
 ::selection { background: var(--cyan); color: var(--background); }
-a { color: inherit; text-underline-offset: .2em; }
+a { color: inherit; text-decoration: none; }
 button, summary, input { font: inherit; }
 :focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
 main:focus { outline: none; }

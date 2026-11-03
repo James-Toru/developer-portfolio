@@ -4,6 +4,7 @@ import { renderToString } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { CONTACT_FIELD_LIMITS } from "@/lib/contact-contract";
 import { ContactForm } from "./contact-form";
+import { ContactConfirmation } from "./contact-confirmation";
 
 let container: HTMLDivElement;
 let app: Root;
@@ -14,6 +15,16 @@ function form() { const element = container.querySelector("form"); expect(elemen
 function input(name: string) { const element = container.querySelector<HTMLInputElement | HTMLTextAreaElement>(`[name="${name}"]`); expect(element).not.toBeNull(); return element!; }
 function submit() { const element = container.querySelector<HTMLButtonElement>('button[type="submit"]'); expect(element).not.toBeNull(); return element!; }
 const status = () => container.querySelector('[role="status"]')!;
+async function finishExit() {
+  expect(container.querySelector(".contact-confirmation")?.getAttribute("data-state")).toBe("closing");
+  expect(container.querySelector(".contact-confirmation-backdrop")?.getAttribute("data-state")).toBe("closing");
+  expect(container.querySelector<HTMLButtonElement>(".contact-confirmation button")?.disabled).toBe(true);
+  await act(async () => { await vi.advanceTimersByTimeAsync(179); });
+  expect(container.querySelector(".contact-confirmation")).not.toBeNull();
+  await act(async () => { await vi.advanceTimersByTimeAsync(1); });
+  expect(container.querySelector(".contact-confirmation")).toBeNull();
+  expect(container.querySelector(".contact-confirmation-backdrop")).toBeNull();
+}
 async function render() { await act(async () => { app.render(<ContactForm />); }); }
 function fill() { Object.entries(draft).forEach(([name, value]) => { input(name).value = value; }); }
 async function send() { await act(async () => { form().dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })); }); }
@@ -21,6 +32,7 @@ function expectDraft() { Object.entries(draft).forEach(([name, value]) => { expe
 function response(body: unknown, status = 200) { return new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } }); }
 
 beforeEach(() => {
+  vi.useFakeTimers();
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
   request = vi.fn<typeof fetch>();
   vi.stubGlobal("fetch", request);
@@ -40,6 +52,8 @@ describe("contact form", () => {
   it("disables server-rendered submission and keeps a noscript email fallback", () => {
     container.innerHTML = renderToString(<ContactForm />);
     expect(submit().disabled).toBe(true);
+    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    expect(container.querySelector(".contact-confirmation-backdrop")).toBeNull();
     expect(container.querySelector("noscript")?.textContent).toContain("mailto:gatorumbugua@gmail.com");
   });
 
@@ -114,7 +128,7 @@ describe("contact form", () => {
     expect(dismiss).not.toBeNull();
     dismiss!.focus();
     await act(async () => { dismiss!.click(); });
-    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    await finishExit();
     expect(status().textContent).toContain("accepted for delivery");
     expect(document.activeElement).toBe(submit());
     expect(request).toHaveBeenCalledTimes(1);
@@ -127,7 +141,7 @@ describe("contact form", () => {
     input("message").value = "A follow-up draft.";
     container.querySelector<HTMLButtonElement>(".contact-confirmation button")!.focus();
     await act(async () => { document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })); });
-    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    await finishExit();
     expect(input("message").value).toBe("A follow-up draft.");
     expect(document.activeElement).toBe(submit());
     expect(request).toHaveBeenCalledTimes(1);
@@ -139,7 +153,7 @@ describe("contact form", () => {
     expect(container.querySelector(".contact-confirmation")).not.toBeNull();
     input("message").value = "A new enquiry draft.";
     await act(async () => { input("message").focus(); });
-    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    await finishExit();
     expect(input("message").value).toBe("A new enquiry draft.");
     expect(document.activeElement).toBe(input("message"));
     expect(request).toHaveBeenCalledTimes(1);
@@ -151,7 +165,7 @@ describe("contact form", () => {
     await render(); fill(); await send();
     expect(container.querySelector(".contact-confirmation")).not.toBeNull();
     fill(); await send();
-    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    await finishExit();
     expectDraft();
     expect(status().textContent).toContain("unavailable");
   });
@@ -164,7 +178,7 @@ describe("contact form", () => {
     await act(async () => { await vi.advanceTimersByTimeAsync(4_999); });
     expect(container.querySelector(".contact-confirmation")).not.toBeNull();
     await act(async () => { await vi.advanceTimersByTimeAsync(1); });
-    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    await finishExit();
     expect(status().textContent).toContain("accepted for delivery");
     expect(document.activeElement).toBe(submit());
     expect(request).toHaveBeenCalledTimes(1);
@@ -180,8 +194,54 @@ describe("contact form", () => {
     await act(async () => { await vi.advanceTimersByTimeAsync(2_500); });
     expect(container.querySelector(".contact-confirmation")).not.toBeNull();
     await act(async () => { await vi.advanceTimersByTimeAsync(2_500); });
-    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    await finishExit();
     expect(request).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not take focus from a visitor editing during the exit", async () => {
+    request.mockResolvedValue(response({ ok: true }));
+    await render(); fill(); await send();
+    await act(async () => { container.querySelector<HTMLButtonElement>(".contact-confirmation button")!.click(); });
+    await act(async () => { input("message").focus(); });
+    await finishExit();
+    expect(document.activeElement).toBe(input("message"));
+  });
+
+  it("cancels an interrupted exit and gives reopened confirmation a fresh lifetime", async () => {
+    const dismiss = vi.fn();
+    const show = async (open: boolean) => { await act(async () => { app.render(<ContactConfirmation open={open} onDismiss={dismiss} />); }); };
+    await show(false);
+    expect(container.querySelector(".contact-confirmation")).toBeNull();
+    await show(true);
+    await show(false);
+    await act(async () => { await vi.advanceTimersByTimeAsync(100); });
+    await show(true);
+    await act(async () => { await vi.advanceTimersByTimeAsync(100); });
+    expect(container.querySelector(".contact-confirmation")?.getAttribute("data-state")).toBe("open");
+    await act(async () => { await vi.advanceTimersByTimeAsync(4_899); });
+    expect(dismiss).not.toHaveBeenCalled();
+    await act(async () => { await vi.advanceTimersByTimeAsync(1); });
+    expect(dismiss).toHaveBeenCalledTimes(1);
+  });
+
+  it("stops Escape and auto-dismiss callbacks while closing and clears timers on unmount", async () => {
+    const dismiss = vi.fn();
+    await act(async () => { app.render(<ContactConfirmation open onDismiss={dismiss} />); });
+    await act(async () => { app.render(<ContactConfirmation open={false} onDismiss={dismiss} />); });
+    await act(async () => { document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" })); });
+    await act(async () => { app.unmount(); });
+    app = createRoot(container);
+    await act(async () => { await vi.advanceTimersByTimeAsync(6_000); });
+    expect(dismiss).not.toHaveBeenCalled();
+  });
+
+  it("cancels the five-second callback when an open confirmation unmounts", async () => {
+    const dismiss = vi.fn();
+    await act(async () => { app.render(<ContactConfirmation open onDismiss={dismiss} />); });
+    await act(async () => { app.unmount(); });
+    app = createRoot(container);
+    await act(async () => { await vi.advanceTimersByTimeAsync(6_000); });
+    expect(dismiss).not.toHaveBeenCalled();
   });
 
   it("preserves an unavailable draft and permits an explicit successful retry", async () => {

@@ -1,0 +1,47 @@
+:root { --motion-ease: cubic-bezier(.16, 1, .3, 1); }
+
+/* Interaction acknowledges direction and state without changing layout. */
+a:any-link { text-decoration: none; transition: color 180ms ease-out; }
+a:any-link:where(:not(.button, .skip-link)):is(:hover, :focus-visible) { color: var(--cyan); }
+a.text-link { transition: color 180ms ease-out, transform 220ms var(--motion-ease); }
+a.text-link:hover, a.text-link:focus-visible { color: var(--text); }
+:is(a, button) .arrow-icon { transition: transform 220ms var(--motion-ease), color 180ms ease-out; }
+a:focus-visible .arrow-icon, button:not(:disabled):focus-visible .arrow-icon { transform: translateX(5px); }
+.button.button:not(:disabled) { transition: color 180ms ease-out, transform 220ms var(--motion-ease); }
+.button::before, .button::after { transition: background-color 180ms ease-out; }
+:is(.effects-control, .category-filters) button:not(:disabled), .reset-filters, .mobile-menu summary { transition: background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out, transform 150ms var(--motion-ease); }
+.contact-field input, .contact-field textarea, .archive-filters input { transition: border-color 180ms ease-out, background-color 180ms ease-out; }
+.contact-field input:focus, .contact-field textarea:focus, .archive-filters input:focus { background-color: var(--surface); }
+.contact-band a:any-link:hover, .contact-band a:any-link:focus-visible { color: #fff; }
+.social-links a, .site-footer a, .selected-copy h3 a { transition: color 180ms ease-out, transform 220ms var(--motion-ease); }
+.selected-project, .archive-row, .index-art img { transition: border-color 220ms ease-out; }
+.category-filters button[aria-pressed="false"]:hover { color: var(--cyan); background: var(--surface); }
+.mobile-menu[open] nav { animation: menu-arrive 180ms var(--motion-ease); }
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover .arrow-icon, button:not(:disabled):hover .arrow-icon { transform: translateX(5px); }
+  :is(.text-link, .social-links a, .site-footer a, .selected-copy h3 a):hover { transform: translateX(3px); }
+  .button:not(:disabled):hover { transform: translateY(-2px); }
+  :is(.effects-control, .category-filters) button:not(:disabled):hover, .reset-filters:hover { transform: translateY(-1px); }
+  .selected-project:hover, .archive-row:hover, .index-link:hover .index-art img { border-color: var(--cyan); }
+}
+.button:not(:disabled):active { transform: translateY(0) scale(.98); }
+:is(.effects-control, .category-filters) button:not(:disabled):active, .reset-filters:active, .mobile-menu summary:active { transform: scale(.97); }
+a:active .arrow-icon { transform: translateX(2px); }
+
+/* Visible by default: enhancement never hides information behind a script. */
+.motion-enter { animation: introduction-arrive 360ms var(--motion-ease); }
+@keyframes introduction-arrive { from { opacity: .7; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes menu-arrive { from { opacity: .6; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-enter, .mobile-menu[open] nav { animation: none; }
+  a, button, summary, .arrow-icon, .contact-field input, .contact-field textarea, .archive-filters input, .selected-project, .archive-row, .index-art img { transition-duration: .01ms !important; transition-delay: 0ms !important; }
+  :is(.text-link, .social-links a, .site-footer a, .selected-copy h3 a):hover,
+  .button:not(:disabled):hover, .button:not(:disabled):active,
+  :is(.effects-control, .category-filters) button:not(:disabled):hover,
+  :is(.effects-control, .category-filters) button:not(:disabled):active,
+  .reset-filters:hover, .reset-filters:active, .mobile-menu summary:active,
+  :is(a, button):hover .arrow-icon, :is(a, button):active .arrow-icon,
+  a:focus-visible .arrow-icon, button:focus-visible .arrow-icon { transform: none; }
+}
