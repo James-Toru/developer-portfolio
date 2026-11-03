@@ -6,4 +6,5 @@ out/
 coverage/
 *.tsbuildinfo
 .env*
+!.env.example
 tmp/

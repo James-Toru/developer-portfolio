@@ -7,14 +7,15 @@
   "engines": { "node": ">=24.15.0 <25" },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/prepare-verification-output.mjs",
+    "start": "next start",
     "test": "vitest run && node --test scripts/verification.test.mjs",
     "test:content": "vitest run src/lib/projects.test.ts",
     "test:static": "vitest run src/lib/static-output.test.ts",
     "test:watch": "vitest",
     "check:static": "node scripts/check-static-output.mjs",
     "measure:assets": "node scripts/measure-assets.mjs",
-    "preview": "node scripts/preview-static.mjs",
+    "preview": "next start --hostname 127.0.0.1 --port 4173",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

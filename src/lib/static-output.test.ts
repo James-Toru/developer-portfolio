@@ -9,7 +9,7 @@ function readPage(path: string) {
   return new DOMParser().parseFromString(html, "text/html");
 }
 
-describe("exported HTML without JavaScript", () => {
+describe("fresh server-build verification HTML without JavaScript", () => {
   it("contains the complete homepage and confirmed contact", () => {
     const page = readPage("index.html");
     expect(page.querySelector("h1")?.textContent).toContain("James");

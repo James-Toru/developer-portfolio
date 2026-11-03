@@ -1,12 +1,24 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, rm, readFile, access } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { checkStaticOutput } from './check-static-output.mjs';
 import { measureAssets } from './measure-assets.mjs';
 import { staticResponse } from './preview-static.mjs';
+import { prepareVerificationOutput } from './prepare-verification-output.mjs';
+
+test('server snapshot replaces stale output, maps prerendered routes and excludes server code', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'portfolio-build-'));
+  try {
+    for (const dir of ['.next/server/app/work', '.next/server/app/api/contact', '.next/static/chunks', 'public', 'out']) await mkdir(join(root, dir), { recursive: true });
+    for (const [file, content] of Object.entries({ '.next/server/app/index.html': 'fresh home', '.next/server/app/work.html': 'archive', '.next/server/app/work/example.html': 'project', '.next/server/app/_not-found.html': 'missing', '.next/server/app/_global-error.html': 'internal', '.next/server/app/api/contact/route.js': 'server secret', '.next/server/app/work/example.rsc': 'server data', '.next/static/chunks/client.js': 'client', 'public/cv.pdf': 'cv', 'out/stale.html': 'stale' })) await writeFile(join(root, file), content);
+    await prepareVerificationOutput(root);
+    for (const [file, expected] of Object.entries({ 'index.html': 'fresh home', 'work/index.html': 'archive', 'work/example/index.html': 'project', '404.html': 'missing', '404/index.html': 'missing', '_next/static/chunks/client.js': 'client', 'cv.pdf': 'cv' })) assert.equal(await readFile(join(root, 'out', file), 'utf8'), expected);
+    for (const file of ['stale.html', '_global-error.html', 'api/contact/route.js', 'work/example.rsc']) await assert.rejects(access(join(root, 'out', file)));
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
 
 const records = [{ slug: 'example', title: 'Example', summary: 'Actual work.' }];
 const html = (body) => `<html lang="en"><head><title>Portfolio</title></head><body><main id="main-content"><h1>Example</h1>${body}<a href="mailto:gatorumbugua@gmail.com">Contact</a></main></body></html>`;
