@@ -1,6 +1,6 @@
 # Resend contact form
 
-Status: proposed for owner approval. Provider choice approved on 2026-11-03; implementation has not started.
+Status: approved by the owner on 2026-11-03, including the Resend backend, required form fields and implementation. Live delivery still requires owner configuration.
 
 ## Intent and scope
 
