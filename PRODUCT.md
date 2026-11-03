@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-The owner approved Next.js App Router, TypeScript and a static export, with native CSS, locally maintained content and limited client-side enhancement. Project pages are generated at build time. Deployment provider and domain are open decisions; the current review is local.
+The owner approved Next.js App Router, TypeScript, native CSS, locally maintained content and limited client-side enhancement. The approved Resend contact feature replaces static-only export with a Next.js server and a native POST Route Handler; portfolio/project pages remain pre-rendered. Deployment provider and domain are open decisions; the current review is local.
 
 ## Users
 
@@ -26,10 +26,10 @@ The initial content comes from the two supplied CVs and the public James-Toru Gi
 
 - The current collection contains 13 curated records assembled from CV work, public repositories and the owner's 2026-11-03 additions and follow-up removals. LawPro360, DOLMIS, CargoForward360 and Nashami Limited are featured. IGC Portal and Kalamu have supplied public website links and real previews. The owner removed the specified projects, repositories, forks and supporting section; the original research inventory remains historical evidence rather than a publishing requirement.
 - Search by project or technology and category filters enhance the archive. All records and direct project links remain available in the initial HTML.
-- Contact uses the confirmed email, gatorumbugua@gmail.com, and verified profile links. There is no message-sending backend, account system, database or CMS.
+- Contact keeps the confirmed email, gatorumbugua@gmail.com, and verified profile links, plus a shared enquiry form with required name, email and message. A server-only Resend endpoint fixes the recipient and sender; the visitor's validated email is Reply-To. Pending requests freeze fields and prevent duplicate submits; failed drafts remain available for retry. Success means provider acceptance for delivery. Missing configuration reports unavailable, and the direct email link works without scripting. There is no visitor account system, database, CMS, attachment or automatic reply.
 - The owner approved original layered city artwork and lightweight, optional effects. A real-time 3D renderer, video background, forced intro, scroll interception and audio are outside the first release.
 - Keep the original CVs unchanged. The downloadable public CV is a derivative with the confirmed email and without referee contacts; no public telephone is required.
-- No deployment, hosting account or paid service is required for local review. Hosting and domain selection remain undecided.
+- No deployment, hosting account or paid service is required for local form review. Live delivery needs owner-configured server secrets and a verified Resend sender. A production host must run Next.js server code and supply origin configuration and host-level abuse controls; static-file-only hosting cannot run the contact endpoint. Hosting and domain selection remain undecided.
 
 ## Brand Commitments
 
@@ -40,6 +40,7 @@ James Gatoru is the portfolio identity; James / Toru is the implemented wordmark
 ## Evidence on Hand
 
 - Approved requirements: [Midnight Network design specification](docs/superpowers/specs/2026-11-02-midnight-network-design.md).
+- Approved contact scope: [Resend contact specification](docs/superpowers/specs/2026-11-03-resend-contact-design.md). Automated delivery tests are mocked; live inbox delivery requires owner configuration and remains unverified.
 - Approved concepts: [desktop](concepts/cyberpunk-midnight-network-v2.png) and [mobile](concepts/cyberpunk-midnight-mobile-v1.png).
 - Source provenance: [project research inventory](docs/research/project-sources.json), with supplied CV and GitHub evidence. [RAXOS adaptation notes](docs/research/raxos-reference.md) record the reviewed implementation reference.
 - Public project copy must stay within verified role, scope, technologies and contribution. Sparse evidence calls for a concise overview; it does not authorize invented results, metrics, testimonials, responsibilities or availability.

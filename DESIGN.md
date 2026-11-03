@@ -205,7 +205,7 @@ Auto and Off are adjacent square buttons with a visible Effects label. The press
 
 ### Contact Band
 
-A broad cobalt surface closes the page with a condensed italic heading, a wrapping direct email link and profile links. Use white focus outlines on this band to keep keyboard feedback visible. It is an email destination, with no simulated form submission.
+A broad cobalt surface closes the page with a condensed italic heading, a wrapping direct email link and profile links. The shared enquiry form sits beside the introduction on wide screens and below it at 767px and narrower. Use square navy inputs with Exo 2 labels and text, a navy action with the existing clipped-corner shape, and white keyboard focus outlines against cobalt. Form fields reserve at least 52px height; the message expands vertically. Pending fields stay stable and disabled, while live text communicates sending, acceptance or recovery. Field errors use explicit text and an associated invalid state rather than color alone. Keep the direct email destination available in unavailable/error and noscript states. This extends the existing surface and input/action language; it does not introduce a separate visual identity.
 
 ## Do's and Don'ts
 

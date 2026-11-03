@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
+import "@/styles/contact.css";
 
 export const metadata: Metadata = {
   title: { default: "James Gatoru — Software Developer & AI Agentic Engineer", template: "%s — James Gatoru" },
