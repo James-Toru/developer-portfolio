@@ -43,7 +43,10 @@ export function mountFloatingNetwork(canvas: HTMLCanvasElement, initialSettings:
 
   function paint(delta = 0) {
     ctx.clearRect(0, 0, width, height);
-    const reach = settings.compact ? 145 : 180;
+    // Give wide screens broader constellations without adding particles or frames.
+    const reach = settings.compact ? 165 : Math.min(360, Math.max(240, width * 0.2));
+    const radius = settings.compact ? 1.55 : 2.2;
+    const lineOpacity = settings.compact ? 0.22 : 0.3;
     for (const node of nodes) {
       node.x = (node.x + node.vx * delta + width) % width;
       node.y = (node.y + node.vy * delta + height) % height;
@@ -63,22 +66,22 @@ export function mountFloatingNetwork(canvas: HTMLCanvasElement, initialSettings:
       node.ox += (ox - node.ox) * ease;
       node.oy += (oy - node.oy) * ease;
     }
-    ctx.lineWidth = 0.65;
+    ctx.lineWidth = settings.compact ? 0.8 : 1;
     for (let i = 0; i < nodes.length; i++) {
       const a = nodes[i];
       for (let j = i + 1; j < nodes.length; j++) {
         const b = nodes[j];
         const distance = Math.hypot(a.x + a.ox - b.x - b.ox, a.y + a.oy - b.y - b.oy);
         if (distance >= reach) continue;
-        ctx.strokeStyle = `rgba(83, 184, 201, ${0.16 * (1 - distance / reach)})`;
+        ctx.strokeStyle = `rgba(83, 184, 201, ${lineOpacity * (1 - distance / reach)})`;
         ctx.beginPath();
         ctx.moveTo(a.x + a.ox, a.y + a.oy);
         ctx.lineTo(b.x + b.ox, b.y + b.oy);
         ctx.stroke();
       }
-      ctx.fillStyle = "rgba(112, 205, 216, 0.48)";
+      ctx.fillStyle = `rgba(112, 205, 216, ${settings.compact ? 0.58 : 0.68})`;
       ctx.beginPath();
-      ctx.arc(a.x + a.ox, a.y + a.oy, 1.15, 0, Math.PI * 2);
+      ctx.arc(a.x + a.ox, a.y + a.oy, radius, 0, Math.PI * 2);
       ctx.fill();
     }
   }
